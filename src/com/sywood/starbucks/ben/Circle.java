@@ -1,19 +1,20 @@
 package com.sywood.starbucks.ben;
 
+//addded a comment
 import com.sywood.starbucks.siyan.AbstractShape;
 
 public class Circle extends AbstractShape {
     private String nam;
-    private double r;
+    private double ra;
     public Circle(String CName, double rad){
         nam = CName;
-        r = rad;
+        ra = rad;
     }
     public String name() {
         return nam;
     }
 
     public double area() {
-        return r*r*Math.PI;
+        return ra*ra*Math.PI;
     }
 }
