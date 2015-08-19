@@ -1,4 +1,4 @@
-package com.sywood.starbucks.Ben;
+package com.sywood.starbucks.ben;
 
 import com.sywood.starbucks.siyan.AbstractShape;
 
