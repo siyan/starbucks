@@ -1,4 +1,4 @@
-package com.sywood.starbucks.Ben;
+package com.sywood.starbucks.ben;
 
 import java.util.Scanner;
 import java.util.Stack;

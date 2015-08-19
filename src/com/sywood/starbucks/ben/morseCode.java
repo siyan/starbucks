@@ -1,4 +1,4 @@
-package com.sywood.starbucks.Ben;
+package com.sywood.starbucks.ben;
 
 /**
  * Created by Striker on 2015-08-19.
