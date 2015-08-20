@@ -3,7 +3,7 @@ package com.sywood.starbucks.ben;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class coinStack {
+public class CoinStack {
     public static ArrayList coinFlip( ArrayList coins, int n ) {
 
         ArrayList flipped = new ArrayList();
