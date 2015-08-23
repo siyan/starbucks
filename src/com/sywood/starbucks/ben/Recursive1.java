@@ -13,11 +13,19 @@ public class Recursive1 {
         return num+triangle(num-1);
     }
     public static int stringCounter(String whole, String sub){
-        if (whole == ""){
-            return 0;
+
+            int subLen = sub.length();
+
+            if( whole == null || whole.length() == 0 || sub == null) {
+                return 0;
+            }
+            else if ( sub.equalsIgnoreCase( whole.substring( 0, subLen) )) {
+                return 1 + stringCounter( whole.substring(subLen), sub );
+            }
+            else {
+                return stringCounter(whole.substring(1), sub );
+            }
         }
-        return 1;
-    }
     public static String allStar(String ret) {
         if (ret.length() == 0) {
             return "";
@@ -27,7 +35,17 @@ public class Recursive1 {
             return ret.substring(0, 1) + "*" + allStar(ret.substring(1));
         }
     }
+    public static boolean strCopies(String whole, String sub, int num){
+        return stringCounter(whole, sub) == num;
+    }
+    public static int sumDigits(int num){
+        if (num < 10){
+            return 0;
+        } else{
+            return num%10 + sumDigits(num-num%10);
+        }
+    }
     public static void main(String[] args){
-        System.out.print(allStar("hello"));
+        System.out.print(strCopies("catcowcat", "cat", 2));
     }
 }
