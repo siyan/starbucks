@@ -46,7 +46,7 @@ public class Recursive1 {
         }
     }
     public static int countPairs(String str){
-        if( str == null || str.length() == 0) {
+        if( str == null || str.length() <= 2) {
             return 0;
         }
         if (str.charAt(0) == str.charAt(2)) {
@@ -56,6 +56,6 @@ public class Recursive1 {
         }
     }
     public static void main(String[] args){
-        System.out.print(strCopies("catcowcat", "cat", 2));
+        System.out.print(countPairs("AxAxA"));
     }
 }
