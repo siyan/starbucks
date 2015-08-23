@@ -8,20 +8,18 @@ public class Recursion {
 
         int subLen = subStr.length();
 
-        if( str == null || str.length() == 0 || subStr == null) {
+        if (str == null || str.length() == 0) {
             return 0;
-        }
-        else if ( subStr.equalsIgnoreCase( str.substring( 0, subLen) )) {
-            return 1 + stringCount( str.substring(subLen), subStr );
-        }
-        else {
-            return stringCount(str.substring(1), subStr );
+        } else if (subStr.equalsIgnoreCase(str.substring(0, subLen))) {
+            return 1 + stringCount(str.substring(subLen), subStr);
+        } else {
+            return stringCount(str.substring(1), subStr);
         }
     }
 
     public static void main( String[] args) {
         Recursion rc = new Recursion();
 
-        System.out.println(  "count = " + rc.stringCount( "catcowcat", ""));
+        System.out.println(  "count = " + rc.stringCount( "catcowcat", "cat"));
     }
 }
