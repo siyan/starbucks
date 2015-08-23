@@ -42,11 +42,18 @@ public class Recursive1 {
         if (num < 10){
             return num;
         } else{
-            return num%10 + sumDigits(num-num%10);
+            return num%10 + sumDigits(num - num % 10);
         }
     }
     public static int countPairs(String str){
-
+        if( str == null || str.length() == 0) {
+            return 0;
+        }
+        if (str.charAt(0) == str.charAt(2)) {
+            return 1 + countPairs(str.substring(2));
+        }else{
+            return 0 + countPairs(str.substring(2));
+        }
     }
     public static void main(String[] args){
         System.out.print(strCopies("catcowcat", "cat", 2));
