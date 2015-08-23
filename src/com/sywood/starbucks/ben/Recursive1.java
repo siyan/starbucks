@@ -42,7 +42,7 @@ public class Recursive1 {
         if (num < 10){
             return num;
         } else{
-            return num%10 + sumDigits(num - num % 10);
+            return num%10 + sumDigits(num/10);
         }
     }
     public static int countPairs(String str){
@@ -56,6 +56,6 @@ public class Recursive1 {
         }
     }
     public static void main(String[] args){
-        System.out.print(countPairs("AxAxA"));
+        System.out.print(sumDigits(126));
     }
 }
