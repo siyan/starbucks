@@ -52,7 +52,7 @@ public class Recursive1 {
         if (str.charAt(0) == str.charAt(2)) {
             return 1 + countPairs(str.substring(2));
         }else{
-            return 0 + countPairs(str.substring(2));
+            return countPairs(str.substring(2));
         }
     }
     public static void main(String[] args){
