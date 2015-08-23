@@ -40,10 +40,13 @@ public class Recursive1 {
     }
     public static int sumDigits(int num){
         if (num < 10){
-            return 0;
+            return num;
         } else{
             return num%10 + sumDigits(num-num%10);
         }
+    }
+    public static int countPairs(String str){
+
     }
     public static void main(String[] args){
         System.out.print(strCopies("catcowcat", "cat", 2));
