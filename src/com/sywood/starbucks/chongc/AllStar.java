@@ -15,10 +15,71 @@ public class AllStar {
             }
         }
     }
-    public static void main(String[] args){
-        String allStar = new String("hello");
-        String Star = AllStar(allStar,0);
-        System.out.println(Star);
 
+
+
+
+
+
+
+
+    public static boolean strCopies(String str,String sub,int count){
+
+        if(count==0){
+            return true;
+        }else{
+            if(str.length()<sub.length()){
+                    return false;     /////not finished yet
+            }
+        }
+
+        return true; ///written to prevent error
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static int sumDigits(int num){
+        if(num / 10 == 0) {
+            return 0;
+        }else{
+            return num % 10 + sumDigits(num/10);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static int countPairs(String str){
+        if(str.length()!=0) {
+            if (str.substring(0).equalsIgnoreCase(str.substring(2))) {
+                return 1 + countPairs(str.substring(1));
+            } else {
+                return countPairs(str.substring(1));
+            }
+        }else{
+            return 0;
+        }
     }
 }
