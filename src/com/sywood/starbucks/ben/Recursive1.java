@@ -56,6 +56,7 @@ public class Recursive1 {
         }
     }
     public static void main(String[] args){
-        System.out.print(sumDigits(126));
+        System.out.println(sumDigits(126));
+        System.out.println(allStar("Hello"));
     }
 }
