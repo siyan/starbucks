@@ -1,5 +1,7 @@
 package com.sywood.starbucks.siyan;
 
+import java.math.BigInteger;
+
 /**
  * Created by siyan on 8/23/15.
  */
@@ -35,20 +37,33 @@ public class Recursion {
             return count == 0;
         }
         else if (subStr.equalsIgnoreCase(str.substring(0, subLen))) {
-            return strCopies2(str.substring(subLen), subStr, --count );
+            return strCopies2(str.substring(subLen), subStr, --count);
         } else {
             return strCopies2(str.substring(1), subStr, count);
+        }
+    }
+
+    String cleanStr(String str) {
+        if( str == null || str.length() < 2 ) {
+            return str;
+        } else if ( str.charAt( 0 ) == str.charAt( 1 )) {
+            return cleanStr( str.substring(1) );
+        }
+        else {
+            return str.substring(0, 1 ) + cleanStr( str.substring(1) );
         }
     }
 
     public static void main( String[] args) {
         Recursion rc = new Recursion();
 
-        System.out.println(  "count = " + rc.stringCount( "catcowcat", "cat") );
-        System.out.println(  "All Star: " + rc.allStar("Hello") );
+        System.out.println( "count = " + rc.stringCount("catcowcat", "cat") );
+        System.out.println( "All Star: " + rc.allStar("Hello") );
         System.out.println( rc.strCopies1("catcowcat", "cat", 2) );
         System.out.println( rc.strCopies1("catcowcat", "cow", 1) );
         System.out.println( rc.strCopies2("catcowcat", "cat", 2) );
         System.out.println( rc.strCopies2("catcowcat", "dog", 2) );
+        System.out.println( rc.cleanStr("ccaaaatcooowcatt" ) );
+
     }
 }
