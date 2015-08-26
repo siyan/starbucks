@@ -55,8 +55,20 @@ public class Recursive1 {
             return countPairs(str.substring(2));
         }
     }
+
+    public static String stringClean(String inp) {
+        if ( inp == null || inp.length() < 2) {
+            return inp;
+        }else if (inp.charAt(0) == inp.charAt(1)){
+            return stringClean(inp.substring(1));
+        }else{
+            return inp.substring(0, 1) + stringClean(inp.substring(1));
+        }
+    }
+
     public static void main(String[] args){
         System.out.println(sumDigits(126));
         System.out.println(allStar("Hello"));
+        System.out.println(stringClean("Hello"));
     }
 }
