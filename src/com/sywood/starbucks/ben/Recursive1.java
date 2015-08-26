@@ -35,9 +35,12 @@ public class Recursive1 {
             return ret.substring(0, 1) + "*" + allStar(ret.substring(1));
         }
     }
+
     public static boolean strCopies(String whole, String sub, int num){
+
         return stringCounter(whole, sub) == num;
     }
+
     public static int sumDigits(int num){
         if (num < 10){
             return num;
