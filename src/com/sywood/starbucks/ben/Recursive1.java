@@ -1,5 +1,7 @@
 package com.sywood.starbucks.ben;
 
+import java.lang.reflect.Array;
+
 /**
  * Created by Striker on 2015-08-22.
  */
@@ -69,9 +71,32 @@ public class Recursive1 {
         }
     }
 
+    public static String noX(String inp){
+        if (inp == null || inp == "x" || inp.equals("")){
+            return "";
+        } else if (inp.charAt(0) == 'x'){
+            return noX(inp.substring(1));
+        } else{
+            return inp.charAt(0) + noX(inp.substring(1));
+        }
+    }
+
+    public static boolean array6(int[] arr, int start){
+        if (arr.length == 0 || arr.length == start-1){
+            return false;
+        } else if (arr[start] == 6){
+            return true;
+        }else{
+            return array6(arr, start+1);
+        }
+    }
+
     public static void main(String[] args){
         System.out.println(sumDigits(126));
         System.out.println(allStar("Hello"));
         System.out.println(stringClean("Hello"));
+        System.out.println(noX("xaxa"));
+        int[] b = {1, 6, 4};
+        System.out.println(array6(b, 0));
     }
 }
