@@ -1,6 +1,6 @@
 package com.sywood.starbucks.siyan;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -8,36 +8,46 @@ import java.util.Map;
  */
 public class MorseCode {
 
-    private Map<String,String> _codeChar = new HashMap<String,String>();
-    private Map<String,String> _charCode = new HashMap<String,String>();
+    private Map<String,String> _codeChar = new LinkedHashMap<String,String>();
+    private Map<String,String> _charCode = new LinkedHashMap<String,String>();
 
     public MorseCode() {
-
         for( int i = 0; i < CODES.length; i++ ) {
             _codeChar.put(CODES[i][1], CODES[i][0]);
-            _charCode.put(CODES[i][1], CODES[i][0]);
+            _charCode.put(CODES[i][0], CODES[i][1]);
         }
     }
 
-    void traversal(int depth, String text, String strMessage) {
+    private void a( String message ) {
+        StringBuffer buf = new StringBuffer();
+        for( char c : message.toCharArray() ) {
+            buf.append( _charCode.get( String.valueOf(c) ));
+        }
 
-        for( int len = 1; len <= Math.min(4, strMessage.length()); len++ ) {
+        System.out.println(buf.toString());
 
-            String code = strMessage.substring(0, len);
+        // to finish, see b()
 
-            if(_codeChar.containsKey( code )) {
+    }
 
-                System.out.println(depth + ": " + code + " ==> " + text + _codeChar.get(code));
+    private void b(String chars, String codes, String morseCodes) {
+        for( String code : _codeChar.keySet() ) {
+            if( code.length() <= morseCodes.length() && code.equals(morseCodes.substring(0, code.length()))) {
 
-                traversal(depth + 1, text + _codeChar.get(code), strMessage.substring(len));
+                if( code.length() < morseCodes.length()) {
+                    b(chars + _codeChar.get(code), codes + " " + code, morseCodes.substring(code.length()));
+                }
+                else {
+                    System.out.println( codes + " " + code + " = " + chars + _codeChar.get(code));
+                }
             }
         }
     }
 
     public static void main(String[] args) {
-
         MorseCode mc = new MorseCode();
-        mc.traversal(0, "", "-..-");
+        mc.a("hello");
+        mc.b("", "", "-..--");
     }
 
     String[][] CODES = new String[][]{
