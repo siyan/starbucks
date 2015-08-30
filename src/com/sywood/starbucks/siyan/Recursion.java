@@ -47,23 +47,39 @@ public class Recursion {
         if( str == null || str.length() < 2 ) {
             return str;
         } else if ( str.charAt( 0 ) == str.charAt( 1 )) {
-            return cleanStr( str.substring(1) );
+            return cleanStr(str.substring(1));
         }
         else {
             return str.substring(0, 1 ) + cleanStr( str.substring(1) );
         }
     }
 
+    private String parenBit( String str ) {
+        if( str == null || str.length() < 1 ||
+                (str.charAt(0) == '(' & str.charAt( str.length() - 1) == ')')) {
+            return str;
+        } else if ( str.charAt(0) != '(') {
+            return parenBit( str.substring(1));
+        } else if ( str.charAt( str.length() -1) != ')') {
+            return parenBit( str.substring( 0, str.length() - 1));
+        } else {
+            return "ERROR: " + str;
+        }
+    }
+
     public static void main( String[] args) {
         Recursion rc = new Recursion();
 
+        /**
         System.out.println( "count = " + rc.stringCount("catcowcat", "cat") );
         System.out.println( "All Star: " + rc.allStar("Hello") );
         System.out.println( rc.strCopies1("catcowcat", "cat", 2) );
         System.out.println( rc.strCopies1("catcowcat", "cow", 1) );
         System.out.println( rc.strCopies2("catcowcat", "cat", 2) );
         System.out.println( rc.strCopies2("catcowcat", "dog", 2) );
-        System.out.println( rc.cleanStr("ccaaaatcooowcatt" ) );
+        System.out.println(rc.cleanStr("ccaaaatcooowcatt"));
+         **/
+        System.out.println(rc.parenBit("xyz(abc)123"));
 
     }
 }
