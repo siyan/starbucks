@@ -91,6 +91,48 @@ public class Recursive1 {
         }
     }
 
+    public static String changePi(String inp){
+        if (inp.length() < 2){
+            return inp;
+        } else if (inp.charAt(0) == 'p'){
+            if (inp.charAt(1) == 'i'){
+                return "3.14" + changePi(inp.substring(2));
+            }else{
+                return inp.charAt(0) + changePi(inp.substring(1));
+            }
+        }else{
+            return inp.charAt(0) + changePi(inp.substring(1));
+        }
+    }
+
+    public static boolean nestParen(String inp) {
+        if (inp.length() == 0) {
+            return true;
+        }else if (inp.length() < 2){
+            return false;
+        }else if(inp.charAt(0) == '(' && inp.charAt(inp.length()-1) == ')' && inp.length() == 2){
+            return true;
+        }else{
+            if (inp.charAt(0) == '(' && inp.charAt(inp.length() -1) == ')'){
+                return nestParen(inp.substring(1 , inp.length()-2));
+            }else{
+                return nestParen(inp.substring(1));
+            }
+        }
+    }
+
+    public static String parenBit(String inp){
+         if (inp == null || inp.length() < 2 || inp.charAt(0) == '(' && inp.charAt(inp.length() -1) == ')'){
+             return inp;
+         }else if(inp.charAt(0) == '('){
+             return inp.charAt(0) + parenBit(inp.substring(1));
+         }else if(inp.charAt(inp.length()-1) == ')'){
+             return parenBit(inp.substring(0, inp.length()-1));
+         }else{
+             return "ERROR" + inp;
+         }
+    }
+
     public static void main(String[] args){
         System.out.println(sumDigits(126));
         System.out.println(allStar("Hello"));
@@ -98,5 +140,8 @@ public class Recursive1 {
         System.out.println(noX("xaxa"));
         int[] b = {1, 6, 4};
         System.out.println(array6(b, 0));
+        System.out.println(changePi("xpix"));
+        System.out.println(nestParen("(((x))"));
+        System.out.println(parenBit("xyz(abc)123"));
     }
 }
