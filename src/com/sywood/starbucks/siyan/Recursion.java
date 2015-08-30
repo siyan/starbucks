@@ -55,8 +55,7 @@ public class Recursion {
     }
 
     private String parenBit( String str ) {
-        if( str == null || str.length() < 1 ||
-                (str.charAt(0) == '(' & str.charAt( str.length() - 1) == ')')) {
+        if( str.charAt(0) == '(' & str.charAt( str.length() - 1) == ')' ) {
             return str;
         } else if ( str.charAt(0) != '(') {
             return parenBit( str.substring(1));
