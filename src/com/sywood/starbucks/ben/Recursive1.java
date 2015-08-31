@@ -133,6 +133,15 @@ public class Recursive1 {
          }
     }
 
+    public static void towerOfHanoi(int disk, String source, String dest, String spare){
+        if (disk == 0){
+            System.out.println("Moved " + disk + " from " + source + " to " + dest);
+        }else{
+            towerOfHanoi(disk-1, source, spare, dest);
+            towerOfHanoi(disk-1, spare, dest, source);
+        }
+    }
+
     public static void main(String[] args){
         System.out.println(sumDigits(126));
         System.out.println(allStar("Hello"));
@@ -143,5 +152,6 @@ public class Recursive1 {
         System.out.println(changePi("xpix"));
         System.out.println(nestParen("(((x))"));
         System.out.println(parenBit("xyz(abc)123"));
+        towerOfHanoi(5, "A", "B", "C");
     }
 }
