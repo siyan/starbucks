@@ -82,4 +82,12 @@ public class AllStar {
             return 0;
         }
     }
+
+
+
+
+    public static String stringClear(String str){
+
+         return null;
+    }                    //
 }
