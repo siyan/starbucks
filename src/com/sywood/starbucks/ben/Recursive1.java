@@ -6,6 +6,7 @@ import java.lang.reflect.Array;
  * Created by Striker on 2015-08-22.
  */
 public class Recursive1 {
+
     public static int triangle(int num){
         if (num == 0){
             return 0;
@@ -138,20 +139,50 @@ public class Recursive1 {
             System.out.println("Moved " + disk + " from " + source + " to " + dest);
         }else{
             towerOfHanoi(disk-1, source, spare, dest);
+            System.out.println("Moved " + disk + " from " + source + " to " + dest);
             towerOfHanoi(disk-1, spare, dest, source);
         }
     }
 
+    public static void timeToWord(String time){
+        String[] TIMES = new String[]
+                {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven",
+                 "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen",
+                 "nineteen", "twenty", "twenty one", "twenty two", "twenty three", "twenty four", "twenty five",
+                 "twenty six", "twenty seven", "twenty eight", "twenty nine"};
+        int hour = 0;
+        String ret = "";
+        int mins = 0;
+        if (time.length() == 4){
+            hour += Integer.parseInt(time.substring(0, 1));
+            mins = Integer.parseInt(time.substring(2));
+        }else{
+            hour = Integer.parseInt(time.substring(0, 2));
+            mins = Integer.parseInt(time.substring(3));
+        }
+        if (mins == 0){
+            System.out.println(TIMES[hour-1] + " o'clock");
+        }else{
+            if (mins < 30){
+                if (mins == 15){
+                    System.out.println("Quarter past " + TIMES[hour-1]);
+                }else{
+                    System.out.println((TIMES[mins-1] + " past " + TIMES[hour-1]));
+                }
+            }else if (mins == 30){
+                System.out.println("half past " + TIMES[hour-1]);
+            }else{
+                mins = 60 - mins;
+                if (mins == 15){
+                    System.out.println("quarter to " + TIMES[hour-1]);
+                }else{
+                    System.out.println(TIMES[mins-1] + " to " + TIMES[hour-1]);
+                }
+            }
+        }
+    }
+
     public static void main(String[] args){
-        System.out.println(sumDigits(126));
-        System.out.println(allStar("Hello"));
-        System.out.println(stringClean("Hello"));
-        System.out.println(noX("xaxa"));
-        int[] b = {1, 6, 4};
-        System.out.println(array6(b, 0));
-        System.out.println(changePi("xpix"));
-        System.out.println(nestParen("(((x))"));
-        System.out.println(parenBit("xyz(abc)123"));
-        towerOfHanoi(5, "A", "B", "C");
+        timeToWord("1:49");
     }
 }
