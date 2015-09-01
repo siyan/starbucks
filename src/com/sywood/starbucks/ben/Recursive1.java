@@ -174,15 +174,15 @@ public class Recursive1 {
             }else{
                 mins = 60 - mins;
                 if (mins == 15){
-                    System.out.println("quarter to " + TIMES[hour-1]);
+                    System.out.println("quarter to " + TIMES[hour]);
                 }else{
-                    System.out.println(TIMES[mins-1] + " to " + TIMES[hour-1]);
+                    System.out.println(TIMES[mins-1] + " to " + TIMES[hour]);
                 }
             }
         }
     }
 
     public static void main(String[] args){
-        timeToWord("1:49");
+        timeToWord("6:45");
     }
 }
