@@ -182,7 +182,46 @@ public class Recursive1 {
         }
     }
 
+    public static int quarterMachine(int quarters, int first, int second, int third){
+        int rounds = 0;
+        while(quarters > 0){
+            if (quarters > 0) {
+                quarters -= 1;
+                if (first < 35) {
+                    first += 1;
+                } else if (first == 35) {
+                    first = 0;
+                    quarters += 30;
+                }
+                rounds += 1;
+            }
+
+            if (quarters > 0 ){
+                quarters -= 1;
+                if (second < 100){
+                    second += 1;
+                }else if (second == 100){
+                    second = 0;
+                    quarters += 60;
+                }
+                rounds += 1;
+            }
+
+            if (quarters > 0){
+                quarters -= 1;
+                if (third < 10){
+                    third += 1;
+                }else if (third == 10){
+                    third = 0;
+                    quarters += 9;
+                }
+                rounds += 1;
+            }
+        }
+        return rounds;
+    }
+
     public static void main(String[] args){
-        timeToWord("6:45");
+        System.out.println(quarterMachine(48, 3, 10, 4));
     }
 }
