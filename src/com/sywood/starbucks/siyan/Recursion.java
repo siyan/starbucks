@@ -69,7 +69,7 @@ public class Recursion {
     public static void main( String[] args) {
         Recursion rc = new Recursion();
 
-        /**
+
         System.out.println( "count = " + rc.stringCount("catcowcat", "cat") );
         System.out.println( "All Star: " + rc.allStar("Hello") );
         System.out.println( rc.strCopies1("catcowcat", "cat", 2) );
@@ -77,7 +77,6 @@ public class Recursion {
         System.out.println( rc.strCopies2("catcowcat", "cat", 2) );
         System.out.println( rc.strCopies2("catcowcat", "dog", 2) );
         System.out.println(rc.cleanStr("ccaaaatcooowcatt"));
-         **/
         System.out.println(rc.parenBit("xyz(abc)123"));
 
     }

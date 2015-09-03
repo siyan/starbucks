@@ -5,18 +5,14 @@ package com.sywood.starbucks.chongc;
  */
 public class AllStar {
 
-
-
     // base case not correct, hello got h*e*l*l*o*null
-    public static String AllStar(String str){
+    public static String allStar(String str){
         if(str.length()<=0){
             return null;
         }else{
-            return str.substring(0,1)+"*"+AllStar(str.substring(1));
+            return str.substring(0,1)+"*"+allStar(str.substring(1));
         }
     }
-
-
 
     // please reade my Recursion code, I have two different implementations.
     public static boolean strCopies(String str,String sub,int count){
@@ -31,25 +27,9 @@ public class AllStar {
 
         return true; ///written to prevent error
 
-
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     // again base case not correct, caused largest digit missing
-
-
     public static int sumDigits(int num){
         if(num / 10 == 0) {
             return 0;
@@ -57,18 +37,6 @@ public class AllStar {
             return num % 10 + sumDigits(num/10);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     public static int countPairs(String str){
         if(str.length()!=0) {
@@ -82,9 +50,6 @@ public class AllStar {
         }
     }
 
-
-
-
     public static String stringClear(String str){
         if(str.substring(0,1).equalsIgnoreCase(str.substring(1,2))){
 
@@ -92,8 +57,6 @@ public class AllStar {
 
          return null;
     }                    //
-
-
 
     public static String noX(String str ){
         if(str.substring(0,1).equalsIgnoreCase("x")) {
@@ -111,6 +74,7 @@ public class AllStar {
         }
     }
 
+    // again, base case wrong
     public static String changePi(String str){
         if(str.length()<=0){
             return null;
@@ -141,9 +105,8 @@ public class AllStar {
     }
 
     public static void main(String[] args) {
-        System.out.println(AllStar("hello"));
-        System.out.println(sumDigits( 253 ));
+        System.out.println(allStar("hello"));
+        System.out.println(sumDigits(253));
+        System.out.println(changePi( "pi" ));
     }
-
-
 }
