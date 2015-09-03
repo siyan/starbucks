@@ -45,28 +45,28 @@ public class Cards {
             }else if (cards[i].equals("king") && i <= 48
                     && !isHigh(cards[i+1]) && !isHigh(cards[i+2]) && !isHigh(cards[i+3])){
                 if ((i+1) % 4 == 1 || (i+1) %4 == 0){
-                    player2 += 3;
+                    player1 += 3;
                     System.out.println("Player 2 earned 3 points");
                 }else{
-                    player1 += 3;
+                    player2 += 3;
                     System.out.println("Player 1 earned 3 points");
                 }
             }else if (cards[i].equals("queen") && i <= 49
                     && !isHigh(cards[i+1]) && !isHigh(cards[i+2])){
                 if ((i+1) % 4 == 1 || (i+1) % 4 == 0){
-                    player2 += 2;
-                    System.out.println("Player 2 earned 2 points");
-                }else{
                     player1 += 2;
                     System.out.println("Player 1 earned 2 points");
+                }else{
+                    player2 += 2;
+                    System.out.println("Player 2 earned 2 points");
                 }
             }else if (cards[i].equals("jack") && i <= 50 && !isHigh(cards[i+1])){
                 if ((i+1) % 4 == 1 || (i+1) % 4 == 0){
-                    player2 += 1;
-                    System.out.println("Player 2 earned 1 points");
-                }else{
                     player1 += 1;
                     System.out.println("Player 1 earned 1 points");
+                }else{
+                    player2 += 1;
+                    System.out.println("Player 2 earned 1 points");
                 }
             }
         }
