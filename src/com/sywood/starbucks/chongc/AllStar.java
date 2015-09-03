@@ -1,13 +1,13 @@
 package com.sywood.starbucks.chongc;
 
 /**
- * Created by ×ÓñÆ on 2015/8/23.
+ * Created by ï¿½ï¿½ï¿½ï¿½ on 2015/8/23.
  */
 public class AllStar {
 
 
 
-
+    // base case not correct, hello got h*e*l*l*o*null
     public static String AllStar(String str){
         if(str.length()<=0){
             return null;
@@ -18,11 +18,7 @@ public class AllStar {
 
 
 
-
-
-
-
-
+    // please reade my Recursion code, I have two different implementations.
     public static boolean strCopies(String str,String sub,int count){
 
         if(count==0){
@@ -49,6 +45,9 @@ public class AllStar {
 
 
 
+
+
+    // again base case not correct, caused largest digit missing
 
 
     public static int sumDigits(int num){
@@ -139,6 +138,11 @@ public class AllStar {
     public static String parenBit(String str){
         //how will it be if str="(asd)asd(sdaw)"?
         return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(AllStar("hello"));
+        System.out.println(sumDigits( 253 ));
     }
 
 
