@@ -60,36 +60,44 @@ public class Cards {
                             player1 += 4;
                             count[0] = 0;
                             count[1] = 0;
+                            System.out.println("Player 1 earned " + 4 + " points");
                         }else if(count[1] == 3){
                             player1 += 3;
                             count[0] = 0;
                             count[1] = 0;
+                            System.out.println("Player 1 earned " + 3 + " points");
                         }else if(count[1] == 2){
                             player1 += 2;
                             count[0] = 0;
                             count[1] = 0;
+                            System.out.println("Player 1 earned " + 2 + " points");
                         }else if(count[1] == 1){
                             player1 += 1;
                             count[0] = 0;
                             count[1] = 0;
+                            System.out.println("Player 1 earned " + 1 + " points");
                         }
                     }else{
                         if(count[1] == 4){
                             player2 += 4;
                             count[0] = 0;
                             count[1] = 0;
+                            System.out.println("Player 2 earned " + 4 + " points");
                         }else if(count[1] == 3){
                             player2 += 3;
                             count[0] = 0;
                             count[1] = 0;
+                            System.out.println("Player 2 earned " + 3 + " points");
                         }else if(count[1] == 2){
                             player2 += 2;
                             count[0] = 0;
                             count[1] = 0;
+                            System.out.println("Player 2 earned " + 2 + " points");
                         }if(count[1] == 1){
                             player2 += 1;
                             count[0] = 0;
                             count[1] = 0;
+                            System.out.println("Player 2 earned " + 1 + " points");
                         }
                     }
                 }
