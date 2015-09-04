@@ -21,12 +21,12 @@ public class Cards {
     public static void main(String[] args) throws IOException {
         FileReader fr = new FileReader("data/card.in");
         BufferedReader textReader = new BufferedReader(fr);
-        int[] points = new int[2];
 
+        int[] points      = new int[2];
         int currentPlayer = 0;
         int winningPlayer = 0;
-        int winningScore = 0;
-        int countDown = -1;
+        int winningScore  = 0;
+        int countDown     = -1;
 
         for (String card = textReader.readLine(); card != null; card = textReader.readLine()) {
             int score = cardScore( card );
