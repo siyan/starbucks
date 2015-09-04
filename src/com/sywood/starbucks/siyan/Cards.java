@@ -42,8 +42,8 @@ public class Cards {
                 points[winningPlayer] = points[winningPlayer] + winningScore;
             }
 
-            //System.out.println(currentPlayer + ": " + card + " -(" + points[0] + ", " + points[1] + ")");
-            currentPlayer = (currentPlayer + 1 ) % 2;
+            System.out.println(currentPlayer + ": " + card + " -(" + points[0] + ", " + points[1] + ")");
+            currentPlayer = ++currentPlayer % 2;
         }
 
         System.out.println( "Player A: " + points[0] + " points.");
