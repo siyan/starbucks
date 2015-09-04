@@ -21,6 +21,7 @@ public class Quarterbet {
 
 
 
+
     }
 
     public static int Quarter(int oriCoin, int coin1, int coin2, int coin3){
