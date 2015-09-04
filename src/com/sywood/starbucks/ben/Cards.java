@@ -40,15 +40,10 @@ public class Cards {
         int currPlayer = 0;
         int turns = 0;
         int cType = 0;
-        String[] cards = new String[52];
 
-        for (int i = 0; i < 52 ; i++) {
-            cards[i] = textReader.readLine();
-            textReader.readLine();
-        }
-        textReader.close();
         for (int i = 0; i < 52; i++) {
-            String card = cards[i];
+            String card = textReader.readLine();
+            textReader.readLine();
             if (isHigh(card)) {
                 currPlayer = player(i % 2);
                 turns = cType = score(card);
@@ -67,6 +62,7 @@ public class Cards {
                 }
             }
         }
+        textReader.close();
         System.out.println("Player 1 earned " + player1 + " points");
         System.out.println("Player 2 earned " + player2 + " points");
     }
