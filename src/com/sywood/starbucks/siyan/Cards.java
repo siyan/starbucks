@@ -31,8 +31,7 @@ public class Cards {
         for (String card = textReader.readLine(); card != null; card = textReader.readLine()) {
             int score = cardScore( card );
             if( score > 0 ) {
-                countDown = score;
-                winningScore = score;
+                countDown     = winningScore = score;
                 winningPlayer = currentPlayer;
             }
             else {
