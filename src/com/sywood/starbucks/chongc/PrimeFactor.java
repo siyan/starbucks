@@ -20,7 +20,7 @@ public class PrimeFactor {
                 if(num!=i) {
                     return i + "*" + primeBreakdown(num / i);
                 }else{
-                    return i+"";
+                    return i+"";     //if I just wrote return i, there would be an errot says "required String but got an int" so I add a "" sothat it becomes a String in the end.
                 }
             }
         }
