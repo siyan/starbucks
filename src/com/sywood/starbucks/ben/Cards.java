@@ -1,21 +1,34 @@
 package com.sywood.starbucks.ben;
-import javafx.scene.shape.Path;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.nio.file.Paths;
-
 
 public class Cards {
 
     public static boolean isHigh(String name){
-        if (name == "king" || name == "queen" || name == "jack" || name == "ace"){
-            return true;
+        return (name.equals("king") || name.equals("queen") || name.equals("jack") || name.equals("ace"));
+    }
+    public static int player(int player){
+        if (player == 0){
+            return 1;
         }else{
-            return false;
+            return 2;
         }
+    }
+    public static int score(String card){
+        switch (card) {
+            case "ace":
+                return 4;
+            case "king":
+                return 3;
+            case "queen":
+                return 2;
+            case "jack":
+                return 1;
+        }
+        return 0;
     }
 
     public static void main(String[] args) throws IOException{
@@ -24,52 +37,32 @@ public class Cards {
         BufferedReader textReader = new BufferedReader(fr);
         int player1 = 0;
         int player2 = 0;
-        int count = 1;
-        int numLines = 52;
-        String[] cards = new String[numLines];
+        int currPlayer = 0;
+        int turns = 0;
+        int cType = 0;
 
-        for (int i = 0; i < numLines ; i++) {
-            cards[i] = textReader.readLine();
-        }
-        textReader.close();
-        for (int i = 0; i < numLines; i++) {
-            if (cards[i].equals("ace") && i <= 47 &&
-                    !isHigh(cards[i+1]) && !isHigh(cards[i+2]) && !isHigh(cards[i+3]) && !isHigh(cards[i+4])){
-                if (i+1 % 2 == 0){
-                    player2 += 4;
-                    System.out.println("Player 2 earned 4 points");
-                }else{
-                    player1 += 4;
-                    System.out.println("Player 1 earned 4 points");
-                }
-            }else if (cards[i].equals("king") && i <= 48
-                    && !isHigh(cards[i+1]) && !isHigh(cards[i+2]) && !isHigh(cards[i+3])){
-                if (i+1 % 2 == 0){
-                    player2 += 3;
-                    System.out.println("Player 2 earned 3 points");
-                }else{
-                    player1 += 3;
-                    System.out.println("Player 1 earned 3 points");
-                }
-            }else if (cards[i].equals("queen") && i <= 49
-                    && !isHigh(cards[i+1]) && !isHigh(cards[i+2])){
-                if (i+1 % 2 == 0){
-                    player2 += 2;
-                    System.out.println("Player 2 earned 2 points");
-                }else{
-                    player1 += 2;
-                    System.out.println("Player 1 earned 2 points");
-                }
-            }else if (cards[i].equals("jack") && i <= 50 && !isHigh(cards[i+1])){
-                if (i+1 % 2 == 0){
-                    player2 += 1;
-                    System.out.println("Player 2 earned 1 points");
-                }else{
-                    player1 += 1;
-                    System.out.println("Player 1 earned 1 points");
+        for (int i = 0; i < 52; i++) {
+            String card = textReader.readLine();
+            textReader.readLine();
+            if (isHigh(card)) {
+                currPlayer = player(i % 2);
+                turns = cType = score(card);
+            }else if(turns > 0 && !isHigh(card)){
+                turns -= 1;
+                if (turns == 0){
+                    if (currPlayer == 1){
+                        player1 += cType;
+                        System.out.println("Player 1 earned " + cType + " points");
+                        turns = cType = 0;
+                    }else{
+                        player2 += cType;
+                        System.out.println("Player 2 earned " + cType + " points");
+                        turns = cType = 0;
+                    }
                 }
             }
         }
+        textReader.close();
         System.out.println("Player 1 earned " + player1 + " points");
         System.out.println("Player 2 earned " + player2 + " points");
     }
