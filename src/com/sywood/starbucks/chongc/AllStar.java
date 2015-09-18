@@ -5,12 +5,12 @@ package com.sywood.starbucks.chongc;
  */
 public class AllStar {
 
-    // base case not correct, hello got h*e*l*l*o*null
+
     public static String allStar(String str){
-        if(str.length()<=0){
-            return null;
-        }else{
+        if(str.length()!=1){
             return str.substring(0,1)+"*"+allStar(str.substring(1));
+        }else{
+            return str.substring(0,1);
         }
     }
 
@@ -100,16 +100,35 @@ public class AllStar {
     }
 
     public static String parenBit(String str){
-        //how will it be if str="(asd)asd(sdaw)"?
+        if(str.substring(0,1)=="("){
+            if(str.substring(str.length()-1)==")"){
+                return str.substring(1,str.length()-1);
+            }else{
+                return parenBit(str.substring(0,str.length()-1));
+            }
+        }else{
+            return parenBit(str.substring(1));
+        }
 
-        // Siyan: Please don't worry about this case, we can do this later
-        // for now, you can assume all input will contain only one pair of parenthesis
-        return null;
+
     }
 
     public static void main(String[] args) {
         System.out.println(allStar("hello"));
         System.out.println(sumDigits(253));
         System.out.println(changePi( "pi" ));
+    }
+
+    public static int countHi2(String str){
+        if(str.length()==0){
+            return 0;
+        }else if(str.substring(0,2)=="hi"){
+            return 1+countHi2(str.substring(2));
+        }else if(str.substring(0,1)=="x"){
+            return countHi2(str.substring(2));
+        }else{
+            return countHi2(str.substring(1));
+        }
+
     }
 }
