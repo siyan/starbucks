@@ -29,9 +29,9 @@ public class AllStar {
 
     }
 
-    // again base case not correct, caused largest digit missing
+
     public static int sumDigits(int num){
-        if(num / 10 == 0) {
+        if(num==0) {
             return 0;
         }else{
             return num % 10 + sumDigits(num/10);
@@ -51,12 +51,17 @@ public class AllStar {
     }
 
     public static String stringClear(String str){
-        if(str.substring(0,1).equalsIgnoreCase(str.substring(1,2))){
-
+        if(str.length()==0) {
+            return null;
+        }else {
+            if (str.substring(0, 1).equalsIgnoreCase(str.substring(1, 2))) {
+                return null + stringClear(str.substring(1));
+            } else {
+                return str.substring(0, 1) + stringClear(str.substring(1));
+            }
         }
 
-         return null;
-    }                    //
+    }
 
     public static String noX(String str ){
         if(str.substring(0,1).equalsIgnoreCase("x")) {
@@ -76,11 +81,11 @@ public class AllStar {
 
     // again, base case wrong
     public static String changePi(String str){
-        if(str.length()<=0){
+        if(str.length()==0){
             return null;
         }else{
             if(str.substring(0,2).equalsIgnoreCase("pi")){
-                return "3.14" + changePi(str.substring(2,str.length()));
+                return "3.14" + changePi(str.substring(2));
             }else{
                 return str.substring(0,1) + changePi(str.substring(1));
             }
