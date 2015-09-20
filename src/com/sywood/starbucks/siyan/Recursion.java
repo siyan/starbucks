@@ -54,7 +54,7 @@ public class Recursion {
         }
     }
 
-    private String parenBit( String str ) {
+    public String parenBit( String str ) {
         if( str == null || str.length() < 1 ) {
             return str;
         } else if ( str.charAt(0) != '(') {
@@ -65,6 +65,7 @@ public class Recursion {
             return str;
         }
     }
+
 
     public static void main( String[] args) {
         Recursion rc = new Recursion();
@@ -78,6 +79,5 @@ public class Recursion {
         System.out.println( rc.strCopies2("catcowcat", "dog", 2) );
         System.out.println(rc.cleanStr("ccaaaatcooowcatt"));
         System.out.println(rc.parenBit("xyz(abc)123"));
-
     }
 }

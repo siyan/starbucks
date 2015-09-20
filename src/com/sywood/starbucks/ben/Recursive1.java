@@ -221,7 +221,27 @@ public class Recursive1 {
         return rounds;
     }
 
-    public static void main(String[] args){
-        System.out.println(quarterMachine(48, 3, 10, 4));
+    public static int countHi2(String hi){
+        if (hi.length() < 2){
+            return 0;
+        }else if (hi.charAt(0) == 'h'){
+            if (hi.charAt(1) == 'i'){
+                return 1 + countHi2(hi.substring(1));
+            }else{
+                return countHi2(hi.substring(1));
+            }
+        }else if (hi.charAt(0) == 'x'){
+            if (hi.length() >= 3){
+                return countHi2(hi.substring(2));
+            }else{
+                return 0;
+            }
+        }else{
+            return countHi2(hi.substring(1));
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(countHi2("xhixhi"));
     }
 }
