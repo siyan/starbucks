@@ -58,20 +58,40 @@ public class There {
         for(int i=1;i<=count;i++){
 
             int stepsCount=0;
-            boolean N=true;
-            boolean E=true;
+            boolean N;
+            boolean E;
             int X=textReader.read();
             int Y=textReader.read();
             int AX=textReader.read();
             int AY=textReader.read();
             int BX=textReader.read();
             int BY=textReader.read();
+            String direction =textReader.readLine();
+            if(direction.substring(0,1)!="N"){
+                N=false;
+            }else{
+                N=true;
+            }
+            if(direction.substring(1)!="E"){
+                E=false;
+            }else{
+                E=true;
+            }
 
+            int[] origin ={X,Y,AX,AY,BX,BY};
 
 
             do{
+                boolean possible=true;
+                if(origin[0]==X&&origin[1]==Y&&origin[2]==AX
+                        &&origin[3]==AY&&origin[4]==BX&&origin[5]==BY){
+                    System.out.println("B cannot be reached from A");
+                    possible=false;
+                    break;
+                }
                 if(checkbound(N,E,X,Y,AX,AY,BX,BY)==0){
                     System.out.println("B can be reached from A after "+stepsCount+" move(s).");
+                    stepsCount+=1;
                     break;
                 }else{
                     stepsCount+=1;
@@ -89,10 +109,8 @@ public class There {
 
                     AX+=horizonal;
                     BX+=vertical;
-
-
-
                 }
+
             }while(1==1);
 
 
