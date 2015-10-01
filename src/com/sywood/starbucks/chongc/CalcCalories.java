@@ -8,15 +8,15 @@ public class CalcCalories {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         System.out.println("Here are the three burger choices: 	     Here are the three drink choices:");
-        System.out.println("1 每 Cheeseburger (461 Calories) 		     1 每 Soft Drink ( 130 Calories)");
-        System.out.println("2 每 Fish Burger (431 Calories) 		      2 每 Orange Juice (160 Calories)" );
-        System.out.println("3 每 Veggie Burger (420 Calories)      	  3 每 Milk (118 Calories)");
-        System.out.println("4 每 no burger                             4 每 no drink ");
+        System.out.println("1 - Cheeseburger (461 Calories) 	         1 - Soft Drink ( 130 Calories)");
+        System.out.println("2 - Fish Burger (431 Calories) 	         2 - Orange Juice (160 Calories)" );
+        System.out.println("3 - Veggie Burger (420 Calories)      	  3 - Milk (118 Calories)");
+        System.out.println("4 - no burger                              4 - no drink ");
         System.out.println("Here are the three side order choices:     Here are the three dessert choices: ");
-        System.out.println("1 每 Fries (100 Calories)                  1 每 Apple Pie (167 Calories) ");
-        System.out.println("2 每 Baked Potato (57 Calories)            2 每 Sundae (266 Calories) " );
-        System.out.println("3 每 Chef Salad (70 Calories)              3 每 Fruit Cup (75 Calories) ");
-        System.out.println("4 每 no side order                         4 每 no dessert");
+        System.out.println("1 = Fries (100 Calories)                  1 - Apple Pie (167 Calories) ");
+        System.out.println("2 = Baked Potato (57 Calories)            2 - Sundae (266 Calories) " );
+        System.out.println("3 = Chef Salad (70 Calories)              3 - Fruit Cup (75 Calories) ");
+        System.out.println("4 = no side order                         4 - no dessert");
         int calories = 0;
         System.out.println("Welcome to Chip＊s Fast Food Emporium");
         System.out.println("Please enter a burger choice: ");
