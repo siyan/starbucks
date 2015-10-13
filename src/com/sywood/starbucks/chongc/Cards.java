@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Cards {
     public static void main(String[] args) throws IOException{
         File f = new File("C:/File/card.in");
-        FileReader fr = new FileReader(f);     //why is there an error?
+        FileReader fr = new FileReader(f);
         BufferedReader textReader = new BufferedReader(fr);
 
         int score1 = 0;
