@@ -23,15 +23,15 @@ public class censor {
     }
 
     public static void main(String[] args) throws IOException {
-        for (int i = 1; i < 16; i++) {
-            File read = new File("C://Users/Striker/Downloads/censor_silver/" + i + ".in");
+        //for (int i = 1; i < 16; i++) {
+            File read = new File("C://Users/Striker/Downloads/censor_silver/" + 1 + ".in");
             FileReader fileReader = new FileReader(read);
             BufferedReader buffReader = new BufferedReader(fileReader);
             String use = buffReader.readLine();
-            while (use.contains("moo"){
+            while (use.contains("moo")){
                 use = remove(use, "moo");
             }
             System.out.println(use);
-        }
+        //}
     }
 }
