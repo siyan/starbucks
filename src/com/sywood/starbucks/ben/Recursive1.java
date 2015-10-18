@@ -140,7 +140,9 @@ public class Recursive1 {
         }else{
             towerOfHanoi(disk-1, source, spare, dest);
             System.out.println("Moved " + disk + " from " + source + " to " + dest);
-            towerOfHanoi(disk-1, spare, dest, source);
+            towerOfHanoi(disk - 1, spare, dest, source);
+            System.out.println("Moved " + disk + " from " + source + " to " + dest);
+
         }
     }
 
