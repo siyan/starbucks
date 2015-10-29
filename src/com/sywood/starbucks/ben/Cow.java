@@ -39,8 +39,8 @@ public class Cow {
             File read = new File("C://Users/Striker/Downloads/cow_bronze/" + i + ".in");
             FileReader fileReader = new FileReader(read);
             BufferedReader buffReader = new BufferedReader(fileReader);
+            buffReader.readLine();
             String use = buffReader.readLine();
-            System.out.print(use);
             System.out.println(cow(use));
         }
     }
