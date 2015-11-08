@@ -24,22 +24,21 @@ public class Snail {
         double D = (double) inp.nextInt();
         double F = (double) inp.nextInt();
 
-        int day = 1;
+        int day = 0;
         double height = 0;
-        double fatigue = H*F/100;
-        while(H > height | U > 0){
+        double fatigue = U*(F/100);
+        while(H > height & height >= 0 ){
             height += U;
             U -= fatigue;
             height -= D;
             day += 1;
-            if (H <= 0){
+            if (U <= 0){
                 U = 0;
                 fatigue = 0;
-                day += 1;
             }
         }
         if (height <= 0){
-            System.out.print("Faliure on day " + day);
+            System.out.print("Failure on day " + day);
         }else{
             System.out.print("Success on day " + day);
         }
