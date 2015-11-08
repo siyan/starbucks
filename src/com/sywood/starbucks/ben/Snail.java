@@ -40,6 +40,7 @@ public class Snail {
         if (height <= 0){
             System.out.print("Failure on day " + day);
         }else{
+            day -= 1;
             System.out.print("Success on day " + day);
         }
     }
