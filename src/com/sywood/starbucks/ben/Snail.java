@@ -27,7 +27,7 @@ public class Snail {
         int day = 1;
         double height = 0;
         double fatigue = H*F/100;
-        while(H > height | height <= 0){
+        while(H > height | U > 0){
             height += U;
             U -= fatigue;
             height -= D;
