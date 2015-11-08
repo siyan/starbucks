@@ -11,6 +11,13 @@ public class bounce {
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
         int steps = Integer.parseInt(bufferedReader.readLine());
+        String iter = bufferedReader.readLine();
+        for (int i = 0; i < Integer.parseInt(iter); i++) {
+            if (i == 0){
+                String use = bufferedReader.readLine().replaceAll(" ", "");
+
+            }
+        }
 
     }
 }
