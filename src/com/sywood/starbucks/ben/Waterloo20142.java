@@ -13,9 +13,9 @@ public class Waterloo20142 {
         String votes = input.nextLine();
         for (int i = 0; i < nVote; i++) {
             if (votes.charAt(i) == 'A'){
-                a += 0;
+                a += 1;
             }else if (votes.charAt(i) == 'B'){
-                b += 0;
+                b += 1;
             }
         }
         if (a > b){
