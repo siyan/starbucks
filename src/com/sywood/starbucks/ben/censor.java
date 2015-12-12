@@ -5,9 +5,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 
-/**
- * Created by Striker on 2015-10-14.
- */
 public class censor {
     public static String remove(String tot, String rem){
         if (tot.length() < rem.length()){
