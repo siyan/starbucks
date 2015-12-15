@@ -9,7 +9,7 @@ public class Waterloo20121 {
         int limit = input.nextInt();
         System.out.print("Enter the recorded speed of the car: ");
         int speed = input.nextInt();
-        if (speed >= limit){
+        if (speed <= limit){
             System.out.print("Congratulations, you are within the speed limit!");
         }else{
             int diff = speed-limit;
