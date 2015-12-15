@@ -10,29 +10,42 @@ public class ChancesOfWinning {
 
     private final static int[][] ALL_GAMES = {{0,1},{0,2},{0,3},{1,2}, {1,3},{2,3}};
 
-    private List  _games = new ArrayList();
+    private List  _games = new ArrayList<int[]>();
     private int[] _score   = {0, 0, 0, 0};
 
     private int _team;
 
     public ChancesOfWinning() {
-        for( int[] m: ALL_GAMES) {
+        for (int[] m : ALL_GAMES) {
             _games.add(m);
-            System.out.println(m[0]);
-        }
-
-
-        Scanner s = new Scanner(System.in);
-        _team = s.nextInt();
-        int played = s.nextInt();
-        for(int i = 0; i < played; i++) {
-            String[] params = s.nextLine().split(" ");
         }
     }
 
-    private void play( String[] params ) {
-        int teamA = Integer.parseInt(params[0]);
-        int teamB = Integer.parseInt(params[1]);
+    public void readInput() {
+        Scanner s = new Scanner(System.in);
+        _team = Integer.parseInt(s.nextLine());
+        System.out.println( "team = " +_team );
+        int played = Integer.parseInt( s.nextLine() );
+        System.out.println( "games played = " + played );
+        for(int i = 0; i < played; i++) {
+            String[] params = s.nextLine().split(" ");
+            System.out.println( "params = " + params );
+            playGame(params);
+        }
+    }
+
+    public void predict() {
+        for( Iterator itrt = _games.iterator(); itrt.hasNext(); ) {
+            int[] game = (int[])itrt.next();
+            System.out.println(game[0] + ", " + game[1]);
+        }
+    }
+
+
+
+    private void playGame( String[] params ) {
+        int teamA = Integer.parseInt(params[0]) - 1;
+        int teamB = Integer.parseInt(params[1]) - 1;
         int scoreA = Integer.parseInt(params[2]);
         int scoreB = Integer.parseInt(params[3]);
 
@@ -51,7 +64,7 @@ public class ChancesOfWinning {
 
     public static void main(String[] args) {
         ChancesOfWinning cw = new ChancesOfWinning();
-
-
+        cw.readInput();
+        cw.predict();
     }
 }
