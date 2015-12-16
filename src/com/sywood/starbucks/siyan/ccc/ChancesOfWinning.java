@@ -41,7 +41,15 @@ public class ChancesOfWinning {
         }
     }
 
-
+    private void removeGame( int tA, int tB ) {
+        for( Iterator itrt = _games.iterator(); itrt.hasNext(); ) {
+            int[] game = (int[])itrt.next();
+            if( game[0] == tA && game[1] == tB ) {
+                itrt.remove();
+                break;
+            }
+        }
+    }
 
     private void playGame( String[] params ) {
         int teamA = Integer.parseInt(params[0]) - 1;
@@ -59,7 +67,8 @@ public class ChancesOfWinning {
             _score[teamA] += 1;
             _score[teamB] += 1;
         }
-        _games.remove(new int[]{teamA, teamB});
+        removeGame(teamA, teamB);
+
     }
 
     public static void main(String[] args) {
