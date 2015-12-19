@@ -20,10 +20,10 @@ public class Waterloo20124 {
         String reverse = input.nextLine();
         String real = "";
 
-        for (int i = 0; i <= reverse.length(); i++) {
-            int index = find(reverse.charAt(i))-i*K + 3;
+        for (int i = 0; i < reverse.length(); i++) {
+            int index = find(reverse.charAt(i))-((i+1)*K + 3);
             if (index < 0){
-                index += 25;
+                index += 26;
             }
             real += alphabet[index];
         }
