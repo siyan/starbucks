@@ -21,7 +21,7 @@ public class Waterloo20123 {
             String row2 = "";
             row2 += mult(" ", k);
             row2 += mult("X", k);
-            row2 += mult("*", k);
+            row2 += mult("X", k);
             return row2;
         }else if (row == 3){
             String row3 = "";
@@ -40,7 +40,7 @@ public class Waterloo20123 {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < k; j++) {
-                System.out.println(row(i, k));
+                System.out.println(row(i+1, k));
             }
         }
     }
