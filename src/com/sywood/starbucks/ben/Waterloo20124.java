@@ -21,9 +21,11 @@ public class Waterloo20124 {
         String real = "";
 
         for (int i = 0; i < reverse.length(); i++) {
-            int index = find(reverse.charAt(i))-((i+1)*K + 3);
-            if (index < 0){
-                index += 26;
+            int index = find(reverse.charAt(i))-((i+1)*3 + K);
+            while(index < 0) {
+                if (index < 0) {
+                    index += 26;
+                }
             }
             real += alphabet[index];
         }
