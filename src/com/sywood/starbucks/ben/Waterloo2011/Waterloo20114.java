@@ -22,8 +22,8 @@ public class Waterloo20114 {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         ArrayList<int[]> coords = new ArrayList();
-        int [] startPoint = new int[]{input.nextInt(), input.nextInt()};
-        coords.add(startPoint);
+        int[] start = new int[]{-1, -5};
+        coords.add(start);
         String direction = input.next();
         int value = input.nextInt();
         while (!direction.equals("q")){
