@@ -17,10 +17,10 @@ public class Waterloo20112 {
         int h = Integer.parseInt(input.nextLine());
         int M = Integer.parseInt(input.nextLine());
         for (int t = 1; t < M; t++){
-            System.out.println(t);
-            if (hitGround(h, t)) {
+            if (hitGround(h, t)){
                 hit = true;
                 hour = t;
+                t = M;
             }
         }
         if (hit){
