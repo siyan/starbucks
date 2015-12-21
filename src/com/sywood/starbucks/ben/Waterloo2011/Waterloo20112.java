@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Waterloo20112 {
     public static boolean hitGround(int h, int t){
         boolean ground = false;
-        if (-6*Math.pow(t, 4) + h*Math.pow(t, 3) + 2*Math.pow(t, 2) + t > 0){
+        if ((-6*Math.pow(t, 4) + h*Math.pow(t, 3) + 2*Math.pow(t, 2) + t) <= 0){
             ground = true;
         }
         return ground;
@@ -16,10 +16,11 @@ public class Waterloo20112 {
         int hour = 0;
         int h = Integer.parseInt(input.nextLine());
         int M = Integer.parseInt(input.nextLine());
-        for (int t = 1; t <= M; t++){
+        for (int t = 1; t < M; t++){
+            System.out.println(t);
             if (hitGround(h, t)) {
                 hit = true;
-                hour = t+1;
+                hour = t;
             }
         }
         if (hit){
