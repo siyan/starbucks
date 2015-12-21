@@ -19,7 +19,7 @@ public class Waterloo20112 {
         for (int t = 1; t <= M; t++){
             if (hitGround(h, t)) {
                 hit = true;
-                hour = t;
+                hour = t+1;
             }
         }
         if (hit){
