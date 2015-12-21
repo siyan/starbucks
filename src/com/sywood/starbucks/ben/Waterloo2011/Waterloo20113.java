@@ -6,12 +6,12 @@ public class Waterloo20113 {
         Scanner input = new Scanner(System.in);
         int a = Integer.parseInt(input.nextLine());
         int b = Integer.parseInt(input.nextLine());
-        int iters = 0;
+        int iters = 2;
         while (a > b){
-            if (b > a){
-                a -= b;
-                iters += 1;
-            }
+            int c = a-b;
+            a = b;
+            b = c;
+            iters += 1;
         }
         System.out.print(iters);
     }
