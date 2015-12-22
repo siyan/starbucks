@@ -21,35 +21,44 @@ public class Waterloo20103 {
                 }else{
                     System.out.println(B);
                 }
-            }else if (first == 3){
-                int Y = input.nextInt();
-                if (command.equals("A")){
-                    A += Y;
-                }else{
-                    B += Y;
+            }else if (first == 3) {
+                String Y = input.next();
+                if (command.equals("A")) {
+                    if (Y.equals("A")){
+                        A += A;
+                    }else{
+                        A += B;
+                    }
                 }
-            }else if (first == 4){
-                int Y = input.nextInt();
-                if (command.equals("A")){
-                    A *= Y;
-                }else{
-                    B *= Y;
+            }else if (first == 4) {
+                String Y = input.next();
+                if (command.equals("A")) {
+                    if (Y.equals("A")){
+                        A *= A;
+                    }else{
+                        A *= B;
+                    }
                 }
-            }else if (first == 5){
-                int Y = input.nextInt();
-                if (command.equals("A")){
-                    A -= Y;
-                }else{
-                    B -= Y;
+            }else if (first == 5) {
+                String Y = input.next();
+                if (command.equals("A")) {
+                    if (Y.equals("A")){
+                        A -= A;
+                    }else{
+                        A -= B;
+                    }
                 }
-            }else if (first == 6){
-                int y = input.nextInt();
-                if (command.equals("A")){
-                    A = A/y;
-                }else{
-                    B = B/y;
+            }else if (first == 6) {
+                String Y = input.next();
+                if (command.equals("A")) {
+                    if (Y.equals("A")){
+                        A /= A;
+                    }else{
+                        A /= B;
+                    }
                 }
             }
+            first = input.nextInt();
         }
 
     }
