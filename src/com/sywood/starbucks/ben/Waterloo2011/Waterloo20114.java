@@ -22,8 +22,12 @@ public class Waterloo20114 {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         ArrayList<int[]> coords = new ArrayList();
-        int[] start = new int[]{-1, -5};
-        coords.add(start);
+        for (int i = -1; i < -201; i++) {
+            for (int j = -1; j < -201; j++) {
+                int[] a = new int[]{i, j};
+                coords.add(a);
+            }
+        }
         String direction = input.next();
         int value = input.nextInt();
         while (!direction.equals("q")){
@@ -37,7 +41,5 @@ public class Waterloo20114 {
                 System.out.println(iter[0] + " " + iter[1] + " " + "safe");
             }
         }
-
-
     }
 }
