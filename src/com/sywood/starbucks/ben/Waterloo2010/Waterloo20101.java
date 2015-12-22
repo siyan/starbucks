@@ -5,7 +5,7 @@ public class Waterloo20101 {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         int num = input.nextInt();
-        int halfway = Math.max(num, 2);
+        int halfway = num/2+1;
         System.out.println(halfway);
     }
 }
