@@ -79,10 +79,10 @@ public class Waterloo20114 {
             int[] ret = new int[]{0, -1};
             return ret;
         }else if (dir.equals("l")){
-            int[] ret = new int[]{-1, 0};
+            int[] ret = new int[]{1, 0};
             return ret;
         }else{
-            int[] ret = new int[]{1, 0};
+            int[] ret = new int[]{-1, 0};
             return ret;
         }
     }
@@ -101,8 +101,8 @@ public class Waterloo20114 {
             int[] move = move(direction, value);
             int[] point = new int[]{-5, -1};
             while (value > 0) {
-                int row = point[1] + move[1]*value;
-                int col = point[0] + move[0]*value;
+                int row = point[1] + move[1];
+                int col = point[0] + move[0];
                 if (isIn(row, col)){
                     System.out.println(col + " " + row + " " + "safe");
                     value -= 1;
