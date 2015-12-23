@@ -3,9 +3,6 @@ package com.sywood.starbucks.siyan.ccc;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by siyan on 15-12-22.
- */
 public class OnJavaObject {
 
 
