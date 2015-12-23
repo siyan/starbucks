@@ -6,16 +6,16 @@ import java.util.ArrayList;
 public class Waterloo20114 {
     public static int[] move(String dir, int val){
         if (dir.equals("u")){
-            int[] ret = new int[]{0, val};
+            int[] ret = new int[]{0, 1};
             return ret;
         }else if (dir.equals("d")){
-            int[] ret = new int[]{0, -val};
+            int[] ret = new int[]{0, -1};
             return ret;
         }else if (dir.equals("l")){
-            int[] ret = new int[]{-val, 0};
+            int[] ret = new int[]{-1, 0};
             return ret;
         }else{
-            int[] ret = new int[]{val, 0};
+            int[] ret = new int[]{1, 0};
             return ret;
         }
     }
@@ -62,18 +62,21 @@ public class Waterloo20114 {
             int[] move = move(direction, value);
             int[] point = new int[]{-5, -1};
             while (value > 0) {
-                int row = point[1] + move[1];
-                int col = point[0] + move[0];
-                if (coords.contains(new int[]{row, col})){
+                int row = point[1] + move[1]*value;
+                int col = point[0] + move[0]*value;
+                value--;
+                if (coords.contains(new int[]{col, row})){
                     System.out.println(col + " " + row + " " + "safe");
                     direction = input.next();
                     value = input.nextInt();
                     coords.remove(coords.indexOf(new int[]{row, col}));
                 }else{
                     direction = "q";
+                    value = 0;
                     System.out.println(col + " " + row + " " + "DANGER");
                 }
             }
+            direction = input.next();
         }
     }
 }
