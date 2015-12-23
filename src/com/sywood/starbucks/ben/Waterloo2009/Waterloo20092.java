@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Waterloo20092 {
+
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         ArrayList<Integer> fishVal = new ArrayList<>();
@@ -15,15 +16,38 @@ public class Waterloo20092 {
         int tot = Integer.parseInt(input.nextLine());
         int combos = 0;
         for (int i = 0; i < 3; i++) {
-            ArrayList<Integer> fish = new ArrayList<>(3);
-            int curr = fish.get(i);
+            ArrayList<Integer> fish = new ArrayList<>();
+            fish.add(0);
+            fish.add(0);
+            fish.add(0);
+            int curr = fishVal.get(i);
             int sum = 0;
-            while (sum <= tot){
+            int currCombo = 0;
+            while (sum < tot){
                 if (sum + curr <= tot){
-                    fish.add(i, fish.get(i)+1);
+                    currCombo++;
+                    fish.set(i, currCombo);
                     sum += curr;
                     combos++;
                     System.out.println(fish.get(0) + " Brown Trout " + fish.get(1) + " Northern Pike " + fish.get(2) + " Yellow Pickerel");
+                    int otherCurrCombo = 0;
+                    int currSum = sum;
+                    for (int j = 1; j < 3; j++) {
+                        int otherCurr = fishVal.get(j);
+                        while (currSum < tot) {
+                            if (currSum + otherCurr <= tot) {
+                                otherCurrCombo++;
+                                fish.set(j, otherCurrCombo);
+                                currSum += otherCurr;
+                                combos++;
+                                System.out.println(fish.get(0) + " Brown Trout " + fish.get(1) + " Northern Pike " + fish.get(2) + " Yellow Pickerel");
+                            }else{
+                                currSum = tot+1;
+                            }
+                        }
+                    }
+                }else{
+                    sum = tot+1;
                 }
             }
         }
