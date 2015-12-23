@@ -65,7 +65,7 @@ public class Waterloo20114 {
                 int row = point[1] + move[1]*value;
                 int col = point[0] + move[0]*value;
                 value--;
-                if (coords.contains(new int[]{col, row})){
+                if (coords.contains(new int[]{row, col})){
                     System.out.println(col + " " + row + " " + "safe");
                     direction = input.next();
                     value = input.nextInt();
