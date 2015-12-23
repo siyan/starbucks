@@ -26,7 +26,7 @@ public class Waterloo20093 {
             time -=2400;
         }
         System.out.println(time + " in Toronto");
-        time += 30;
+        time += 130;
         if (time >= 2400){
             time -=2400;
         }
