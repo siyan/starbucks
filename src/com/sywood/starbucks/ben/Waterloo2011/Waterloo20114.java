@@ -73,16 +73,16 @@ public class Waterloo20114 {
 
     public static int[] move(String dir, int val){
         if (dir.equals("u")){
-            int[] ret = new int[]{0, 1};
-            return ret;
-        }else if (dir.equals("d")){
-            int[] ret = new int[]{0, -1};
-            return ret;
-        }else if (dir.equals("l")){
             int[] ret = new int[]{1, 0};
             return ret;
-        }else{
+        }else if (dir.equals("d")){
             int[] ret = new int[]{-1, 0};
+            return ret;
+        }else if (dir.equals("l")){
+            int[] ret = new int[]{0, -1};
+            return ret;
+        }else{
+            int[] ret = new int[]{0, 1};
             return ret;
         }
     }
@@ -97,15 +97,15 @@ public class Waterloo20114 {
 
         String direction = input.next();
         int value = input.nextInt();
+        int[] point = new int[]{-5, -1};
         while (!direction.equals("q")){
             int[] move = move(direction, value);
-            int[] point = new int[]{-5, -1};
             boolean safe = true;
-            int row = 0;
-            int col = 0;
+            int row = point[1];
+            int col = point[0];
             while (value > 0) {
-                row = point[1] + move[1];
-                col = point[0] + move[0];
+                row += move[1];
+                col += move[0];
                 if (isIn(row, col)){
                     value -= 1;
                     coords.remove(findIndex(row, col));
@@ -116,9 +116,10 @@ public class Waterloo20114 {
                 }
             }
             if (safe){
-                System.out.println(col + " " + row + " " + "safe");
+                System.out.println(row + " " + col + " " + "safe");
+                point = new int[]{col, row};
             }else{
-                System.out.println(col + " " + row + " " + "DANGER");
+                System.out.println(row + " " + col + " " + "DANGER");
             }
             direction = input.next();
             value = input.nextInt();
