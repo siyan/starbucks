@@ -7,8 +7,22 @@ public class Waterloo20094 {
         String ret = "";
         int spaces = words.size()-1;
         int remain = w-lineSum;
-
-
+        int periods = Math.floorDiv(remain, spaces);
+        int tot = 0;
+        for (String word: words){
+            ret += word;
+            tot += word.length();
+            for (int i = 0; i < periods; i++) {
+                if (word != words.get(words.size()-1)){
+                    ret += ".";
+                    tot++;
+                    if (periods*spaces != remain & tot + 1 != w ){
+                        ret += ".";
+                        tot ++;
+                    }
+                }
+            }
+        }
         return ret;
     }
 
@@ -24,14 +38,21 @@ public class Waterloo20094 {
         word.add("LUCK");
         word.add("TODAY");
         int lineSum = 0;
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 6; i++) {
             if (lineSum + word.get(i).length() < w){
                 lineSum += word.get(i).length();
                 lineWords.add(word.get(i));
+                if (i == 5){
+                    System.out.print(addDot(lineWords,  w, lineSum));
+                }
             }else{
+                System.out.println(addDot(lineWords, w, lineSum));
                 lineSum = 0;
                 lineWords = new ArrayList<>();
+                lineWords.add(word.get(i));
+                lineSum += word.get(i).length();
             }
+
         }
     }
 }
