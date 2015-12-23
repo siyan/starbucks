@@ -100,18 +100,25 @@ public class Waterloo20114 {
         while (!direction.equals("q")){
             int[] move = move(direction, value);
             int[] point = new int[]{-5, -1};
+            boolean safe = true;
+            int row = 0;
+            int col = 0;
             while (value > 0) {
-                int row = point[1] + move[1];
-                int col = point[0] + move[0];
+                row = point[1] + move[1];
+                col = point[0] + move[0];
                 if (isIn(row, col)){
-                    System.out.println(col + " " + row + " " + "safe");
                     value -= 1;
                     coords.remove(findIndex(row, col));
                 }else{
                     direction = "q";
                     value = 0;
-                    System.out.println(col + " " + row + " " + "DANGER");
+                    safe = false;
                 }
+            }
+            if (safe){
+                System.out.println(col + " " + row + " " + "safe");
+            }else{
+                System.out.println(col + " " + row + " " + "DANGER");
             }
             direction = input.next();
             value = input.nextInt();
