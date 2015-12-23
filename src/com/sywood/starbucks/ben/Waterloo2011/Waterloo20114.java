@@ -6,16 +6,16 @@ import java.util.ArrayList;
 public class Waterloo20114 {
     public static int[] move(String dir, int val){
         if (dir.equals("u")){
-            int[] ret = new int[]{val, 0};
+            int[] ret = new int[]{0, val};
             return ret;
         }else if (dir.equals("d")){
-            int[] ret = new int[]{-val, 0};
-            return ret;
-        }else if (dir.equals("l")){
             int[] ret = new int[]{0, -val};
             return ret;
+        }else if (dir.equals("l")){
+            int[] ret = new int[]{-val, 0};
+            return ret;
         }else{
-            int[] ret = new int[]{0, val};
+            int[] ret = new int[]{val, 0};
             return ret;
         }
     }
