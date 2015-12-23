@@ -23,7 +23,7 @@ public class Waterloo20114 {
         Scanner input = new Scanner(System.in);
         ArrayList<int[]> coords = new ArrayList();
         for (int i = -1; i > -201; i++) {
-            for (int j = -200; j < 201; j++) {
+            for (int j = -200; j < 201; j++){
                 coords.add(new int[]{i, j});
             }
         }
@@ -57,7 +57,12 @@ public class Waterloo20114 {
         coords.remove(coords.indexOf(new int[]{-5, -1}));
 
         String direction = input.next();
+        System.out.print(direction);
         int value = input.nextInt();
+        while (!direction.equals("q")){
+            System.out.print(input.next());
+        }
+        /*
         while (!direction.equals("q")){
             int[] move = move(direction, value);
             int[] point = coords.get(coords.size()-1);
@@ -75,5 +80,6 @@ public class Waterloo20114 {
                 }
             }
         }
+        */
     }
 }
