@@ -7,16 +7,20 @@ public class Waterloo20094 {
         String ret = "";
         int spaces = words.size()-1;
         int remain = w-lineSum;
+        if (spaces == 0){
+            spaces = 1;
+        }
         int periods = Math.floorDiv(remain, spaces);
         int tot = 0;
         for (String word: words){
             ret += word;
             tot += word.length();
             for (int i = 0; i < periods; i++) {
-                if (word != words.get(words.size()-1)){
+                if (!word.equals(words.get(words.size()-1))){
+                    System.out.println(i);
                     ret += ".";
                     tot++;
-                    if (periods*spaces != remain & tot + 1 != w ){
+                    if (periods*spaces != remain ){
                         ret += ".";
                         tot ++;
                     }
@@ -51,6 +55,9 @@ public class Waterloo20094 {
                 lineWords = new ArrayList<>();
                 lineWords.add(word.get(i));
                 lineSum += word.get(i).length();
+                if (i == 5){
+                    System.out.print(addDot(lineWords, w, lineSum));
+                }
             }
 
         }
