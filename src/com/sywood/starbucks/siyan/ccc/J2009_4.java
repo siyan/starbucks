@@ -9,22 +9,25 @@ import java.util.Scanner;
  */
 public class J2009_4 {
 
-    private static void print( int extraDots, List<String> line ) {
+    // extra dots means in addition to one dot should be there between words
+    private static void print( int extraDots, List<String> words ) {
 
-        if(line.size() == 1 ) {
-            System.out.print(line.get(0));
+        if(words.size() == 1 ) {
+            // what does this block do?
+            System.out.print(words.get(0));
             for( int i = 0; i < extraDots; i++ ) {
                 System.out.print(".");
             }
         }
         else {
-            int totDots = extraDots + (line.size() - 1);
-            int basicDots = totDots / (line.size() - 1);
-            int numSpaceHasMoreDot = totDots - basicDots * (line.size() - 1);
-            for (int i = 0; i < line.size(); i++) {
-                String word = line.get(i);
+            // why words.size() - 1?
+            int totDots = extraDots + (words.size() - 1);
+            int basicDots = totDots / (words.size() - 1);
+            int numSpaceHasMoreDot = totDots - basicDots * (words.size() - 1);
+            for (int i = 0; i < words.size(); i++) {
+                String word = words.get(i);
                 System.out.print(word);
-                if (i < line.size() - 1) {
+                if (i < words.size() - 1) {
                     for (int j = 0; j < basicDots; j++) {
                         System.out.print(".");
                     }
@@ -37,12 +40,12 @@ public class J2009_4 {
         }
 
         System.out.print( "\n");
-        line.clear();
+        words.clear();
     }
 
     public static void main( String[] args ) {
-        String[] words = "WELCOME TO CCC GOOD LUCK TODAY".split( " " );
-        List<String> line = new LinkedList<String>();
+        String[] allWords = "WELCOME TO CCC GOOD LUCK TODAY".split( " " );
+        List<String> wordsInALine = new LinkedList<String>();
 
 
         Scanner input = new Scanner(System.in);
@@ -50,16 +53,18 @@ public class J2009_4 {
 
         int currPos = 0;
 
-        for( String word : words ) {
+        for( String word : allWords ) {
             if(( currPos + word.length()) > w ) {
-                print(w - currPos + 1, line);
+                // why currPos + 1?
+                print(w - currPos + 1, wordsInALine);
                 currPos = 0;
             }
-            line.add( word );
+            wordsInALine.add(word);
             currPos += (word.length() + 1);
         }
 
-        if( currPos > 0) print( w - currPos + 1, line);
+        // what is this for?
+        if( currPos > 0) print( w - currPos + 1, wordsInALine);
 
 
     }
