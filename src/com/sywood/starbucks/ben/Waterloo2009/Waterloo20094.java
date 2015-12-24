@@ -16,7 +16,7 @@ public class Waterloo20094 {
             ret += word;
             tot += word.length();
             for (int i = 0; i < periods; i++) {
-                if (!word.equals(words.get(words.size()-1))){
+                if (!word.equals(words.get(words.size()-1)) & words.size() != 1){
                     System.out.println(i);
                     ret += ".";
                     tot++;
