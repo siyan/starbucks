@@ -52,14 +52,14 @@ public class J2009_4 {
 
         for( String word : words ) {
             if(( currPos + word.length()) > w ) {
-                print(w - currPos, line);
+                print(w - currPos + 1, line);
                 currPos = 0;
             }
             line.add( word );
             currPos += (word.length() + 1);
         }
 
-        if( currPos > 0) print( w - currPos, line);
+        if( currPos > 0) print( w - currPos + 1, line);
 
 
     }
