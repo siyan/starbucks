@@ -35,8 +35,8 @@ public class Waterloo20083 {
             if(i == 0) {
                 int[] curr = find(map, toWrite.charAt(i));
                 int[] next = find(map, toWrite.charAt(i + 1));
-                dist += Math.abs(start[0]-curr[0]) + Math.abs(start[1]-curr[1])+Math.abs(next[0] - curr[0]) + Math.abs(next[1] - curr[1]);
-
+                dist += Math.abs(start[0] - curr[0]) + Math.abs(start[1] - curr[1]) +
+                        Math.abs(next[0] - curr[0]) + Math.abs(next[1] - curr[1]);
             } else if (i != toWrite.length()-1){
                 int[] curr = find(map, toWrite.charAt(i));
                 int[] next = find(map, toWrite.charAt(i+1));
