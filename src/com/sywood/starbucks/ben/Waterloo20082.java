@@ -11,7 +11,9 @@ public class Waterloo20082 {
         playlist.add("C");
         playlist.add("D");
         playlist.add("E");
+        System.out.print("Button number: ");
         int inp = Integer.parseInt(input.nextLine());
+        System.out.print("Number of presses: ");
         int numPresses = Integer.parseInt(input.nextLine());
         while (inp !=  4){
             if (inp == 1) {
@@ -36,6 +38,10 @@ public class Waterloo20082 {
                     playlist.add(1, first);
                 }
             }
+            System.out.print("Button number: ");
+            inp = Integer.parseInt(input.nextLine());
+            System.out.print("Number of presses: ");
+            numPresses = Integer.parseInt(input.nextLine());
         }
         String ret = "";
         for (String song : playlist){
