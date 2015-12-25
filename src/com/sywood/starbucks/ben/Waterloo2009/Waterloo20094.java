@@ -10,7 +10,7 @@ public class Waterloo20094 {
         if (spaces == 0){
             spaces = 1;
         }
-        int periods = Math.floorDiv(remain, spaces);
+        int periods = 0; //Math.floorDiv(remain, spaces);
         int tot = 0;
         for (String word: words){
             ret += word;
