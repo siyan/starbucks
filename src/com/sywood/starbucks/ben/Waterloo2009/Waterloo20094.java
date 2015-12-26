@@ -5,26 +5,26 @@ import java.util.ArrayList;
 public class Waterloo20094 {
     public static String addDot(ArrayList<String> words, int w, int lineSum){
         String ret = "";
-        int spaces = words.size()-1;
-        int remain = w-lineSum;
-        if (spaces == 0){
-            spaces = 1;
-        }
-        int periods = 0; //Math.floorDiv(remain, spaces);
-        int tot = 0;
-        for (String word: words){
-            ret += word;
-            tot += word.length();
-            for (int i = 0; i < periods; i++) {
-                if (!word.equals(words.get(words.size()-1)) & words.size() != 1){
+        if (words.size() == 1){
+            ret += words.get(0);
+            for (int i = 0; i < w-lineSum; i++) {
+                ret += ".";
+            }
+        }else{
+            int remaining = w-lineSum;
+            int numDots = remaining/(words.size()-1);
+            int leftover = remaining-numDots*(words.size()-1);
+            for (int i = 0; i < words.size()-1; i++) {
+                String word = words.get(i);
+                ret += word;
+                for (int j = 0; j < numDots; j++) {
                     ret += ".";
-                    tot++;
-                    if (periods*spaces != remain ){
-                        ret += ".";
-                        tot ++;
-                    }
+                }
+                if (leftover > 0){
+                    ret += ".";
                 }
             }
+            ret += words.get(words.size()-1);
         }
         return ret;
     }
@@ -51,7 +51,7 @@ public class Waterloo20094 {
             }else{
                 System.out.println(addDot(lineWords, w, lineSum));
                 lineSum = 0;
-                lineWords = new ArrayList<>();
+                lineWords.clear();
                 lineWords.add(word.get(i));
                 lineSum += word.get(i).length();
                 if (i == 5){
