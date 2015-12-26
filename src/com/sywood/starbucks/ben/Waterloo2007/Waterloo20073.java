@@ -3,6 +3,41 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Waterloo20073 {
+    public static int findIndex(int caseNum, ArrayList<Integer> current){
+        int index = 0;
+        int toFind = 0;
+        switch (caseNum){
+            case 1: toFind = 100;
+                break;
+            case 2: toFind = 500;
+                break;
+            case 3: toFind = 1000;
+                break;
+            case 4: toFind = 5000;
+                break;
+            case 5: toFind = 10000;
+                break;
+            case 6: toFind = 25000;
+                break;
+            case 7: toFind = 50000;
+                break;
+            case 8: toFind = 100000;
+                break;
+            case 9: toFind = 500000;
+                break;
+            case 10: toFind = 1000000;
+                break;
+        }
+
+        for (int brief: current){
+            if (brief == toFind){
+                toFind = index;
+            }
+            index ++;
+        }
+        return toFind;
+    }
+
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         ArrayList<Integer> cases = new ArrayList<>();
@@ -13,9 +48,12 @@ public class Waterloo20073 {
         cases.add(10000);
         cases.add(25000);
         cases.add(50000);
+        cases.add(100000);
+        cases.add(500000);
         cases.add(1000000);
-        for (int i = 0; i < Integer.parseInt(input.nextLine()); i++) {
-            int index = Integer.parseInt(input.nextLine()) - 1;
+        int iters = Integer.parseInt(input.nextLine());
+        for (int i = 0; i < iters; i++) {
+            int index = findIndex(Integer.parseInt(input.nextLine()), cases);
             cases.remove(index);
         }
         int average = 0;
