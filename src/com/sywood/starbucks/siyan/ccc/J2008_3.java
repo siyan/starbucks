@@ -3,9 +3,7 @@ package com.sywood.starbucks.siyan.ccc;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Created by siyan on 15-12-26.
- */
+
 public class J2008_3 {
     public static int[] find(ArrayList<char[]> map, char letter){
         int[] ret = new int[]{-1, -1};
