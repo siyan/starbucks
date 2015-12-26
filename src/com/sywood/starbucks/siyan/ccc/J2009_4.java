@@ -4,9 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Created by siyan on 15-12-23.
- */
 public class J2009_4 {
 
     // extra dots means in addition to one dot should be there between words
