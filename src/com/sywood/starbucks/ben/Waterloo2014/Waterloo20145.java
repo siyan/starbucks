@@ -1,4 +1,4 @@
-package com.sywood.starbucks.ben;
+package com.sywood.starbucks.ben.Waterloo2014;
 import java.util.ArrayList;
 import java.util.Scanner;
 
