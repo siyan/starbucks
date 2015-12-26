@@ -2,9 +2,6 @@ package com.sywood.starbucks.siyan.ccc;
 
 import java.util.Stack;
 
-/**
- * Created by siyan on 15-12-25.
- */
 public class J2008_4 {
 
     public static void main(String[] args) {

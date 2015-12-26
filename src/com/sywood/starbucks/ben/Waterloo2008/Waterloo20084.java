@@ -1,4 +1,4 @@
-package com.sywood.starbucks.ben;
+package com.sywood.starbucks.ben.Waterloo2008;
 import java.util.Scanner;
 
 public class Waterloo20084 {
