@@ -22,6 +22,7 @@ public class Waterloo20094 {
                 }
                 if (leftover > 0){
                     ret += ".";
+                    leftover--;
                 }
             }
             ret += words.get(words.size()-1);
