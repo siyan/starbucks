@@ -28,7 +28,7 @@ public class Waterloo20072 {
         }else if (enter.equals("TTYL")){
             return "talk to you later";
         }else {
-            return "";
+            return enter;
         }
     }
 
@@ -41,5 +41,6 @@ public class Waterloo20072 {
             System.out.print("Enter phrase>");
             inp = conversion(input.nextLine());
         }
+        System.out.println("talk to you later");
     }
 }
