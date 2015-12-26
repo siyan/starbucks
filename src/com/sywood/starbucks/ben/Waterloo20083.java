@@ -24,7 +24,7 @@ public class Waterloo20083 {
         Scanner input = new Scanner(System.in);
         ArrayList<char[]> map = new ArrayList<>();
         map.add(new char[]{'A', 'B', 'C', 'D', 'E', 'F'});
-        map.add(new char[]{'G', 'H', 'H', 'I', 'J', 'K'});
+        map.add(new char[]{'G', 'H', 'L', 'I', 'J', 'K'});
         map.add(new char[]{'M', 'N', 'O', 'P', 'Q', 'R'});
         map.add(new char[]{'S', 'T', 'U', 'V', 'W', 'X'});
         map.add(new char[]{'Y', 'Z', ' ', '-', '.', 'n'});
