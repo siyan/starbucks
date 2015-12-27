@@ -1,11 +1,11 @@
-package com.sywood.starbucks.ben;
+package com.sywood.starbucks.ben.Waterloo2006;
 import java.util.HashMap;
 import java.util.Scanner;
 
 /**
  * Created by Striker on 2015-10-13.
  */
-public class FastFoodEmporium {
+public class Waterloo20061 {
     public static HashMap setMap(int cal1, int cal2, int cal3){
         HashMap ret = new HashMap();
         ret.put(1, cal1);
