@@ -20,12 +20,12 @@ public class Waterloo20053 {
             directions.add(move(word));
             word = input.nextLine();
         }
-        directions.add(move("HOME"));
-        for (int i = 0; i < directions.size(); i+=2) {
-            if (directions.get(i+1).equals("HOME")){
-                System.out.println("Turn " + directions.get(i) + " into your " + directions.get(i+1) + ".");
+        directions.addFirst(move("HOME"));
+        for (int i = directions.size()-1; i > 0; i-=2) {
+            if (directions.get(i-1).equals("HOME")){
+                System.out.println("Turn " + directions.get(i) + " into your " + directions.get(i-1) + ".");
             }else{
-                System.out.println("Turn " + directions.get(i) + " onto " + directions.get(i+1) + " street.");
+                System.out.println("Turn " + directions.get(i) + " onto " + directions.get(i-1) + " street.");
             }
         }
     }
