@@ -1,4 +1,4 @@
-package com.sywood.starbucks.ben.Waterloo2005;
+package com.sywood.starbucks.ben.Waterloo2007;
 import java.util.Collections;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -29,6 +29,8 @@ public class Waterloo20074 {
                     anagram = false;
                 }
             }
+        }else{
+            anagram = false;
         }
         if (anagram){
             System.out.println("Is an anagram.");
