@@ -8,11 +8,11 @@ public class Waterloo20052 {
         int combos = 0;
         System.out.println("Enter the lower limit of range");
         int lower = Integer.parseInt(input.nextLine());
-        System.out.println("enter the upper limit of range");
+        System.out.println("Enter the upper limit of range");
         int upper = Integer.parseInt(input.nextLine());
         for (int i = lower; i <= upper; i++) {
             ArrayList<Integer> factors = new ArrayList<>();
-            for (int j = 1; j < i; j++) {
+            for (int j = 1; j <= i; j++) {
                 if (i%j == 0){
                     factors.add(j);
                 }
@@ -21,6 +21,6 @@ public class Waterloo20052 {
                 combos++;
             }
         }
-        System.out.println("The number of RSA numbers between " + lower + " and " + upper + "is " + combos);
+        System.out.println("The number of RSA numbers between " + lower + " and " + upper + " is " + combos);
     }
 }
