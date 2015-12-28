@@ -36,6 +36,7 @@ public class Waterloo20063 {
                 previous = curr[0];
             }
             System.out.println(seconds);
+            word = input.nextLine();
         }
     }
 }
