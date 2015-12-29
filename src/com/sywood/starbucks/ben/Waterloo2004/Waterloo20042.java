@@ -9,7 +9,8 @@ public class Waterloo20042 {
         System.out.println("Enter a future year:");
         int next = Integer.parseInt(input.nextLine());
         for (int i = curr; i <= next; i++) {
-            if (i % 5 == 0 & i % 2 == 0 & i % 3 == 0 & i % 4 == 0){
+            int use = i - curr;
+            if (use % 5 == 0 & use % 2 == 0 & use % 3 == 0 & use % 4 == 0){
                 System.out.println("All positions change in year " + i);
             }
         }
