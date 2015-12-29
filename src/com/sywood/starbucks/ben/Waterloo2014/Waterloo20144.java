@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 public class Waterloo20144 {
     private static ArrayList<Integer> remove(ArrayList<Integer> people, int r){
-        for (int i = 0; i < people.size(); i++) {
+        int removed = 0;
+        int init = people.size();
+        for (int i = 0; i < init; i++) {
             if ((i+1)%r == 0){
-                people.remove(i);
+                people.remove(i-removed);
+                removed++;
             }
         }
         return people;
