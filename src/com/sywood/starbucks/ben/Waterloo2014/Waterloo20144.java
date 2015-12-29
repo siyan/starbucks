@@ -19,7 +19,7 @@ public class Waterloo20144 {
         int m = Integer.parseInt(input.nextLine());
         ArrayList<Integer> people = new ArrayList<>();
         for (int i = 1; i <= peoples; i++) {
-            people.add(peoples);
+            people.add(i);
         }
         for (int i = 0; i < m; i++) {
             int r = Integer.parseInt(input.nextLine());
