@@ -7,11 +7,11 @@ public class Waterloo20145 {
         Scanner input = new Scanner(System.in);
 
         int num = input.nextInt();
-        ArrayList a = new ArrayList();
+        ArrayList<String> a = new ArrayList<>();
         for (int i = 0; i < num; i++) {
             a.add(input.next());
         }
-        ArrayList b = new ArrayList();
+        ArrayList<String> b = new ArrayList<>();
         for (int i = 0; i < num; i++) {
             b.add(input.next());
         }
