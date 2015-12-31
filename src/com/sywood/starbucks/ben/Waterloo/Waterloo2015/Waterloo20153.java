@@ -24,10 +24,12 @@ public class Waterloo20153 {
     }
     private static char nextCons(char letter){
         int index = index(letter);
+        boolean found = false;
         if (letter != 'z') {
             for (int i = index; i < alph.length - 1; i++) {
-                if (!isVowl(alph[i + 1])) {
+                if (!isVowl(alph[i + 1]) & !found) {
                     letter = alph[i + 1];
+                    found = true;
                 }
             }
         }
@@ -36,22 +38,26 @@ public class Waterloo20153 {
     private static char nextVowl(char letter){
         int index = index(letter);
         int back = 0;
+        boolean backFound = false;
         int front = 0;
+        boolean frontFound = false;
         if (letter != 'z') {
             for (int i = index; i < alph.length - 1; i++) {
-                if (isVowl(alph[i])){
-                    front = i-index;
+                if (isVowl(alph[i]) & !frontFound){
+                    front = i;
+                    frontFound = true;
                 }
             }
             for (int i = index; i >= 0; i--) {
-                if (isVowl(alph[i])){
-                    back = index - i;
+                if (isVowl(alph[i]) & !backFound){
+                    back = i;
+                    backFound = true;
                 }
             }
         }
-        if (front > back){
+        if (index-front > back-index){
             return alph[front];
-        }else if (back > front){
+        }else if (back-index > index-front){
             return alph[back];
         }else{
             return alph[front];
