@@ -26,11 +26,23 @@ public class CCC97S2 {
                 }
             }
             ArrayList<int[]> sums = new ArrayList<>();
+            int combos = 0;
             for (int factor : factors){
                 for (int factor2 : factors.subList(1, factors.size()-1)){
                     int sum = factor + factor2;
-
+                    int diff = factor - factor2;
+                    int prod = factor * factor2;
+                    if (contains(sums, sum) | contains(sums, diff)|contains(sums,prod)){
+                        combos++;
+                    }else{
+                        sums.add(new int[]{sum, diff, prod});
+                    }
                 }
+            }
+            if (combos > 0){
+                System.out.println(num + " is nasty.");
+            }else{
+                System.out.println(num + " is not nasty.");
             }
         }
     }
