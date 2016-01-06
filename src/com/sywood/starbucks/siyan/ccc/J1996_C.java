@@ -26,7 +26,6 @@ public class J1996_C {
             for( char b : bits.toCharArray() ) {
                 System.out.print( b + " ");
             }
-
             System.out.println( "" );
         }
     }
