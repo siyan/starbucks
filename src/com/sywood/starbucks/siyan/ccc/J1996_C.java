@@ -40,7 +40,7 @@ public class J1996_C {
         }
         int max = Integer.parseInt( String.valueOf(bitsMax), 2);
         int min = Integer.parseInt( String.valueOf(bitsMin), 2);
-        System.out.println( "\nThe bit patterns are"  );
+        System.out.println( "The bit patterns are"  );
         for( int num = max; num >= min; num--) {
             printBits(num, n, k);
         }
@@ -51,12 +51,8 @@ public class J1996_C {
         Scanner sc = new Scanner( System.in);
         int num = Integer.valueOf(sc.nextLine());
 
-        String[] param = new String[num];
         for( int i = 0; i < num; i++ ) {
-            param[i] = sc.nextLine();
-        }
-        for( int i = 0; i < num; i++ ) {
-            String[] pair = param[i].split( " " );
+            String[] pair = sc.nextLine().split( " " );
             printPair( Integer.valueOf( pair[0]), Integer.valueOf( pair[1]) );
         }
     }
