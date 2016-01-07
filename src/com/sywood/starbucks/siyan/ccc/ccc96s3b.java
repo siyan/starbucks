@@ -6,11 +6,11 @@ import java.util.Scanner;
 /**
  * Created by siyan on 16-01-04.
  */
-public class J1996_C {
+public class ccc96s3b {
 
-    private static int numOnes( String bits ) {
+    private static int numOnes( char[] arr ) {
         int count = 0;
-        for( char c : bits.toCharArray() ) {
+        for( char c : arr ) {
             if( c == '1' ) count++;
         }
         return count;
@@ -18,16 +18,19 @@ public class J1996_C {
 
     private static void printBits( int num, int n, int k ) {
         String bits = Integer.toBinaryString( num );
-        if( k == numOnes( bits ) ) {
-            int x = n - bits.toCharArray().length;
+        StringBuffer buf = new StringBuffer();
+        char[] arr = bits.toCharArray();
+        if( k == numOnes( arr ) ) {
+            int x = n - arr.length;
             for( int i = 0; i < x; i ++ ) {
-                System.out.print( "0");
-            }
-            for( char b : bits.toCharArray() ) {
-                System.out.print( b );
+                buf.append( "0" );
             }
 
-            System.out.println( "" );
+            for( char b : arr ) {
+                buf.append( b );
+            }
+
+            System.out.println( buf.toString() );
         }
     }
 
@@ -44,15 +47,22 @@ public class J1996_C {
         for( int num = max; num >= min; num--) {
             printBits(num, n, k);
         }
+        System.out.println( "" );
     }
 
     public static void  main( String[] args ) {
 
         Scanner sc = new Scanner( System.in);
         int num = Integer.valueOf(sc.nextLine());
+        String[] param = new String[num];
 
         for( int i = 0; i < num; i++ ) {
-            String[] pair = sc.nextLine().split( " " );
+            param[i] = sc.nextLine();
+        }
+
+
+        for( int i = 0; i < num; i++ ) {
+            String[] pair = param[i].split( " " );
             printPair( Integer.valueOf( pair[0]), Integer.valueOf( pair[1]) );
         }
     }
