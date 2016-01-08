@@ -18,8 +18,11 @@ public class ccc11s3 {
         else if( region == 2 ) {
             return 2 * p_1 + topCrystalY( m - 1, x - region * p_1 );
         }
-        else {
+        else if( region == 1 || region == 3 ){
             return p_1 + topCrystalY( m - 1, x - region * p_1 );
+        }
+        else {
+            return 0;
         }
     }
 
@@ -34,7 +37,7 @@ public class ccc11s3 {
             long x = Long.valueOf( params[1] );
             long y = Long.valueOf( params[2] );
             long topY = topCrystalY( m, x);
-            System.out.println( y > topY ? "empty" : "crystal" );
+            System.out.println( y >= topY ? "empty" : "crystal" );
         }
     }
 }
