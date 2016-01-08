@@ -7,8 +7,7 @@ import java.util.Scanner;
  */
 public class ccc96s3 {
     private static int n;
-    private static int k;
-    private static char[] A = new char[30];
+    private static char[] A;
 
     private static void  printA( int i, int j ) {
         if ( i == 0 && j == 0 ) {
@@ -40,7 +39,8 @@ public class ccc96s3 {
         for( int i = 0; i < num; i++ ) {
             String[] pair = sc.nextLine().split(" ");
             n = Integer.valueOf( pair[0] );
-            k = Integer.valueOf( pair[1] );
+            A = new char[n];
+            int k = Integer.valueOf( pair[1] );
             System.out.println( "The bit patterns are"  );
             printA( n, k );
         }
