@@ -2,9 +2,6 @@ package com.sywood.starbucks.siyan.ccc;
 
 import java.util.Scanner;
 
-/**
- * Created by siyan on 16-01-06.
- */
 public class ccc96s3 {
     private static int n;
     private static char[] A;
@@ -14,7 +11,6 @@ public class ccc96s3 {
             for ( int l = 0; l < n; l++ )  {
                 System.out.print( A[l] );
             }
-
             System.out.println( "" );
         }
         else {
@@ -35,7 +31,6 @@ public class ccc96s3 {
 
         Scanner sc = new Scanner( System.in);
         int num = Integer.valueOf(sc.nextLine());
-
         for( int i = 0; i < num; i++ ) {
             String[] pair = sc.nextLine().split(" ");
             n = Integer.valueOf( pair[0] );
