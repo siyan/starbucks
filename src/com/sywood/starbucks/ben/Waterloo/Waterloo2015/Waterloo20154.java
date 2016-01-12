@@ -35,7 +35,7 @@ public class Waterloo20154 {
             switch (command) {
                 case "R":
                     in.add(friend);
-                    time += 1;
+                    time++;
                     if (find(out, friend) == -1) {
                         out.add(new int[]{friend, -1, time});
                     }else{
@@ -43,18 +43,18 @@ public class Waterloo20154 {
                     }
                     break;
                 case "W":
-                    time += friend;
+                    time += friend-1;
                     break;
                 case "S":
                     in.removeFirstOccurrence(friend);
-                    out.get(find(out, friend))[1] += time-out.get(find(out,friend))[2]+1;
                     time++;
+                    out.get(find(out,friend))[1] += time-out.get(find(out,friend))[2];
                     break;
             }
         }
         for (int[] friends : out){
             if (!contains(in, friends[0])) {
-                System.out.println(friends[0] + " " + friends[1]);
+                System.out.println(friends[0] + " " + friends[1]+1);
             }else{
                 System.out.println(friends[0] + " " + -1);
             }
