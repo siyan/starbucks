@@ -14,6 +14,7 @@ public class CCC11S3 {
                 }
             }
         }
+        return 1;
     }
 
     public static void main(String[] args){
