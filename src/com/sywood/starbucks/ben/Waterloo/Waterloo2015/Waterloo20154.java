@@ -22,6 +22,19 @@ public class Waterloo20154 {
         }
         return false;
     }
+    public static LinkedList<int[]> sort(LinkedList<Integer> in, LinkedList<int[]> out){
+        LinkedList<int[]> ret = new LinkedList<int[]>();
+        for (int[] friends:out){
+            if (!contains(in, friends[0])){
+                ret.add(friends);
+            }
+        }for (int[] friends:out){
+            if(contains(in,friends[0])){
+                ret.add(new int[]{friends[0], 1});
+            }
+        }
+        return ret;
+    }
 
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
@@ -52,9 +65,9 @@ public class Waterloo20154 {
                     break;
             }
         }
-        for (int[] friends : out){
+        for (int[] friends : sort(in, out)){
             if (!contains(in, friends[0])) {
-                System.out.println(friends[0] + " " + friends[1]+1);
+                System.out.println(friends[0] + " " + (friends[1]+1));
             }else{
                 System.out.println(friends[0] + " " + -1);
             }
