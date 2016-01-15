@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class wc152j3 {
     private static boolean locate(int[] trooper, int[] ewok){
         boolean ret = false;
-        if (Math.sqrt(Math.abs(trooper[0]-ewok[0])+Math.abs(trooper[1]-ewok[1])) < trooper[2]){
+        int x = Math.abs(trooper[0]-ewok[0]);
+        int y = Math.abs(trooper[1]-ewok[1]);
+        if (Math.sqrt(Math.pow(x, 2)+Math.pow(y,2)) < trooper[2]){
             ret = true;
         }
         return ret;
@@ -23,11 +25,12 @@ public class wc152j3 {
             troopers.add(new int[]{input.nextInt(), input.nextInt(), input.nextInt()});
         }for (int i = 0; i < E; i++){
             ewoks.add(new int[]{input.nextInt(), input.nextInt()});
-        }for (int[] trooper : troopers){
+        }for (int[] ewok : ewoks){
             boolean found = false;
-            for (int[] ewok : ewoks){
+            for (int[] trooper : troopers){
                 if (locate(trooper, ewok) & !found){
                     danger++;
+                    System.out.println(trooper[0] + ", " + trooper[1] + ", " + trooper[2] + ", " + ewok[0] + " " + ewok[1]);
                     found = true;
                 }
             }
