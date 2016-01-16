@@ -16,7 +16,7 @@ public class wc152j3 {
         int ret = 0;
         int x = Math.abs(trooper[1]-ewok[0]);
         int y = Math.abs(trooper[2]-ewok[1]);
-        if (Math.sqrt(Math.pow(x, 2)+Math.pow(y,2)) < R){
+        if (Math.sqrt(Math.pow(x, 2)+Math.pow(y,2)) <= R){
             ret = trooper[0];
         }
         return ret;
