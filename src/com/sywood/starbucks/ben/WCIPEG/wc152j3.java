@@ -3,12 +3,21 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class wc152j3 {
-    private static boolean locate(int[] trooper, int[] ewok){
-        boolean ret = false;
-        int x = Math.abs(trooper[0]-ewok[0]);
-        int y = Math.abs(trooper[1]-ewok[1]);
-        if (Math.sqrt(Math.pow(x, 2)+Math.pow(y,2)) < trooper[2]){
-            ret = true;
+    private static boolean in (ArrayList<Integer> troops, int type){
+        for (int troop : troops){
+            if (troop == type){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static int locate(int[] trooper, int[] ewok, int R){
+        int ret = 0;
+        int x = Math.abs(trooper[1]-ewok[0]);
+        int y = Math.abs(trooper[2]-ewok[1]);
+        if (Math.sqrt(Math.pow(x, 2)+Math.pow(y,2)) < R){
+            ret = trooper[0];
         }
         return ret;
     }
@@ -26,13 +35,15 @@ public class wc152j3 {
         }for (int i = 0; i < E; i++){
             ewoks.add(new int[]{input.nextInt(), input.nextInt()});
         }for (int[] ewok : ewoks){
-            boolean found = false;
+            ArrayList<Integer> troopType = new ArrayList<>();
             for (int[] trooper : troopers){
-                if (locate(trooper, ewok) & !found){
-                    danger++;
-                    System.out.println(trooper[0] + ", " + trooper[1] + ", " + trooper[2] + ", " + ewok[0] + " " + ewok[1]);
-                    found = true;
+                if (!in (troopType, locate(trooper, ewok, R))){
+                    if (locate(trooper, ewok, R) != 0) {
+                        troopType.add(locate(trooper, ewok, R));
+                    }
                 }
+            }if (troopType.size() > 1){
+                danger++;
             }
         }
         System.out.print(danger);
