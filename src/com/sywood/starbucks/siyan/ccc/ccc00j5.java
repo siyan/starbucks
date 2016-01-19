@@ -8,29 +8,19 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.ArrayList
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-/**
- * Created by siyan on 16-01-16.
- */
 public class ccc00j5 {
     private static ArrayList<String> process(String line){
         ArrayList<String> ret = new ArrayList<>();
         for (int i = 0; i < line.length(); i++){
-            int startPos = line.indexOf("HREF=")+1<line.length()-1 ? line.indexOf("HREF=")+1 : -1;
+            int startPos = line.indexOf("HREF=")+6<line.length()-1 ? line.indexOf("HREF=")+6 : -1;
             int endPos = line.indexOf("\"", startPos+1) < line.length()-1 ? line.indexOf("\"", startPos+1):startPos;
             ret.add(line.substring(startPos, endPos));
         }
         return ret;
-    }
-    private static boolean scan(Map<String, ArrayList<String>> links, String url){
-        boolean ret = false;
-        for (String key : links.keySet()){
-            for (ArrayList<String> link : links.get(key)){
-
-            }
-        }
     }
 
     public static void main(String[] args) {
@@ -52,11 +42,16 @@ public class ccc00j5 {
                         lineCounter = 0;
                 }
                 else if( line.contains("HREF")) {
-                    int startPos = line.indexOf( "HREF=") + 1;
-                    int endPos = line.indexOf("\"", startPos + 1 );
-                    String linkUrl = line.substring( startPos, endPos );
-                    links.put( url,  process(line));
-                    System.out.println( "Link from " + url + " to " + linkUrl );
+                    if (!links.containsKey(url)) {
+                        links.put(url, process(line));
+                    }else{
+                        ArrayList<String> extra = links.get(url);
+                        extra.addAll(process(line).stream().collect(Collectors.toList()));
+                        links.replace(url, links.get(url), extra);
+                    }
+                }
+                for (String urls : links.get(url)){
+                    System.out.println( "Link from " + url + " to " + urls);
                 }
 
                 if( numPages == 0 ) {
