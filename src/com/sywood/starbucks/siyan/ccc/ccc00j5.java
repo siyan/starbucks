@@ -10,64 +10,63 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class ccc00j5 {
-    private static ArrayList<String> process(String line){
-        ArrayList<String> ret = new ArrayList<>();
-        for (int i = 0; i < line.length(); i++){
-            int startPos = line.indexOf("HREF=")+6<line.length()-1 ? line.indexOf("HREF=")+6 : -1;
-            int endPos = line.indexOf("\"", startPos+1) < line.length()-1 ? line.indexOf("\"", startPos+1):startPos;
-            ret.add(line.substring(startPos, endPos));
+    private static void addLink(String pageUrl, List links, String line){
+        int startPos = line.indexOf("HREF=");
+        while( startPos > -1 ) {
+            int endPos = line.indexOf("\"", startPos+6);
+            String linkUrl = line.substring( startPos+6, endPos);
+            links.add( linkUrl );
+            System.out.println( "Link from " + pageUrl + " to " + linkUrl );
+            startPos = line.indexOf("HREF=", endPos);
         }
-        return ret;
     }
+
+    private static boolean hasLink( String url, List<String> links ) {
+        for( String link : links ) {
+            if( url.equalsIgnoreCase( link )) {
+                return true;
+            }
+            else {
+                return hasLink( url, pages.get( link ));
+            }
+        }
+        return false;
+    }
+
+
+    static Map<String, List<String>> pages = new LinkedHashMap<>();
 
     public static void main(String[] args) {
         String fileName = "data/surf.in";
-        int lineCounter = 0;
         int numPages = 0;
-        Map<String, ArrayList<String>> links = new LinkedHashMap<>();
-        String url = null;
+
+        String pageUrl = null;
         try ( BufferedReader br = new BufferedReader( new FileReader( fileName ) ) ) {
-            for(String line; (line = br.readLine()) != null; ) {
-                if( lineCounter == 0 ) {
-                    numPages = Integer.valueOf( line );
+            numPages = Integer.valueOf( br.readLine() );
+            while( numPages > 0) {
+                pageUrl = br.readLine();
+                List<String> links = new ArrayList<>();
+                for (String line; !"</HTML>".equalsIgnoreCase(line = br.readLine()); ) {
+                    addLink( pageUrl, links, line );
                 }
-                else if( lineCounter == 1 ) {
-                       url = line;
-                }
-                else if( "</HTML>".equalsIgnoreCase( line.trim())) {
-                        numPages--;
-                        lineCounter = 0;
-                }
-                else if( line.contains("HREF")) {
-                    if (!links.containsKey(url)) {
-                        links.put(url, process(line));
-                    }else{
-                        ArrayList<String> extra = links.get(url);
-                        extra.addAll(process(line).stream().collect(Collectors.toList()));
-                        links.replace(url, links.get(url), extra);
-                    }
-                }
-                for (String urls : links.get(url)){
-                    System.out.println( "Link from " + url + " to " + urls);
-                }
-
-                if( numPages == 0 ) {
-                    if( "The End".equalsIgnoreCase( line )) {
-                        return;
-                    }
-                    else {
-                        System.out.println( "Surf from " + line);
-                    }
-                }
-
-                lineCounter++;
-                //System.out.println( line );
+                pages.put( pageUrl, links );
+                numPages--;
             }
-        }
 
+            for( String url; (url = br.readLine()) != null; ) {
+                if( "The End".equalsIgnoreCase( url )) break;
+                String linkUrl = br.readLine();
+                if( hasLink( linkUrl, pages.get( url ))) {
+                    System.out.println("Can surf from " + url + " to " + linkUrl);
+                }
+                else {
+                    System.out.println("Can't surf from " + url);
+                }
+            }
+
+        }
         catch (IOException e) {
             e.printStackTrace();
         }
