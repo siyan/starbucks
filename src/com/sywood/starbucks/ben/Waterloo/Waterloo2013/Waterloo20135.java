@@ -7,7 +7,7 @@ public class Waterloo20135 {
         Scanner input = new Scanner(System.in);
         int team = input.nextInt();
         for (int i = 0; i < input.nextInt(); i++) {
-
+            
         }
     }
 }
