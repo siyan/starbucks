@@ -15,19 +15,9 @@ public class ccc00j5 {
         }
         return links;
     }
-    private static String scanPage(){
-        Scanner input = new Scanner(System.in);
-        String ret = "";
-        String line = input.nextLine();
-        while (!line.equalsIgnoreCase("</HTML>")){
-            ret += line;
-            line = input.nextLine();
-        }
-        return ret;
-    }
     private static boolean scan(String two, ArrayList<String> links){
         for (String link : links){
-            if (links.equals(two)){
+            if (link.equals(two)){
                 return true;
             }
         }
@@ -41,7 +31,14 @@ public class ccc00j5 {
         HashMap<String, ArrayList<String>> paths = new HashMap<>();
         while (pages > 0){
             String url = input.nextLine();
-            paths.put(url, findLinks(scanPage()));
+            String ret = "";
+            String line = input.nextLine();
+            while (!line.equalsIgnoreCase("</HTML>")){
+                ret += line;
+                line = input.nextLine();
+            }
+            paths.put(url, findLinks(ret));
+            pages--;
         }
         String one = input.nextLine();
         String two = input.nextLine();
