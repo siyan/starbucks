@@ -5,40 +5,40 @@ import java.util.HashMap;
 
 public class ccc00j5 {
     private static void findLinks(String url, ArrayList<String> list){
-        int start = url.indexOf("HREF=");
+        int start = url.indexOf("HREF=")+6;
         while(start > -1){
             int end = url.indexOf("\"", start);
             String link = url.substring(start, end);
             list.add(link);
             System.out.println("Link from " + url + " to " + link);
-            start = url.indexOf("HREF=", end);
+            start = url.indexOf("HREF=", end)+6;
         }
     }
     private static boolean scan(String two, ArrayList<String> links){
-        for (String link : links){
-            if (link.equals(two)){
+        for( String link : links ) {
+            if( two.equalsIgnoreCase( link )) {
                 return true;
+            }
+            else {
+                return scan( two, paths.get( link ));
             }
         }
         return false;
     }
+    private static HashMap<String, ArrayList<String>> paths = new HashMap<>();
 
 
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         int pages = input.nextInt();
-        HashMap<String, ArrayList<String>> paths = new HashMap<>();
-        String url = input.nextLine();
-        paths.put(url, new ArrayList<>());
         while (pages > 0){
-            if (url.equalsIgnoreCase("</HTML>")){
-                url = input.nextLine();
-                paths.put(url, new ArrayList<>());
-                pages--;
-            }else {
-                findLinks(url, paths.get(url));
-                url = input.nextLine();
+            String base = input.nextLine();
+            ArrayList<String> links = new ArrayList<>();
+            for (String line; !"</HTML>".equalsIgnoreCase(line = input.nextLine()); ) {
+                findLinks( line, links);
             }
+            paths.put( base, links );
+            pages--;
         }
         String one = input.nextLine();
         String two = input.nextLine();
