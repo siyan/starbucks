@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ccc00j5 {
-    private static ArrayList<String> findLinks(String url){
-        ArrayList<String> links = new ArrayList<>();
-        for (int i = 0; i < url.length(); i++) {
-            int start = url.indexOf("HREF=") + 6;
+    private static void findLinks(String url, ArrayList<String> list){
+        int start = url.indexOf("HREF=");
+        while(start > -1){
             int end = url.indexOf("\"", start);
             String link = url.substring(start, end);
-            links.add(link);
+            list.add(link);
             System.out.println("Link from " + url + " to " + link);
+            start = url.indexOf("HREF=", end);
         }
-        return links;
     }
     private static boolean scan(String two, ArrayList<String> links){
         for (String link : links){
@@ -29,16 +28,17 @@ public class ccc00j5 {
         Scanner input = new Scanner(System.in);
         int pages = input.nextInt();
         HashMap<String, ArrayList<String>> paths = new HashMap<>();
+        String url = input.nextLine();
+        paths.put(url, new ArrayList<>());
         while (pages > 0){
-            String url = input.nextLine();
-            String ret = "";
-            String line = input.nextLine();
-            while (!line.equalsIgnoreCase("</HTML>")){
-                ret += line;
-                line = input.nextLine();
+            if (url.equalsIgnoreCase("</HTML>")){
+                url = input.nextLine();
+                paths.put(url, new ArrayList<>());
+                pages--;
+            }else {
+                findLinks(url, paths.get(url));
+                url = input.nextLine();
             }
-            paths.put(url, findLinks(ret));
-            pages--;
         }
         String one = input.nextLine();
         String two = input.nextLine();
