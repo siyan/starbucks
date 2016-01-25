@@ -31,7 +31,7 @@ public class ccc00j5 {
 
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
-        int pages = input.nextInt();
+        int pages = Integer.parseInt(input.nextLine());
         while (pages > 0){
             String base = input.nextLine();
             ArrayList<String> links = new ArrayList<>();
