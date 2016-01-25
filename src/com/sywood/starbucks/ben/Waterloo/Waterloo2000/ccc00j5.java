@@ -5,8 +5,9 @@ import java.util.HashMap;
 
 public class ccc00j5 {
     private static void findLinks(String url, ArrayList<String> list){
-        int start = url.indexOf("HREF=")+6;
+        int start = url.indexOf("HREF=");
         while(start > -1){
+            start += 6;
             int end = url.indexOf("\"", start);
             String link = url.substring(start, end);
             list.add(link);
