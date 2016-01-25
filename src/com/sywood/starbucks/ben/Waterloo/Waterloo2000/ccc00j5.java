@@ -12,7 +12,7 @@ public class ccc00j5 {
             String link = url.substring(start, end);
             list.add(link);
             System.out.println("Link from " + url + " to " + link);
-            start = url.indexOf("HREF=", end)+6;
+            start = url.indexOf("HREF=", end);
         }
     }
     private static boolean scan(String two, ArrayList<String> links){
