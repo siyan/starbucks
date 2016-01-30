@@ -31,7 +31,7 @@ public class Waterloo20105 {
                 hop(x - 2, y - 1, hops + 1);
             }if (x+2 < 8 & y-1 >= 0) {
                 hop(x + 2, y - 1, hops + 1);
-            }if (y+1 > 8){
+            }if (y+1 < 8){
                 hop(x + 2, y + 1, hops + 1);
             }
         }
