@@ -17,21 +17,28 @@ public class Waterloo20105 {
     private static void hop(int x, int y, int hops){
         if (x < 8 & x >= 0 & y >= 0 & y < 8 & hops < stepsTaken[y][x]){
             stepsTaken[y][x] = hops;
-            if (x-1 >= 0 & y-2 >= 0) {
+            if (x-1 >= 0 & y-2 >= 0){
                 hop(x - 1, y - 2, hops + 1);
-            }if (y+2 < 8){
+            }
+            if (x-1 >= 0 & y+2 < 8){
                 hop(x - 1, y + 2, hops + 1);
-            }if (x+1 < 8 & y-2 >= 0) {
+            }
+            if (x+1 < 8 & y-2 >= 0) {
                 hop(x + 1, y - 2, hops + 1);
-            }if (y + 2 < 8){
+            }
+            if (x+1 <8 & y + 2 < 8){
                 hop(x + 1, y + 2, hops + 1);
-            }if (x-2 >= 0 & y+1 < 8) {
+            }
+            if (x-2 >= 0 & y+1 < 8) {
                 hop(x - 2, y + 1, hops + 1);
-            }if (y-1 >= 0){
+            }
+            if (x-2 >=0 & y-1 >= 0){
                 hop(x - 2, y - 1, hops + 1);
-            }if (x+2 < 8 & y-1 >= 0) {
+            }
+            if (x+2 < 8 & y-1 >= 0) {
                 hop(x + 2, y - 1, hops + 1);
-            }if (y+1 < 8){
+            }
+            if (x+2 < 8 & y+1 < 8){
                 hop(x + 2, y + 1, hops + 1);
             }
         }
