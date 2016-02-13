@@ -35,7 +35,6 @@ public class ccc00j5 {
         return false;
     }
 
-
     static Map<String, List<String>> pages = new LinkedHashMap<>();
 
     public static void main(String[] args) {
