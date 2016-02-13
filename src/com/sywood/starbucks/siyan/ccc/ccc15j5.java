@@ -10,7 +10,6 @@ public class ccc15j5 {
     static int counter = 0;
 
     static void recPi( int n, int k, int min ) {
-
         if( k == 1 || n == k ) {
             counter++;
             return;
@@ -29,6 +28,6 @@ public class ccc15j5 {
         int n = input.nextInt();
         int k = input.nextInt();
         recPi( n, k, 1 );
-        System.out.println( "tot = " +  counter );
+        System.out.println( counter );
     }
 }
