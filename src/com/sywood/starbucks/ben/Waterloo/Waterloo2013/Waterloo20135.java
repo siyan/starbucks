@@ -81,10 +81,10 @@ public class Waterloo20135 {
                                     f = 3;
                                     sixth = 0;
                                 }
-                                newScore[0] += point[a*first] + point[b*second] + point[c*third];
-                                newScore[1] += point[(2-a)*first] + point[d*fourth] + point[e*fifth];
-                                newScore[2] += point[(2-b)*second] + point[(2-d)*fourth] + point[f*sixth];
-                                newScore[3] += point[(2-c)*third] + point[(2-e)*fifth] + point[(2-f)*sixth];
+                                newScore[0] = scores[0] + point[a*first] + point[b*second] + point[c*third];
+                                newScore[1] = scores[1] + point[(2-a)*first] + point[d*fourth] + point[e*fifth];
+                                newScore[2] = scores[2] + point[(2-b)*second] + point[(2-d)*fourth] + point[f*sixth];
+                                newScore[3] = scores[3] + point[(2-c)*third] + point[(2-e)*fifth] + point[(2-f)*sixth];
                                 boolean won = true;
                                 for (int i = 0; i < 4; i++){
                                     if (newScore[fav] <= newScore[i] & fav != i){
