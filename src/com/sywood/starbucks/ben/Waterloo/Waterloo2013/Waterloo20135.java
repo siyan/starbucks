@@ -79,6 +79,7 @@ public class Waterloo20135 {
             int[] score = win(a, b, input.nextInt(), input.nextInt());
             for (int j = 0; j < scores.length; j++)scores[j] += score[j];
         }
+
         simulation(0, scores);
         System.out.println(_wins);
     }
