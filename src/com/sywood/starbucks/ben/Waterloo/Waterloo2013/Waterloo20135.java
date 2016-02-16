@@ -28,8 +28,8 @@ public class Waterloo20135 {
 
     static void hasWon(int[] scores){
         boolean won = true;
-        for (int score : scores){
-            if (score >= scores[_fav] & score != _fav){
+        for (int i = 0; i < scores.length; i++){
+            if (scores[i] >= scores[_fav] & i != _fav){
                 won = false;
             }
         }
