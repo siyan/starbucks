@@ -1,111 +1,86 @@
 package com.sywood.starbucks.ben.Waterloo.Waterloo2013;
 import java.util.Scanner;
-
+import java.util.ArrayList;
 
 public class Waterloo20135 {
-    static int[][] games = new int[][]{
-            {0,1,1,1},
-            {0,0,1,1},
-            {0,0,0,1},
-            {0,0,0,0}};
-    static int process(int a, int b, int scoreA, int scoreB){
-        if (scoreA > scoreB){
-            return a;
-        }else if (scoreB > scoreA){
-            return b;
+    static ArrayList<int[]> _games = new ArrayList<>();
+    static int[][] _played = new int[][]{{1,2},{2,1},{1,1}};
+    static int _wins = 0;
+    static int _fav = -1;
+
+    static void generate(){
+        _games.add(new int[]{0,1});
+        _games.add(new int[]{0,2});
+        _games.add(new int[]{0,3});
+        _games.add(new int[]{1,2});
+        _games.add(new int[]{1,3});
+        _games.add(new int[]{2,3});
+    }
+
+    static void played(int a, int b){
+        for(int i = 0; i < _games.size(); i++){
+            if (_games.get(i)[0] == a & _games.get(i)[1] == b){
+                _games.remove(i);
+                return;
+            }
+        }
+    }
+
+    static void hasWon(int[] scores){
+        boolean won = true;
+        for (int score : scores){
+            if (score >= scores[_fav] & score != _fav){
+                won = false;
+            }
+        }
+        if (won){
+            _wins++;
+        }
+    }
+    
+    static int[] win(int a, int b, int scoreA, int scoreB){
+        int[] scores = new int[]{0,0,0,0};
+        if (scoreB > scoreA){
+            scores[b] += 3;
+        }else if (scoreA > scoreB){
+            scores[a] += 3;
         }else{
-            return 4;
+            scores[a] += 1;
+            scores[b] += 1;
+        }
+        return scores;
+    }
+
+    static void simulation(int game, int[] currScores){
+        int[] curr = _games.get(game);
+        for (int[] result : _played){
+            int[] newScore = win(curr[0], curr[1], result[0], result[1]);
+
+            for (int i = 0; i < currScores.length; i++) newScore[i] += currScores[i];
+
+            if (game == _games.size()-1){
+                hasWon(newScore);
+            }else{
+                simulation(game+1, newScore);
+            }
         }
     }
 
     public static void main(String[] args){
+        generate();
         Scanner input = new Scanner(System.in);
-        int fav = input.nextInt()-1;
-        int iter = input.nextInt();
-        int wins = 0;
+        _fav = input.nextInt()-1;
+        int iters = input.nextInt();
         int[] scores = new int[]{0,0,0,0};
-        for (int i = 0; i < iter; i++) {
+        for (int i = 0; i < iters; i++){
             int a = input.nextInt()-1;
             int b = input.nextInt()-1;
-            games[a][b] = 0;
-            games[b][a] = 0;
-            int winner = process(a, b, input.nextInt(), input.nextInt());
-            if (winner != 4){
-                scores[winner]+=3;
-            }else{
-                scores[a]++;
-                scores[b]++;
-            }
+            played(a, b);
+            int[] score = win(a, b, input.nextInt(), input.nextInt());
+            for (int j = 0; j < scores.length; j++)scores[j] += score[j];
         }
-        int first = 1;
-        int second = 1;
-        int third = 1;
-        int fourth = 1;
-        int fifth = 1;
-        int sixth = 1;
-        int a = 0;
-        int[] newScore = new int[]{0,0,0,0};
-        int[] point = new int[]{0,1,3};
-        while (a < 3){
-            if (games[0][1] == 0){
-                a = 2;
-                first = 0;
-            }
-            int b = 0;
-            while (b < 3){
-                if (games[0][2] == 0){
-                    b = 3;
-                    second = 0;
-                }
-                int c = 0;
-                while (c < 3){
-                    if (games[0][3] == 0){
-                        c = 3;
-                        third = 0;
-                    }
-                    int d = 0;
-                    while (d < 3){
-                        if (games[1][2] == 0){
-                            d = 3;
-                            fourth = 0;
-                        }
-                        int e = 0;
-                        while (e < 3){
-                            if(games[1][3] == 0){
-                                e = 3;
-                                fifth = 0;
-                            }
-                            int f = 0;
-                            while(f < 3){
-                                if(games[2][3]==0){
-                                    f = 3;
-                                    sixth = 0;
-                                }
-                                newScore[0] = scores[0] + point[a*first] + point[b*second] + point[c*third];
-                                newScore[1] = scores[1] + point[(2-a)*first] + point[d*fourth] + point[e*fifth];
-                                newScore[2] = scores[2] + point[(2-b)*second] + point[(2-d)*fourth] + point[f*sixth];
-                                newScore[3] = scores[3] + point[(2-c)*third] + point[(2-e)*fifth] + point[(2-f)*sixth];
-                                boolean won = true;
-                                for (int i = 0; i < 4; i++){
-                                    if (newScore[fav] <= newScore[i] & fav != i){
-                                        won = false;
-                                    }
-                                }
-                                if (won){
-                                    wins++;
-                                }
-                                f++;
-                            }
-                            e++;
-                        }
-                        d++;
-                    }
-                    c++;
-                }
-                b++;
-            }
-            a++;
-        }
-        System.out.println(wins);
+        simulation(0, scores);
+        System.out.println(_wins);
     }
+
 }
