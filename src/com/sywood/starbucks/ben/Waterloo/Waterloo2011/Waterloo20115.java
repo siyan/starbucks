@@ -1,20 +1,26 @@
 package com.sywood.starbucks.ben.Waterloo.Waterloo2011;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.jar.Pack200;
 
 public class Waterloo20115 {
+    private static int ways (ArrayList<Integer> friends, int n, int x){
+        int answer = 1;
+        for (int i = 0; i < n-1; i++){
+            if (friends.get(i) == x){
+                answer = answer*(1+ways(friends, n, i+1));
+            }
+        }
+        return answer;
+    }
+
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
-        int numPeo = Integer.parseInt(input.nextLine());
-        ArrayList<Integer> ways = new ArrayList<>(numPeo);
-        for (int i = 0; i < numPeo; i++) {
-            ways.add(1);
+        ArrayList<Integer> friends = new ArrayList<>();
+        int numFriends = input.nextInt();
+        for(int i = 1; i < numFriends; i++){
+            friends.add(input.nextInt());
         }
-        for (int i = 1; i < numPeo; i++) {
-            int person = input.nextInt()-1;
-            ways.set(person, ways.get(person)*(1+ways.get(i)));
-        }
-
-        System.out.println(numPeo-1);
+        System.out.println(ways(friends, numFriends, numFriends));
     }
 }
