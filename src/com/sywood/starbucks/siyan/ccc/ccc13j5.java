@@ -93,7 +93,6 @@ public class ccc13j5 {
             for( int j = 0; j < scores.length; j ++ ) teamScores[j] += scores[j];
         }
 
-
         recGames( 0, fav, teamScores );
 
         System.out.println( _wins );
