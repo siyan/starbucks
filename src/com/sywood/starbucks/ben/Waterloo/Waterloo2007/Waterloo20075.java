@@ -6,15 +6,20 @@ import java.util.Collections;
 public class Waterloo20075 {
     static int A = 0;
     static int B = 0;
+    static int ways = 0;
     static ArrayList<Integer> hotels = new ArrayList<>();
-    static int recuVisit(int dist){
+    static void recuVisit(int dist){
         if (dist >= 7000){
-            return 1;
+            ways++;
         }else{
-            for (int i = 0; dist <= hotels.get(i); i++) {
-                return recuVisit(dist + A + hotels.get(i));
+            for (Integer hotel : hotels) {
+                if (dist + hotel < B & A < dist + hotel) {
+                    recuVisit(hotel);
+                }
             }
-            return recuVisit(dist + B);
+            if (hotels.get(dist) == hotels.size()-1){
+                recuVisit(7000);
+            }
         }
     }
 
@@ -35,6 +40,7 @@ public class Waterloo20075 {
             }
         }
         Collections.sort(hotels);
-        System.out.println(recuVisit(0));
+        recuVisit(0);
+        System.out.println(ways);
     }
 }
