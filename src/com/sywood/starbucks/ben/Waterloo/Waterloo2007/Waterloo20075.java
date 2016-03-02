@@ -12,9 +12,9 @@ public class Waterloo20075 {
         if (dist >= 7000){
             ways++;
         }else{
-            for (int i = 0; i < hotels.size(); i++){
-                if (hotels.get(i)-dist <= B & A <= hotels.get(i) - dist){
-                    recuVisit(hotels.get(i));
+            for (Integer hotel : hotels) {
+                if (hotel - dist <= B & A <= hotel - dist) {
+                    recuVisit(hotel);
                 }
             }
         }
