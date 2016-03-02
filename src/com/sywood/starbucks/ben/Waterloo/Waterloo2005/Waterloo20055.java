@@ -13,7 +13,17 @@ public class Waterloo20055 {
     }
 
     static boolean monkeyWord(String word) {
-        return word.equals("A") || !remANA(word).equals(word) && monkeyWord(remANA(word));
+        if (word.equals("A")) {
+            return true;
+        }
+        else{
+            if (remANA(word).equals(word)){
+                return false;
+            }else{
+                if (monkeyWord(remANA(word))) return true;
+            }
+        }
+        return false;
     }
     public static void main(String[] args) throws IOException{
         BufferedReader input = new BufferedReader(new FileReader("data/banana.in"));
