@@ -6,7 +6,7 @@ public class Waterloo20055 {
         if (word.contains("ANA")){
             return word.replace("ANA", "A");
         }else if(word.contains("BAS")){
-            return "A";
+            return word.replace("BAS", "A");
         }else{
             return word;
         }
