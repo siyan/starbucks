@@ -15,13 +15,10 @@ public class Waterloo20055 {
     static boolean monkeyWord(String word) {
         if (word.equals("A")) {
             return true;
-        }
-        else{
-            if (remANA(word).equals(word)){
-                return false;
-            }else{
+        }else if (remANA(word).equals(word)){
+            return false;
+        }else{
                 return monkeyWord(remANA(word));
-            }
         }
     }
     public static void main(String[] args) throws IOException{
