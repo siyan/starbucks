@@ -20,10 +20,9 @@ public class Waterloo20055 {
             if (remANA(word).equals(word)){
                 return false;
             }else{
-                if (monkeyWord(remANA(word))) return true;
+                return monkeyWord(remANA(word));
             }
         }
-        return false;
     }
     public static void main(String[] args) throws IOException{
         BufferedReader input = new BufferedReader(new FileReader("data/banana.in"));
