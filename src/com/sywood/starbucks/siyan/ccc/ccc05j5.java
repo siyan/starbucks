@@ -21,7 +21,7 @@ public class ccc05j5 {
             return isMonkeyWord( word.substring( 1, word.length() -1 ) );
         }
         else if( word.startsWith( "B") && word.contains("SN")) {
-            int idxS = word.indexOf( "SN");
+            int idxS = word.lastIndexOf( "SN");
             String w1 = word.substring( 1, idxS);
             String w2 = word.substring( idxS + 2 );
             return isMonkeyWord( w1 ) && isMonkeyWord( w2 );
