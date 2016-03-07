@@ -131,8 +131,36 @@ public class ProjectEuler {
         }
         return product;
     }
+    public static void nine(){
+        long A = 0;
+        long B = 0;
+        long C = 0;
+        for (int a = 1; a < 333; a++){
+            for (int b = a+1; b < 666; b++){
+                int c = 1000 -a -b;
+                if (a*a + b*b == c*c){
+                    System.out.println(a + ", " + b + ", " + c);
+                    System.out.println(a*b*c);
+                }
+            }
+        }
+    }
+    public static void ten(){
+        int sum = 0;
+        ArrayList<Integer> primes = new ArrayList<>();
+        primes.add(2);
+        int i = 3;
+        while(primes.get(primes.size()-1) < 2000000){
+            if (isPrime(i)){
+                primes.add(i);
+                sum += i;
+            }
+            i++;
+        }
+        System.out.println(sum);
+    }
 
     public static void main(String[] args){
-        System.out.println(eight());
+        ten();
     }
 }
