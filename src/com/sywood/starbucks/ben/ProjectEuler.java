@@ -222,8 +222,45 @@ public class ProjectEuler {
         }
         System.out.println(divisors);
     }
+    static long collaz(long num){
+        int i = 1;
+        while (num > 1){
+            if (num % 2 == 0){
+                num /= 2;
+            }else{
+                num = 3*num+1;
+            }
+            i++;
+        }
+        return i;
+    }
+    static void fourteen(){
+        long greatest = 0;
+        long start = 0;
+        for (long i = 1; i < 1000000; i++){
+            long collazed = collaz(i);
+            if (collazed > greatest){
+                greatest = collazed;
+                start = i;
+            }
+        }
+        System.out.println(start);
+    }
+    static BigInteger factorial(int num){
+        BigInteger ret = BigInteger.ONE;
+        for (int i = 1; i <= num; i++){
+            ret = ret.multiply(BigInteger.valueOf(i));
+        }
+        return ret;
+    }
+    static void fifteen(){
+        //answer is 137846528820
+        System.out.println(factorial(40).divide(factorial(20)).divide(factorial(20)));
+    }
+
 
     public static void main(String[] args){
-        twelve();
+        //TODO twelve(), thirteen()
+        fifteen();
     }
 }
