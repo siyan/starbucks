@@ -53,6 +53,6 @@ public class Waterloo20075 {
         Collections.sort(hotels);
         recuVisit(0);
         DPVisit();
-        System.out.println(ways == hotel[13+m-1]);
+        System.out.println(hotel[13+m-1]);
     }
 }
