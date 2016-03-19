@@ -2,7 +2,7 @@ package com.sywood.starbucks.ben.Recursion;
 
 public class DP {
     static int[] memoize;
-    static int[] prices = new int[]{2,5,8,9,10};
+    static int[] prices = new int[]{2, 5, 6};//, 9, 10, 11, 19};
     static int findMin(int n){
         if (n == 1){
             return 0;
@@ -39,27 +39,23 @@ public class DP {
         }else{
             int max = 0;
             for (int i = 1; i <= n; i++){
-                max = ((prices[i - 1] + logsRec(n - i)) > max) ? (prices[i - 1] + logsRec(n - i)) : max;
+                max = Math.max(prices[i - 1] + logsRec(n - i) , max);
             }
             return max;
         }
     }
     static int logBottomsUp(int n){
+        memoize[0] = prices[0];
         for (int i = 0; i < n; i++){
-            if (i == 0){
-                memoize[i] = prices[i];
-            }else{
-                if (memoize[n-1] != 0){
-                    return memoize[n-1];
-                }
-                for (int j = 0; j < i ; j++) {
-                    int temp = prices[j] + logBottomsUp(i - j);
-                    if (temp > memoize[i]) {
-                        System.out.println(i + ", " + (i-j));
-                        memoize[i] = temp;
-                    }
-                }
+            int max = 0;
+            for (int j = 0; j < i; j++) {
+                int temp;
+                    temp = prices[j] + memoize[i - j];
+                    System.out.println(j + " " + prices[j] + ", " + (i - j) + " " + prices[i - j]);
+                max = Math.max(max, temp);
             }
+            max = Math.max(max, prices[i]);
+            memoize[i] = max;
         }
         return memoize[n-1];
     }
@@ -69,16 +65,21 @@ public class DP {
         }else if (n < 1){
             return 0;
         }else{
-            int max = 0;
-            for (int i = 1; i <= n; i++){
-                memoize[i-1] = memoize[i-1] > prices[i-1] + memoize[n-i] ? memoize[i-1] : prices[i-1] + memoize[n-i];
+            if (memoize[n-1] != 0){
+                return memoize[n-1];
             }
+            int max = 0;
+            for (int i = 0; i < n; i++){
+                int temp = prices[i] + logDP(n-i-1);
+                max = Math.max(max, temp);
+            }
+            memoize[n-1] = max;
             return memoize[n-1];
         }
     }
 
     public static void main(String[] args){
-        memoize = new int[5];
-        System.out.println(logBottomsUp(5));
+        memoize = new int[prices.length];
+        System.out.println(logBottomsUp(prices.length));
     }
 }
