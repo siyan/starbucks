@@ -50,11 +50,10 @@ public class DP {
             int max = 0;
             for (int j = 0; j < i; j++) {
                 int temp;
-                    temp = prices[j] + memoize[i - j];
-                    System.out.println(j + " " + prices[j] + ", " + (i - j) + " " + prices[i - j]);
+                temp = prices[j] + memoize[i - j];
+                System.out.println(j + " " + prices[j] + ", " + (i - j) + " " + prices[i - j]);
                 max = Math.max(max, temp);
             }
-            max = Math.max(max, prices[i]);
             memoize[i] = max;
         }
         return memoize[n-1];
