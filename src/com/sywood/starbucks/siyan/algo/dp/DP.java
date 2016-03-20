@@ -9,12 +9,11 @@ public class DP {
 
     static int logBU( int n ) {
         for( int i = 0; i < n; i ++ ) {
-            int max = 0;
+            int max = prices[i];
             for( int j = 0; j < i; j++) {
-                int val = prices[j] + memoize[ i - j - 1 ];
-                max = Math.max( val, max);
+                int val = prices[j] + memoize[ i - (j + 1)];
+                max = Math.max( max, val);
             }
-            max = Math.max( max, prices[i]);
             memoize[i] = max;
         }
         return memoize[n-1];
@@ -48,6 +47,6 @@ public class DP {
     static int[] memoize;
     public static void main(String[] args){
         memoize = new int[prices.length];
-        System.out.println(logBU( 2 ));
+        System.out.println(logBU( 6 ));
     }
 }
