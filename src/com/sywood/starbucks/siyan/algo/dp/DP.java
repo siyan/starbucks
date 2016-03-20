@@ -5,8 +5,20 @@ package com.sywood.starbucks.siyan.algo.dp;
  */
 public class DP {
 
-    static int[] prices = new int[]{2, 5, 6, 9, 10, 11, 19};
+    static int[] prices = new int[]{2, 5, 7, 9, 10, 11, 19};
 
+    static int logBU( int n ) {
+        for( int i = 0; i < n; i ++ ) {
+            int max = 0;
+            for( int j = 0; j < i; j++) {
+                int val = prices[j] + memoize[ i - j - 1 ];
+                max = Math.max( val, max);
+            }
+            max = Math.max( max, prices[i]);
+            memoize[i] = max;
+        }
+        return memoize[n-1];
+    }
 
     static int logTD(int n){
 
@@ -36,6 +48,6 @@ public class DP {
     static int[] memoize;
     public static void main(String[] args){
         memoize = new int[prices.length];
-        System.out.println(logTD( prices.length ));
+        System.out.println(logBU( 7 ));
     }
 }
