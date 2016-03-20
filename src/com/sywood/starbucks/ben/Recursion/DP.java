@@ -49,7 +49,6 @@ public class DP {
         for (int i = 1; i <= n; i++) {
             int max = 0;
             for (int j = 0; j < i; j++) {
-                System.out.println(i + " " + j + " " + prices[j] + ", " + (i-j-1) + " " + memoize[i-j-1] + ", " + (prices[j] + memoize[i-j-1]));
                 int temp = prices[j] + memoize[i-j-1];
                 max = Math.max(max, temp);
             }
