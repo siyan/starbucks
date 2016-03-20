@@ -11,7 +11,7 @@ public class DP {
         for( int i = 0; i < n; i ++ ) {
             int max = prices[i];
             for( int j = 0; j < i; j++) {
-                int val = prices[j] + memoize[ i - (j + 1)];
+                int val = prices[j] + memoize[i-(j+1)];
                 max = Math.max( max, val);
             }
             memoize[i] = max;
@@ -47,6 +47,6 @@ public class DP {
     static int[] memoize;
     public static void main(String[] args){
         memoize = new int[prices.length];
-        System.out.println(logBU( 6 ));
+        System.out.println(logBU( 7 ));
     }
 }
