@@ -46,12 +46,11 @@ public class DP {
     }
     static int logBottomsUp(int n){
         for (int i = 0; i < n; i++) {
-            int max = 0;
+            int max = prices[i];
             for (int j = 0; j < i; j++) {
                 int temp = prices[j] + memoize[i-j-1];
                 max = Math.max(max, temp);
             }
-            max = Math.max(max, prices[i]);
             memoize[i] = max;
         }
         return memoize[n-1];
@@ -59,13 +58,11 @@ public class DP {
     static int logDP(int n){
         if (n == 1){
             return prices[n-1];
-        }else if (n < 1){
-            return 0;
         }else{
             if (memoize[n-1] != 0){
                 return memoize[n-1];
             }
-            int max = 0;
+            int max = prices[n-1];
             for (int i = 0; i < n; i++) {
                 int temp = prices[i] + logDP(n-i-1);
                 max = Math.max(max, temp);

@@ -1,13 +1,18 @@
 package com.sywood.starbucks.ben.Waterloo.Waterloo2007;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class WaterlooJ5DP {
     static int A = 0;
     static int B = 0;
     static int[] hotel;
     static ArrayList<Integer> hotels = new ArrayList<>();
+
+    static int truck(int distance){
+        
+        return distance;
+    }
+
     public static void main(String[] args)throws IOException{
         FileReader hotelz = new FileReader("data/hotels.in");
         BufferedReader input = new BufferedReader(hotelz);
