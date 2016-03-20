@@ -2,7 +2,7 @@ package com.sywood.starbucks.ben.Recursion;
 
 public class DP {
     static int[] memoize;
-    static int[] prices = new int[]{2, 5, 6};//, 9, 10, 11, 19};
+    static int[] prices = new int[]{2, 5, 6, 9, 10, 11, 19};
     static int findMin(int n){
         if (n == 1){
             return 0;
@@ -45,14 +45,14 @@ public class DP {
         }
     }
     static int logBottomsUp(int n){
-        memoize[0] = 0;
-        for (int i = 1; i <= n; i++) {
+        for (int i = 0; i < n; i++) {
             int max = 0;
             for (int j = 0; j < i; j++) {
                 int temp = prices[j] + memoize[i-j-1];
                 max = Math.max(max, temp);
             }
-            memoize[i-1] = max;
+            max = Math.max(max, prices[i]);
+            memoize[i] = max;
         }
         return memoize[n-1];
     }
@@ -66,7 +66,7 @@ public class DP {
                 return memoize[n-1];
             }
             int max = 0;
-            for (int i = 0; i < n; i++){
+            for (int i = 0; i < n; i++) {
                 int temp = prices[i] + logDP(n-i-1);
                 max = Math.max(max, temp);
             }

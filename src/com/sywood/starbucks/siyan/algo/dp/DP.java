@@ -48,6 +48,6 @@ public class DP {
     static int[] memoize;
     public static void main(String[] args){
         memoize = new int[prices.length];
-        System.out.println(logBU( 7 ));
+        System.out.println(logBU( 2 ));
     }
 }
