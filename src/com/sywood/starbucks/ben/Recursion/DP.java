@@ -45,16 +45,15 @@ public class DP {
         }
     }
     static int logBottomsUp(int n){
-        memoize[0] = prices[0];
-        for (int i = 0; i < n; i++){
+        memoize[0] = 0;
+        for (int i = 1; i <= n; i++) {
             int max = 0;
             for (int j = 0; j < i; j++) {
-                int temp;
-                temp = prices[j] + memoize[i - j];
-                System.out.println(j + " " + prices[j] + ", " + (i - j) + " " + prices[i - j]);
+                System.out.println(i + " " + j + " " + prices[j] + ", " + (i-j-1) + " " + memoize[i-j-1] + ", " + (prices[j] + memoize[i-j-1]));
+                int temp = prices[j] + memoize[i-j-1];
                 max = Math.max(max, temp);
             }
-            memoize[i] = max;
+            memoize[i-1] = max;
         }
         return memoize[n-1];
     }
