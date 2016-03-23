@@ -1,16 +1,29 @@
 package com.sywood.starbucks.ben;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ProjectEuler {
-    static int fib(int i){
+    static ArrayList<Integer> primes = new ArrayList<>();
+    int i = 2;
+    static void generate() {
+        int i = 2;
+        while (primes.size() != 20) {
+            if (isPrime(i)) {
+                primes.add(i);
+            }
+            i++;
+        }
+    }
+
+    private static int fib(int i){
         if (i == 0| i == 1){
             return 1;
         }else{
             return fib(i-1) + fib(i-2);
         }
     }
-    static boolean isPrime(int num){
+    private static boolean isPrime(int num){
         for (int i = 2; i <= Math.sqrt(num) ; i++) {
             if (num % i == 0){
                 return false;
@@ -18,7 +31,7 @@ public class ProjectEuler {
         }
         return true;
     }
-    static boolean isPal(int num){
+    private static boolean isPal(int num){
         String rev = "";
         String a = String.valueOf(num);
         for (int i = a.length()-1; i >= 0; i--) {
@@ -68,12 +81,31 @@ public class ProjectEuler {
         }
         return ret;
     }
-    static int five(){
-        int ret = 1;
-        for (int i = 20; i >= 2; i--) {
-            if (ret % i != 0){
-                ret *= i;
+    static ArrayList<Integer> factor(int num){
+        ArrayList<Integer> factors = new ArrayList<>();
+        while (num != 1){
+            for (int i = 0; i < 20; i++) {
+                if (num % primes.get(i) == 0){
+                    factors.add(primes.get(i));
+                    num /= primes.get(i);
+                }
             }
+        }
+        Collections.sort(factors);
+        return factors;
+    }
+    static ArrayList<Integer> combine(ArrayList<Integer> first, ArrayList<Integer> second){
+        ArrayList<Integer> ret = new ArrayList<>();
+
+        return ret;
+    }
+
+    static int five(){
+        generate();
+        ArrayList<Integer> tot = new ArrayList<>();
+        int ret = 1;
+        for (int i = 1; i <= 20; i++){
+            ArrayList<Integer> temp = factor(i);
         }
         return ret;
     }
@@ -201,7 +233,7 @@ public class ProjectEuler {
         }
         System.out.println(largest);
     }
-    static int factors(long num){
+    private static int factors(long num){
         int ret = 0;
         for (int i = 1; i <= num; i++){
             if (num % i == 0){
@@ -222,7 +254,7 @@ public class ProjectEuler {
         }
         System.out.println(divisors);
     }
-    static long collaz(long num){
+    private static long collaz(long num){
         int i = 1;
         while (num > 1){
             if (num % 2 == 0){
@@ -246,7 +278,7 @@ public class ProjectEuler {
         }
         System.out.println(start);
     }
-    static BigInteger factorial(int num){
+    private static BigInteger factorial(int num){
         BigInteger ret = BigInteger.ONE;
         for (int i = 1; i <= num; i++){
             ret = ret.multiply(BigInteger.valueOf(i));
@@ -257,10 +289,63 @@ public class ProjectEuler {
         //answer is 137846528820
         System.out.println(factorial(40).divide(factorial(20)).divide(factorial(20)));
     }
+    private static void sixteen(){
+        BigInteger num = BigInteger.valueOf(2);
+        num = num.pow(1000);
+        long sum = 0;
+        String digits = num.toString();
+        for (int i = 0; i < digits.length(); i++) {
+            int digit = Integer.valueOf(digits.substring(i, i+1));
+            sum += digit;
+        }
+        System.out.println(sum);
+    }
+
+    private static int length(int num){
+        int sum = 0;
+        int[] ones = new int[]{3, 3, 5, 4, 4, 3, 5, 5, 4};
+        int[] teens = new int[]{6, 6, 8, 8, 7, 7, 9, 9, 8};
+        int[] tens = new int[]{3, 6, 6, 5, 5, 5, 7, 6, 7};
+        if (num >= 100){
+            sum += 7;
+            if (num % 100 != 0){
+                sum += 3;
+            }
+        }
+        if (num >= 1000){
+            sum += 8;
+        }
+        if (num%10 > 0){
+            sum += ones[num%10-1];
+        }
+        num = Math.floorDiv(num, 10);
+        if (num%10 > 0){
+            sum += tens[num%10-1];
+            num = Math.floorDiv(num, 10);
+        }
+        if (num < 10 && num > 0){
+            sum += ones[num-1];
+        }
+        num = Math.floorDiv(num, 10);
+        while (num >= 10){
+            if (num %10 > 0) {
+                sum += ones[num % 10 - 1];
+            }
+            num = Math.floorDiv(num, 10);
+        }
+        return sum;
+    }
+    private static void seventeen(){
+        int sum = 0;
+        for (int i = 1; i <= 1000; i++){
+            sum += length(i);
+        }
+        System.out.println(sum);
+    }
 
 
     public static void main(String[] args){
         //TODO twelve(), thirteen()
-        fifteen();
+        seventeen();
     }
 }

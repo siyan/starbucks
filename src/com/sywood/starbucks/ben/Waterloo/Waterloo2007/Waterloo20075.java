@@ -9,7 +9,7 @@ public class Waterloo20075 {
     static int ways = 0;
     static ArrayList<Integer> hotels = new ArrayList<>();
     static int[] hotel;
-    static void recuVisit(int dist){
+    private static void recuVisit(int dist){
         if (dist >= 7000){
             ways++;
         }else{
@@ -20,11 +20,23 @@ public class Waterloo20075 {
             }
         }
     }
-    static void DPVisit(){
+    private static void DPVisit(){
         for (int i = 0; i < hotel.length; i++){
             for (int j = i+1; j < hotel.length; j++) {
                 if (A <= hotels.get(j)-hotels.get(i) && B >= hotels.get(j)-hotels.get(i)){
                     hotel[j] += hotel[i];
+                }
+            }
+        }
+    }
+    static void topDown(int dist){
+        if (dist >= 7000) {
+            ways++;
+        } else {
+
+            for (Integer hotel : hotels){
+                if (hotel - dist <= B && A <= hotel-dist){
+                    topDown(hotel);
                 }
             }
         }
