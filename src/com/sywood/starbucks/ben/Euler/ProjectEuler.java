@@ -1,7 +1,8 @@
-package com.sywood.starbucks.ben;
+package com.sywood.starbucks.ben.Euler;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class ProjectEuler {
     static ArrayList<Integer> primes = new ArrayList<>();
@@ -315,7 +316,10 @@ public class ProjectEuler {
         if (num >= 1000){
             sum += 8;
         }
-        if (num%10 > 0){
+        if (num%100 > 10 && num%100 < 20){
+            sum += teens[num%10-1];
+            num = Math.floorDiv(num, 10);
+        }else if (num%10 > 0){
             sum += ones[num%10-1];
         }
         num = Math.floorDiv(num, 10);
@@ -342,10 +346,22 @@ public class ProjectEuler {
         }
         System.out.println(sum);
     }
+    private static void twenty(){
+        BigInteger num = factorial(100);
+        String digits = num.toString();
+        long sum = 0;
+        for (int i = 0; i < digits.length(); i++){
+            sum += (long) Integer.parseInt(digits.substring(i, i+1));
+        }
+        System.out.println(sum);
+    }
+    private static void twentyOne(){
+
+    }
 
 
     public static void main(String[] args){
-        //TODO twelve(), thirteen()
-        seventeen();
+        //TODO twelve(), thirteen(), seventeen(), 8, 5
+        twenty();
     }
 }
