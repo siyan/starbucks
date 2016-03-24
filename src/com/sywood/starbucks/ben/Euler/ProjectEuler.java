@@ -393,6 +393,9 @@ public class ProjectEuler {
         }
         System.out.println(sum);
     }
+    private static void twentyTwo(){
+
+    }
 
 
     public static void main(String[] args){
