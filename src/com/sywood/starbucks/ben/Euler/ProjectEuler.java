@@ -355,13 +355,48 @@ public class ProjectEuler {
         }
         System.out.println(sum);
     }
+    private static ArrayList<Integer> properFactors(int num){
+        ArrayList<Integer> first = new ArrayList<>();
+        for (int i = 1; i < num; i++){
+            if (num % i == 0){
+                first.add(i);
+            }
+        }
+        return first;
+    }
+    private static int amicable(int num){
+        ArrayList<Integer> factors = properFactors(num);
+        int sum = 0;
+        for (int factor : factors){
+            sum += factor;
+        }
+        ArrayList<Integer> other = properFactors(sum);
+        int sum2 = 0;
+        for (int factor : other){
+            sum2 += factor;
+        }
+        if (sum2 != num | sum2 == sum){
+            return -1;
+        }
+        return sum;
+    }
     private static void twentyOne(){
-
+        ArrayList<Integer> amicable = new ArrayList<>();
+        int sum = 0;
+        for (int i = 2; i < 10000; i++) {
+            int friend = amicable(i);
+            if (friend != -1 && !amicable.contains(i)){
+                amicable.add(i);
+                amicable.add(friend);
+                sum += i + friend;
+            }
+        }
+        System.out.println(sum);
     }
 
 
     public static void main(String[] args){
         //TODO twelve(), thirteen(), seventeen(), 8, 5
-        twenty();
+        twentyOne();
     }
 }
