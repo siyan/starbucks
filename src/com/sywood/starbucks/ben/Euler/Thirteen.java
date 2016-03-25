@@ -10,12 +10,7 @@ public class Thirteen {
             BigInteger temp = new BigInteger(input.readLine());
             sum = sum.add(temp);
         }
-        BigInteger digit = BigInteger.ZERO;
-        while(sum.compareTo(BigInteger.TEN) != -1){
-            digit = digit.add(sum.mod(BigInteger.TEN));
-            sum = sum.divide(BigInteger.TEN);
-        }
-        digit = digit.add(sum.mod(BigInteger.TEN));
-        System.out.println(digit);
+        String ret = sum.toString();
+        System.out.println(ret.substring(0, 10));
     }
 }
