@@ -393,13 +393,8 @@ public class ProjectEuler {
         }
         System.out.println(sum);
     }
-    private static void twentyTwo(){
-
-    }
-
-
     public static void main(String[] args){
         //TODO twelve(), thirteen(), seventeen(), 8, 5
-        twelve();
+        seventeen();
     }
 }
