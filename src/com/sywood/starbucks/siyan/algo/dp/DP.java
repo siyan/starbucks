@@ -12,7 +12,7 @@ public class DP {
             int max = prices[i];
             for( int j = 0; j < i; j++) {
                 int val = prices[j] + memoize[i-(j+1)];
-                max = Math.max( max, val);
+                max = Math.max( max, val );
             }
             memoize[i] = max;
         }
