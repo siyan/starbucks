@@ -306,50 +306,33 @@ public class ProjectEuler {
     private static int[] teens = new int[]{6, 6, 8, 8, 7, 7, 9, 8, 8};
     private static int[] tens = new int[]{3, 6, 6, 5, 5, 5, 7, 6, 6};
 
-    private static int length(int num){
-        //gotta merge
-        int sum = 0;
-        int[] ones = new int[]{3, 3, 5, 4, 4, 3, 5, 5, 4};
-        int[] teens = new int[]{6, 6, 8, 8, 7, 7, 9, 9, 8};
-        int[] tens = new int[]{3, 6, 6, 5, 5, 5, 7, 6, 7};
-        if (num >= 100){
-            sum += 7;
-            if (num % 100 != 0){
-                sum += 3;
-            }
-        }
-        if (num >= 1000){
-            sum += 8;
-        }
-        if (num%100 > 10 && num%100 < 20){
-            sum += teens[num%10-1];
-            num = Math.floorDiv(num, 10);
-        }else if (num%10 > 0){
-            sum += ones[num%10-1];
-        }
-        num = Math.floorDiv(num, 10);
-        if (num%10 > 0){
-            sum += tens[num%10-1];
-            num = Math.floorDiv(num, 10);
-        }
-        if (num < 10 && num > 0){
-            sum += ones[num-1];
-        }
-        num = Math.floorDiv(num, 10);
-        while (num >= 10){
-            if (num %10 > 0) {
-                sum += ones[num % 10 - 1];
-            }
-            num = Math.floorDiv(num, 10);
-        }
-        return sum;
-    }
     private static void seventeen(){
-        int sum = 0;
-        for (int i = 1; i <= 1000; i++){
-            sum += length(i);
+        int sumOnes  = 0;
+        int sumTeens = 0;
+        int sumTens  = 0;
+        for( int i = 0; i < 9; i++) {
+            sumOnes  += ones[i];
+            sumTeens += teens[i];
+            sumTens  += tens[i];
         }
-        System.out.println(sum);
+
+        int sum99 = sumOnes + sumTeens + sumTens;
+
+        for( int i = 1; i < 9; i++ ) {
+            sum99 += 9 * tens[i] + sumOnes;
+        }
+
+        System.out.println( sum99 );
+
+        int sumThousand = sum99;
+        for( int i = 0; i < 9; i++ ) {
+            sumThousand += ones[i] + "HUNDRED".length();
+            sumThousand += 99 * ( ones[i] + "HUNDRED".length() + "AND".length() ) + sum99;
+        }
+
+        sumThousand += "ONETHOUSAND".length();
+
+        System.out.println( sumThousand);
     }
     private static void twenty(){
         BigInteger num = factorial(100);
