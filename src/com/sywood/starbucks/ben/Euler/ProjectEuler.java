@@ -301,49 +301,36 @@ public class ProjectEuler {
         }
         System.out.println(sum);
     }
+    private static int[] ones = new int[]{3, 3, 5, 4, 4, 3, 5, 5, 4};
+    private static int[] teens = new int[]{6, 6, 8, 8, 7, 7, 9, 9, 8};
+    private static int[] tens = new int[]{3, 6, 6, 5, 5, 5, 7, 6, 7};
 
-    private static int length(int num){
+    private static int lengthOfWord(){
         int sum = 0;
-        int[] ones = new int[]{3, 3, 5, 4, 4, 3, 5, 5, 4};
-        int[] teens = new int[]{6, 6, 8, 8, 7, 7, 9, 9, 8};
-        int[] tens = new int[]{3, 6, 6, 5, 5, 5, 7, 6, 7};
-        if (num >= 100){
-            sum += 7;
-            if (num % 100 != 0){
-                sum += 3;
+        for (int i = 1; i < 100; i++) {
+            if (i > 10 && i < 20){
+                sum += teens[i%10-1];
+            }else{
+                if (i%10 > 0) {
+                    sum += ones[i % 10 - 1];
+                }
+                if (i > 10) {
+                    sum += tens[Math.floorDiv(i, 10) - 1];
+                }
             }
-        }
-        if (num >= 1000){
-            sum += 8;
-        }
-        if (num%100 > 10 && num%100 < 20){
-            sum += teens[num%10-1];
-            num = Math.floorDiv(num, 10);
-        }else if (num%10 > 0){
-            sum += ones[num%10-1];
-        }
-        num = Math.floorDiv(num, 10);
-        if (num%10 > 0){
-            sum += tens[num%10-1];
-            num = Math.floorDiv(num, 10);
-        }
-        if (num < 10 && num > 0){
-            sum += ones[num-1];
-        }
-        num = Math.floorDiv(num, 10);
-        while (num >= 10){
-            if (num %10 > 0) {
-                sum += ones[num % 10 - 1];
-            }
-            num = Math.floorDiv(num, 10);
         }
         return sum;
     }
     private static void seventeen(){
         int sum = 0;
-        for (int i = 1; i <= 1000; i++){
-            sum += length(i);
+        int current = lengthOfWord();
+        sum += current*9;
+        for (int i = 1; i < 10; i++){
+            sum += 7*100;
+            sum += ones[i-1]*100;
+            sum += 3*99;
         }
+        sum += 11;
         System.out.println(sum);
     }
     private static void twenty(){
