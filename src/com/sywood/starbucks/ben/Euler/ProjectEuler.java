@@ -322,17 +322,15 @@ public class ProjectEuler {
             sum99 += 9 * tens[i] + sumOnes;
         }
 
-        System.out.println( sum99 );
-
-        int sumThousand = sum99;
+        int tot = sum99;
         for( int i = 0; i < 9; i++ ) {
-            sumThousand += ones[i] + "HUNDRED".length();
-            sumThousand += 99 * ( ones[i] + "HUNDRED".length() + "AND".length() ) + sum99;
+            tot += ones[i] + 7;
+            tot += 99 * ( ones[i] + 10 ) + sum99;
         }
 
-        sumThousand += "ONETHOUSAND".length();
+        tot += 11;
 
-        System.out.println( sumThousand);
+        System.out.println( tot);
     }
     private static void twenty(){
         BigInteger num = factorial(100);
