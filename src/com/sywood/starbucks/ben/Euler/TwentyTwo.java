@@ -14,6 +14,5 @@ public class TwentyTwo {
             tot = tot*(i);
             sum += tot;
         }
-        System.out.println(sum);
     }
 }
