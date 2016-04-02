@@ -307,6 +307,7 @@ public class ProjectEuler {
     private static int[] tens = new int[]{3, 6, 6, 5, 5, 5, 7, 6, 6};
 
     private static int length(int num){
+        //gotta merge
         int sum = 0;
         int[] ones = new int[]{3, 3, 5, 4, 4, 3, 5, 5, 4};
         int[] teens = new int[]{6, 6, 8, 8, 7, 7, 9, 9, 8};
