@@ -16,7 +16,7 @@ public class Nineteen {
                 for (int month : months) {
 
                     for (int i = 1; i < month; i++) {
-                        if ((dayPassed - 5) % 4 == 0) {
+                        if ((dayPassed - 5) % 7 == 0) {
                             numSundays++;
                         }
                         dayPassed++;
