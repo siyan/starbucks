@@ -12,7 +12,6 @@ public class Nineteen {
             } else {
                 months[1] = 28;
             }
-            int j = 1;
             for (int month : months) {
                 for (int i = 1; i <= month; i++) {
                     if (dayNum == 7 && i == 1) {
@@ -23,7 +22,6 @@ public class Nineteen {
                     }
                     dayNum++;
                 }
-                j++;
             }
 
             year++;
