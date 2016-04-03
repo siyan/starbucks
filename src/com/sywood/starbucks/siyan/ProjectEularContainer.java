@@ -59,7 +59,6 @@ public class ProjectEularContainer {
                     dayNum++;
                     if (dayNum == 7) {
                         dayNum = 0;
-
                         if (i == 1) {
                             numSundays++;
                         }
