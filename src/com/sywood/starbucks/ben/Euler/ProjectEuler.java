@@ -153,11 +153,11 @@ public class ProjectEuler {
                 "05886116467109405077541002256983155200055935729725"+
                 "71636269561882670428252483600823257530420752963450";
         long product = 0;
-        int tot = 1;
         for (int i = 0; i < num.length()-12; i++) {
+            int tot = 1;
             String sub = num.substring(i, i+13);
             for (char digit : sub.toCharArray()){
-                tot *= digit;
+                tot *= Character.getNumericValue(digit);
             }
             product = Math.max(tot, product);
         }
