@@ -69,6 +69,7 @@ public class ProjectEularContainer {
             year++;
         }
         System.out.println(numSundays);
+
     }
 
     public static void main(String[] args) {
