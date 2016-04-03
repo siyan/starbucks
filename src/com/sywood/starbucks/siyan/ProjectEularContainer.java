@@ -1,7 +1,10 @@
 package com.sywood.starbucks.siyan;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * Created by siyan on 2016-04-02.
@@ -41,6 +44,37 @@ public class ProjectEularContainer {
         System.out.println(sumThousand);
     }
 
+    static void p018() throws IOException {
+
+        FileReader fr = new FileReader("data/p018.in");
+        BufferedReader reader = new BufferedReader(fr);
+
+        // first line has only one number
+        String line = reader.readLine();
+        int[] prevMax = new int[1];
+        prevMax[0] = Integer.parseInt( line );
+
+        for( line = reader.readLine(); line != null; line = reader.readLine()) {
+            String[] nums = line.split( " ");
+            int[] currMax = new int[nums.length];
+
+            // first and last number are single parent
+            currMax[0] = Integer.parseInt( nums[0] ) + prevMax[0];
+            currMax[prevMax.length] = Integer.parseInt( nums[prevMax.length] ) + prevMax[prevMax.length-1];
+
+            for( int i = 1; i < prevMax.length; i++ ) {
+                currMax[i] = Math.max( prevMax[i-1], prevMax[i]) + Integer.parseInt( nums[i] );
+            }
+            prevMax = currMax;
+        }
+
+        int x = 0;
+        for( int j : prevMax  ) {
+            x = Math.max( x, j );
+        }
+        System.out.println( x );
+    }
+
     static void p019() {
         int numSundays = 0;
         int[] months = new int[]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -75,6 +109,11 @@ public class ProjectEularContainer {
     public static void main(String[] args) {
 
         //p017();
-        p019();
+        try {
+            p018();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //p019();
     }
 }
