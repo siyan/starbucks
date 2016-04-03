@@ -380,7 +380,7 @@ public class ProjectEuler {
         System.out.println(sum);
     }
     public static void main(String[] args){
-        //TODO twelve(), thirteen(), 8, 5
+        //TODO twelve(), 8, 5
         seventeen();
     }
 }
