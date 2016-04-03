@@ -23,7 +23,7 @@ public class Nineteen {
             for (int month : months) {
                 for (int i = 1; i <= month; i++) {
                     dayNum++;
-                    if (dayNum == 7) {
+                    if (dayNum > 6) {
                         dayNum = 0;
                         if (i == 1){
                             numSundays++;
