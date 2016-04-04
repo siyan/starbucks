@@ -154,7 +154,7 @@ public class ProjectEuler {
                 "71636269561882670428252483600823257530420752963450";
         long product = 0;
         for (int i = 0; i < num.length()-12; i++) {
-            int tot = 1;
+            long tot = 1;
             String sub = num.substring(i, i+13);
             for (char digit : sub.toCharArray()){
                 tot *= Character.getNumericValue(digit);
