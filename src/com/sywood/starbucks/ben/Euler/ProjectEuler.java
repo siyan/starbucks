@@ -2,6 +2,7 @@ package com.sywood.starbucks.ben.Euler;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class ProjectEuler {
@@ -233,26 +234,32 @@ public class ProjectEuler {
         }
         System.out.println(largest);
     }
+    private static HashMap<Long, Integer> previous = new HashMap<>();
     private static int factors(long num){
-        int ret = 0;
-        for (int i = 1; i <= num; i++){
-            if (num % i == 0){
-                ret += 1;
+        if (previous.containsKey(num)){
+            return previous.get(num);
+        }else {
+            int ret = 0;
+            for (int i = 1; i*i <= num; i++) {
+                if (num % i == 0) {
+                    ret += 1;
+                }
             }
+            previous.put(num, ret);
+            return ret;
         }
-        return ret;
     }
     static void twelve(){
         int divisors = 0;
-        long num = 0;
         long i = 1;
-        while (divisors <= 500){
-            num += i;
+        long num = 0;
+        while (divisors < 500){
+            num = (i*(i+1))/2;
             divisors = (factors(num));
-            i++;
             System.out.println(i + ", " + num + ", " + divisors);
+            i++;
         }
-        System.out.println(divisors);
+        System.out.println(num);
     }
     private static long collaz(long num){
         int i = 1;
@@ -379,7 +386,7 @@ public class ProjectEuler {
         System.out.println(sum);
     }
     public static void main(String[] args){
-        //TODO twelve(), 8, 5
-        eight();
+        //TODO twelve()
+        twelve();
     }
 }
