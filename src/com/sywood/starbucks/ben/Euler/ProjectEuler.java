@@ -234,32 +234,42 @@ public class ProjectEuler {
         }
         System.out.println(largest);
     }
-    private static HashMap<Long, Integer> previous = new HashMap<>();
-    private static int factors(long num){
-        if (previous.containsKey(num)){
-            return previous.get(num);
-        }else {
-            int ret = 0;
-            for (int i = 1; i*i <= num; i++) {
-                if (num % i == 0) {
-                    ret += 1;
-                }
+    public static long getTriangle(int n) {
+        long numberOfDivisors = 0;
+        long firstCoprime, secondCoprime;
+        while (true) {
+            if ( n % 2 == 0 ) {
+                firstCoprime = getNumberOfDivisors(n/2);
+                secondCoprime = getNumberOfDivisors(n+1);
+
+            } else {
+                firstCoprime = getNumberOfDivisors(n);
+                secondCoprime = getNumberOfDivisors((n+1)/2);
             }
-            previous.put(num, ret);
-            return ret;
+            numberOfDivisors = firstCoprime * secondCoprime;
+            if ( numberOfDivisors > 500 ) {
+                return n*(n+1)/2;
+            }
+            n++;
         }
     }
-    static void twelve(){
+
+    private static long getNumberOfDivisors(long nr) {
         int divisors = 0;
-        long i = 1;
-        long num = 0;
-        while (divisors < 500){
-            num = (i*(i+1))/2;
-            divisors = (factors(num));
-            System.out.println(i + ", " + num + ", " + divisors);
-            i++;
+        int i;
+        int sqrt = (int) Math.sqrt(nr);
+        for ( i = 1 ; i <= sqrt ; i++ ) {
+            if ( nr % i == 0 ) {
+                divisors+=2;           // E.g.: (2, n/2), (3, n/3)
+            }
         }
-        System.out.println(num);
+        if ( sqrt*sqrt == nr ){        // it was counted twice
+            divisors--;
+        }
+        return divisors;
+    }
+    private static void twelve(){
+        System.out.println(getTriangle(1));
     }
     private static long collaz(long num){
         int i = 1;
@@ -385,6 +395,7 @@ public class ProjectEuler {
         }
         System.out.println(sum);
     }
+
     public static void main(String[] args){
         //TODO twelve()
         twelve();
