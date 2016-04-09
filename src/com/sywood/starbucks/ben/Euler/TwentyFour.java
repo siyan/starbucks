@@ -30,7 +30,7 @@ public class TwentyFour {
         String ret = "";
         while (start >= 0){
             int temp = Math.floorDiv(index, factorial(start));
-            //System.out.println(temp + ", " + digits.get(temp));
+            System.out.println(temp + ", " + digits.get(temp));
             ret += digits.get(temp);
             digits.remove(temp);
             index -= factorial(start)*temp;
