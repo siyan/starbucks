@@ -40,7 +40,7 @@ public class Waterloo20085 {
         }
     }
 
-    public static void main(String args){
+    public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         int count = input.nextInt();
         for (int i = 0; i < atoms.size(); i++) {

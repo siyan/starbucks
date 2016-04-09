@@ -33,10 +33,10 @@ public class WaterlooJ5DP {
          }else{
              for (int i = 0; i < hotel.length; i++) {
                  if (memoise[distance-1] != 0){
-                      memoise[distance-1];
+                      //memoise[distance-1];
                  }else {
                      if (hotel[i] - distance > A && hotel[i] - distance < B) {
-                         memoise[distance-1] = truck(hotel[i]);
+                         //memoise[distance-1] = truck(hotel[i]);
                      }
                  }
              }
