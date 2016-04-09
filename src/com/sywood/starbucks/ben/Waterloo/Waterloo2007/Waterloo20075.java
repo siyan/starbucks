@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Waterloo20075 {
-    static int A = 0;
-    static int B = 0;
-    static int ways = 0;
-    static ArrayList<Integer> hotels = new ArrayList<>();
-    static int[] hotel;
+    private static int A = 0;
+    private static int B = 0;
+    private static int ways = 0;
+    private static ArrayList<Integer> hotels = new ArrayList<>();
+    private static int[] hotel;
     private static void recuVisit(int dist){
         if (dist >= 7000){
             ways++;
@@ -33,7 +33,6 @@ public class Waterloo20075 {
         if (dist >= 7000) {
             ways++;
         } else {
-
             for (Integer hotel : hotels){
                 if (hotel - dist <= B && A <= hotel-dist){
                     topDown(hotel);
