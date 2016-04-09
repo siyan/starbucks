@@ -33,12 +33,12 @@ public class ccc07j5 {
     }
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         //String[] M = br.readLine().split(",");
         String[] M = "0, 990, 1010, 1970, 2030, 2940, 3060, 3930, 4060, 4970, 5030, 5990, 6010, 7000".split(",");
         ways = new int[M.length];
         motel = new int[M.length];
-        br.close();
+        //br.close();
         for( int i = 0; i < M.length; i++ ) {
             motel[i] = Integer.parseInt( M[i].trim());
         }
