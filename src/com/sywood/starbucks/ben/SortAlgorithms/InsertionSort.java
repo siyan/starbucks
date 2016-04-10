@@ -4,12 +4,9 @@ public class InsertionSort {
     static int[] sort(int[] array){
         for (int i = 1; i < array.length; i++) {
             if (array[i] < array[i-1]){
-                int temp = array[i];
-                array[i] = array[i-1];
-                array[i-1] = temp;
-                for (int j = i-1; j > 0; j--) {
+                for (int j = i; j > 0; j--) {
                     if (array[j] < array[j-1]){
-                        int x = array[j];
+                        int temp = array[j];
                         array[j] = array[j-1];
                         array[j-1] = temp;
                     }
@@ -17,5 +14,13 @@ public class InsertionSort {
             }
         }
         return array;
+    }
+
+    public static void main(String[] args){
+        int[] test = new int[]{2, 3, 1, 7};
+        test = sort(test);
+        for (int num : test){
+            System.out.print(num + ", ");
+        }
     }
 }
