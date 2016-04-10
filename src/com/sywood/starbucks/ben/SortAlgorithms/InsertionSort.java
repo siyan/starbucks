@@ -1,7 +1,7 @@
 package com.sywood.starbucks.ben.SortAlgorithms;
 
 public class InsertionSort {
-    static int[] sort(int[] array){
+    private static int[] sort(int[] array){
         for (int i = 1; i < array.length; i++) {
             if (array[i] < array[i-1]){
                 for (int j = i; j > 0; j--) {
