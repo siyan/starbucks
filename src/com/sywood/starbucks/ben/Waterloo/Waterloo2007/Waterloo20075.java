@@ -9,7 +9,26 @@ public class Waterloo20075 {
     private static int ways = 0;
     private static ArrayList<Integer> hotels = new ArrayList<>();
     private static int[] hotel;
+    private static int[] memoize = new int[24];
+    private static void generate(){
+        hotel = new int[34];
+        hotel[0] = 0;
+        hotel[1] = 990;
+        hotel[2] = 1010;
+        hotel[3] = 1970;
+        hotel[4] = 2030;
+        hotel[5] = 2940;
+        hotel[6] = 3060;
+        hotel[7] = 3930;
+        hotel[8] = 4060;
+        hotel[9] = 4970;
+        hotel[10] = 5030;
+        hotel[11] = 5990;
+        hotel[12] = 6010;
+        hotel[13] = 7000;
+    }
     private static void recuVisit(int dist){
+
         if (dist >= 7000){
             ways++;
         }else{
@@ -29,41 +48,34 @@ public class Waterloo20075 {
             }
         }
     }
-    static void topDown(int dist){
-        if (dist >= 7000) {
-            ways++;
-        } else {
-            for (Integer hotel : hotels){
-                if (hotel - dist <= B && A <= hotel-dist){
-                    topDown(hotel);
+    static int topDown(int currIndex){
+        int min = currIndex-1;
+        while(min > -1 && hotel[currIndex] - hotel[min] < A) min--;
+        if (min <= 0){
+            return 1;
+        }else{
+            while(min > -1 && hotel[currIndex] - hotel[min] < B){
+                if (memoize[min] == 0){
+                    memoize[min] = topDown(min);
                 }
+                memoize[currIndex] += memoize[min];
+                min--;
             }
+            return memoize[currIndex];
         }
     }
 
     public static void main(String[] args) throws IOException{
-        FileReader hotelz = new FileReader("data/hotels.in");
-        BufferedReader input = new BufferedReader(hotelz);
-        String[] locs = input.readLine().split(" ");
-        for (String loc : locs){
-            hotels.add(Integer.parseInt(loc));
-        }
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        generate();
         A = Integer.parseInt(input.readLine());
         B = Integer.parseInt(input.readLine());
-        int m = Integer.parseInt(input.readLine());
-        hotel = new int[13+m];
-        for (int i = 0; i < 13+m; i++){
-            hotel[i] = 1;
+        int N = Integer.parseInt(input.readLine());
+        for (int i = 0; i < N; i++) {
+            hotel[14+i] = Integer.parseInt(input.readLine());
         }
-        for (int i = 0; i < m; i++){
-            int x = Integer.parseInt(input.readLine());
-            if(!hotels.contains(x)){
-                hotels.add(x);
-            }
-        }
-        Collections.sort(hotels);
-        recuVisit(0);
-        DPVisit();
-        System.out.println(hotel[13+m-1]);
+        //DPVisit();
+
+        System.out.println(topDown(13+N));
     }
 }

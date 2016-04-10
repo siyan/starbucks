@@ -27,7 +27,6 @@ public class ccc07j5 {
                 ways[curr] += ways[stay];
                 stay--;
             }
-
             return ways[curr];
         }
     }
