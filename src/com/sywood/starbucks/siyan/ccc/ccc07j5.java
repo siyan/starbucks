@@ -16,7 +16,7 @@ public class ccc07j5 {
         int stay = curr - 1;
         while (stay > -1 && motel[curr] - motel[stay] < A) stay--;
         if( stay <= 0 ) {
-            return (motel[curr] - motel[stay] < A) ? 0 : 1;
+            return (stay == -1 || motel[curr] - motel[stay] < A) ? 0 : 1;
         }
         else {
 
