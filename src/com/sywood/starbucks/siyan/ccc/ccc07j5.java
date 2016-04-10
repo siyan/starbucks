@@ -13,10 +13,11 @@ public class ccc07j5 {
     static int[] motel;
 
     static int recu(int A, int B, int curr ) {
+        if( curr == 0 ) return 0;
         int stay = curr - 1;
         while (stay > -1 && motel[curr] - motel[stay] < A) stay--;
         if( stay <= 0 ) {
-            return (stay == -1 || motel[curr] - motel[stay] < A) ? 0 : 1;
+            return (stay < 0 || motel[curr] - motel[stay] < A) ? 0 : 1;
         }
         else {
 
