@@ -90,9 +90,6 @@ public class Waterloo20075 {
             hotel[14+i] = Integer.parseInt(input.readLine());
         }
         hotel = sort(hotel);
-        for (int loc : hotel){
-            System.out.print(loc + ", ");
-        }
         //DPVisit();
 
         System.out.println(topDown(13+N));
