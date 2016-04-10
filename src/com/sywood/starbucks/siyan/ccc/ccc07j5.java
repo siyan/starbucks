@@ -16,15 +16,17 @@ public class ccc07j5 {
         int stay = curr - 1;
         while (stay > -1 && motel[curr] - motel[stay] < A) stay--;
         if( stay <= 0 ) {
-            return 1;
+            return (motel[curr] - motel[stay] < A) ? 0 : 1;
         }
         else {
 
             while (stay > -1 && motel[curr] - motel[stay] < B) {
-                if( ways[stay] == 0 ) {
-                    ways[stay] = recu(A, B, stay);
+                if( motel[curr] - motel[stay] < B ) {
+                    if (ways[stay] == 0) {
+                        ways[stay] = recu(A, B, stay);
+                    }
+                    ways[curr] += ways[stay];
                 }
-                ways[curr] += ways[stay];
                 stay--;
             }
 
