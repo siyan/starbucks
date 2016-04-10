@@ -1,6 +1,7 @@
 package com.sywood.starbucks.ben.Waterloo.Waterloo2007;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class Waterloo20075 {
@@ -52,9 +53,9 @@ public class Waterloo20075 {
         int min = currIndex-1;
         while(min > -1 && hotel[currIndex] - hotel[min] < A) min--;
         if (min <= 0){
-            return 1;
+            return (min == -1 || hotel[currIndex] - hotel[min] < A) ? 0 : 1;
         }else{
-            while(min > -1 && hotel[currIndex] - hotel[min] < B){
+            while(min > -1 && hotel[currIndex] - hotel[min] <= B){
                 if (memoize[min] == 0){
                     memoize[min] = topDown(min);
                 }
