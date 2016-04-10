@@ -7,6 +7,7 @@ import java.util.Collections;
 public class Waterloo20075 {
     private static int A = 0;
     private static int B = 0;
+    private static int N = 0;
     private static int ways = 0;
     private static ArrayList<Integer> hotels = new ArrayList<>();
     private static int[] hotel;
@@ -65,15 +66,32 @@ public class Waterloo20075 {
             return memoize[currIndex];
         }
     }
+    private static int[] sort(int[] array){
+        for (int i = 1; i < 14+N; i++) {
+            if (array[i] < array[i-1]){
+                int temp = array[i];
+                int j;
+                for (j = i-1; j >= 0 && temp < array[j]; j--) {
+                    array[j+1] = array[j];
+                }
+                array[j+1] = temp;
+            }
+        }
+        return array;
+    }
 
     public static void main(String[] args) throws IOException{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         generate();
         A = Integer.parseInt(input.readLine());
         B = Integer.parseInt(input.readLine());
-        int N = Integer.parseInt(input.readLine());
+        N = Integer.parseInt(input.readLine());
         for (int i = 0; i < N; i++) {
             hotel[14+i] = Integer.parseInt(input.readLine());
+        }
+        hotel = sort(hotel);
+        for (int loc : hotel){
+            System.out.print(loc + ", ");
         }
         //DPVisit();
 
