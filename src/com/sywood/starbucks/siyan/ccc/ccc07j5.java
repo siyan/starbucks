@@ -29,7 +29,6 @@ public class ccc07j5 {
                 }
                 stay--;
             }
-
             return ways[curr];
         }
     }
