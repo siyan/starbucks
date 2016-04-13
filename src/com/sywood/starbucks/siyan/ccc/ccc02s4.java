@@ -26,7 +26,7 @@ public class ccc02s4 {
 
         _best[0] = 0;
         _best[1] = _speeds[0];
-        for( int i = 2; i < _names.length; i++ ) {
+        for( int i = 2; i <= _names.length; i++ ) {
             int speed = 9999999;
             for( int j = Math.max( 0, i - M + 1) ; j <= i ; j++) {
                 int gs = groupSpeed( j, i ) + _best[j-1];
@@ -36,7 +36,7 @@ public class ccc02s4 {
             _best[i] = speed;
         }
 
-        System.out.println( _best[_names.length - 1]);
+        System.out.println( _best[_names.length]);
 
     }
 
