@@ -13,23 +13,21 @@ public class ccc07j5 {
     static int[] motel;
 
     static int recu(int A, int B, int curr ) {
-        if( curr == 0 ) return 0;
         int stay = curr - 1;
         while (stay > -1 && motel[curr] - motel[stay] < A) stay--;
         if( stay <= 0 ) {
-            return (stay < 0 || motel[curr] - motel[stay] < A) ? 0 : 1;
+            return (motel[curr] - motel[stay] <= A) ? 0 : 1;
         }
         else {
 
-            while (stay > -1 && motel[curr] - motel[stay] < B) {
-                if( motel[curr] - motel[stay] < B ) {
+            while (stay > -1 && motel[curr] - motel[stay] <= B) {
                     if (ways[stay] == 0) {
                         ways[stay] = recu(A, B, stay);
                     }
                     ways[curr] += ways[stay];
-                }
                 stay--;
             }
+
             return ways[curr];
         }
     }
@@ -45,7 +43,7 @@ public class ccc07j5 {
             motel[i] = Integer.parseInt( M[i].trim());
         }
 
-        recu(970, 1300, M.length -1);
+        recu(970, 1030, M.length -1);
         System.out.println( ways[M.length - 1] );
 
     }
