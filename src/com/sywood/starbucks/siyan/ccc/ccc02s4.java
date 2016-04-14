@@ -3,6 +3,7 @@ package com.sywood.starbucks.siyan.ccc;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 
 /**
  * Created by siyan on 2016-04-12.
@@ -36,7 +37,7 @@ public class ccc02s4 {
             _best[i] = speed;
         }
 
-        System.out.println( _best[_names.length]);
+        System.out.println( "Total Time: " + _best[_names.length]);
 
     }
 
@@ -44,8 +45,7 @@ public class ccc02s4 {
 
         FileReader fr = null;
         try {
-            fr = new FileReader("data/bridge.in");
-            BufferedReader textReader = new BufferedReader(fr);
+            BufferedReader textReader = new BufferedReader(new InputStreamReader(System.in));
             M = Integer.valueOf(textReader.readLine());
             int Q = Integer.valueOf(textReader.readLine());
 
