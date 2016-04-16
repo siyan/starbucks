@@ -29,7 +29,7 @@ public class TwentyFour {
         //System.out.println(factorial(9));
         String ret = "";
         while (start >= 0){
-            int temp = Math.floorDiv(index, factorial(start));
+            int temp = 0; //Math.floorDiv(index, factorial(start));
             System.out.println(temp + ", " + digits.get(temp));
             ret += digits.get(temp);
             digits.remove(temp);

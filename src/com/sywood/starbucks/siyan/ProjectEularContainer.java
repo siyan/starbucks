@@ -166,12 +166,29 @@ public class ProjectEularContainer {
 
     }
 
+    static void p28b() {
+        int number = 1;
+        long sum = number;
+        int MAX_LAYER = 500;
+        for (int layer = 1; layer <= MAX_LAYER; layer++) {
+            int incr = layer * 2 ;
+            for (int direction = 0; direction < 4; direction++) {
+                number += incr;
+                sum += number;
+                //System.out.println( number + " -> " + sum);
+            }
+        }
+
+        System.out.println( sum );
+    }
+
     public static void main(String[] args) {
+
 
         //p017();
         //p018();
         //p019();
-        p28();
+        p28b();
 
     }
 }
