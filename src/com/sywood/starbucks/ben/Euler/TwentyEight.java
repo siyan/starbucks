@@ -13,25 +13,30 @@ public class TwentyEight {
                 x += 1;
                 direction = -1;
             }else{
-                x-=1;
+                x -= 1;
             }
             for (int j = 0; j < i; j++) {
                 num++;
+                System.out.println(y+j*direction + ", " + x);
+                /*
                 int tempY = y+(j*direction);
                 spiral[tempY][x] = num;
+                */
             }
             for (int j = 0; j < i-1; j++) {
                 num++;
+                System.out.println(y + ", " + x+j*direction);
+                /*
                 int tempX = x+(j*direction);
                 spiral[tempX][x] = num;
-            }
-            for (int[] row : spiral){
-                for (int temp : row){
-                    System.out.print(temp + " ");
-                }
-                System.out.print("\n");
+                */
             }
         }
-
+        for (int[] row : spiral){
+            for (int temp : row){
+                System.out.print(temp + " ");
+            }
+            System.out.print("\n");
+        }
     }
 }

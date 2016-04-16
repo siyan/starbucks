@@ -158,7 +158,7 @@ public class ProjectEularContainer {
                             y += i;
                             break;
                     }
-                    System.out.println("("  + x + ", " + y + ") = " + count);
+                    System.out.println("(" + x + ", " + y + ") = " + count);
                     count++;
                 }
             }
