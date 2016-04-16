@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by siyan on 2016-04-02.
@@ -103,17 +105,73 @@ public class ProjectEularContainer {
             year++;
         }
         System.out.println(numSundays);
+    }
+
+    static int p26recuringDigit( int n ) {
+        Map<Integer,Integer> stateToIter = new HashMap<Integer,Integer>();
+        int state = 1;
+        int iter = 0;
+        while (!stateToIter.containsKey(state)) {
+            stateToIter.put(state, iter);
+            state = state * 10 % n;
+            iter++;
+            System.out.println( n + ": " + state + " - " + iter);
+        }
+        System.out.println ( " ====> " + (iter -stateToIter.get(state)));
+        return iter - stateToIter.get(state);
+    }
+
+    static void p26() {
+        for( int i = 1; i < 20; i = i + 1 ) {
+            String a = Double.toString( 1.0d / i );
+
+            System.out.println( i + ": " + a);
+            if( a.length() > 1 )
+                p26recuringDigit( i );
+        }
+
+    }
+
+    static void p28() {
+        int count = 2;
+        int LAYER = 2;
+        for( int i = 0; i <= LAYER; i++ ) {
+            for( int j = 0; j < 4; j++ ) {
+                for( int k = 1; k <= 2 * i; k++ ) {
+                    int x = LAYER;
+                    int y = LAYER;
+                    switch( j ) {
+                        case 0:
+                            x += i;
+                            y += i - k;
+                            break;
+                        case 1:
+                            x += i - k;
+                            y -= i;
+                            break;
+                        case 2:
+                            x -= i;
+                            y += i - i;
+                            break;
+                        case 3:
+                            x += k - i;
+                            y += i;
+                            break;
+                    }
+                    System.out.println("("  + x + ", " + y + ") = " + count);
+                    count++;
+                }
+            }
+        }
 
     }
 
     public static void main(String[] args) {
 
         //p017();
-        try {
-            p018();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //p018();
         //p019();
+        p28();
+
     }
 }
