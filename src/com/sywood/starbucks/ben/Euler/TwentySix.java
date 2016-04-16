@@ -8,8 +8,7 @@ public class TwentySix {
         System.out.println(run());
     }
 
-
-    public static String run() {
+    private static String run() {
         int bestNumber = 0;
         int bestLength = 0;
         for (int i = 1; i <= 1000; i++) {
