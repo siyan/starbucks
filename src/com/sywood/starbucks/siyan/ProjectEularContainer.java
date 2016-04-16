@@ -151,7 +151,7 @@ public class ProjectEularContainer {
                             break;
                         case 2:
                             x -= i;
-                            y += i - i;
+                            y += k - i;
                             break;
                         case 3:
                             x += k - i;
