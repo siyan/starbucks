@@ -143,19 +143,19 @@ public class ProjectEularContainer {
                     switch( j ) {
                         case 0:
                             x += i;
-                            y += i - k;
+                            y -= i - k;
                             break;
                         case 1:
                             x += i - k;
-                            y -= i;
+                            y += i;
                             break;
                         case 2:
                             x -= i;
-                            y += k - i;
+                            y -= k - i;
                             break;
                         case 3:
                             x += k - i;
-                            y += i;
+                            y -= i;
                             break;
                     }
                     System.out.println("(" + x + ", " + y + ") = " + count);
