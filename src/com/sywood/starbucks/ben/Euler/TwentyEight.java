@@ -1,7 +1,37 @@
 package com.sywood.starbucks.ben.Euler;
 
-/**
- * Created by Striker on 2016-04-16.
- */
 public class TwentyEight {
+    public static void main(String[] args){
+        int[][] spiral = new int[5][5];
+        int x = 2;
+        int y = 2;
+        int num = 1;
+        spiral[x][y] = num;
+        for (int i = 2; i <= 5; i++) {
+            int direction = 1;
+            if (i%2 == 1){
+                x += 1;
+                direction = -1;
+            }else{
+                x-=1;
+            }
+            for (int j = 0; j < i; j++) {
+                num++;
+                int tempY = y+(j*direction);
+                spiral[tempY][x] = num;
+            }
+            for (int j = 0; j < i-1; j++) {
+                num++;
+                int tempX = x+(j*direction);
+                spiral[tempX][x] = num;
+            }
+            for (int[] row : spiral){
+                for (int temp : row){
+                    System.out.print(temp + " ");
+                }
+                System.out.print("\n");
+            }
+        }
+
+    }
 }
