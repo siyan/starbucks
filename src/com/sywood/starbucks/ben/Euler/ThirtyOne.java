@@ -2,6 +2,7 @@ package com.sywood.starbucks.ben.Euler;
 
 public class ThirtyOne {
     static long[] memoize = new long[200];
+    static int[] coinSizes = new int[]{ 1, 2, 5, 10, 20, 50, 100, 200 };
     private static long calculate(int money){
         if (money == 0){
             return 1;
