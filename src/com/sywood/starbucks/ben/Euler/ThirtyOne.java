@@ -3,6 +3,7 @@ package com.sywood.starbucks.ben.Euler;
 public class ThirtyOne {
     static long[] memoize = new long[200];
     static int[] coinSizes = new int[]{ 1, 2, 5, 10, 20, 50, 100, 200 };
+    static long[] bottomUp;
     private static long calculate(int money){
         if (money == 0){
             return 1;
@@ -32,8 +33,20 @@ public class ThirtyOne {
             return memoize[money-1];
         }
     }
+    private static long dpUp(int money){
+        bottomUp = new long[money+1];
+        bottomUp[0] = 1;
+
+        for (int i = 0; i < coinSizes.length; i++) {
+            for (int j = coinSizes[i]; j <= money; j++) {
+                bottomUp[j] += bottomUp[j - coinSizes[i]];
+            }
+        }
+
+        return bottomUp[money];
+    }
 
     public static void main(String[] args){
-        System.out.println(calculate(200));
+        System.out.println(dpUp(200));
     }
 }
