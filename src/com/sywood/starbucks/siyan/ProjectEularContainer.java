@@ -134,7 +134,8 @@ public class ProjectEularContainer {
 
     static void p28() {
         int count = 2;
-        int LAYER = 2;
+        int LAYER = 500;
+        long sum = 1;
         for( int i = 0; i <= LAYER; i++ ) {
             for( int j = 0; j < 4; j++ ) {
                 for( int k = 1; k <= 2 * i; k++ ) {
@@ -158,11 +159,16 @@ public class ProjectEularContainer {
                             y -= i;
                             break;
                     }
-                    System.out.println("(" + x + ", " + y + ") = " + count);
+
+                    if( x == y  || 2 * LAYER - x == y ) {
+                        sum += count;
+                        //System.out.println("(" + x + ", " + y + ") = " + sum);
+                    }
                     count++;
                 }
             }
         }
+        System.out.println( sum );
 
     }
 
@@ -188,6 +194,7 @@ public class ProjectEularContainer {
         //p017();
         //p018();
         //p019();
+        p28();
         p28b();
 
     }
