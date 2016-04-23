@@ -31,7 +31,7 @@ public class UVa725a {
     }
 
     public static void used() {
-        int val = 13405;
+        int val = 12405;
         int tmp = val;
         int used = 0;
         while( tmp > 0) {
