@@ -30,6 +30,17 @@ public class UVa725a {
         System.out.println( a + " right shift 2 => " + ( a >> 2 ) + ", " + Integer.toBinaryString( a >> 2 ));
     }
 
+    public static void used() {
+        int val = 13405;
+        int tmp = val;
+        int used = 0;
+        while( tmp > 0) {
+            used |= 1 << (tmp % 10);
+            System.out.println( val + ", " + tmp + " , " + Integer.toBinaryString( used ));
+            tmp /= 10;
+        }
+    }
+
     public static void solution() {
 
         int N = 3;
@@ -59,7 +70,8 @@ public class UVa725a {
     }
 
     public static void main(String[] args) {
-        bitOperation();
-        solution();
+        //bitOperation();
+        //solution();
+        used();
     }
 }
