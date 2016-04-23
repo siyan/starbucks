@@ -17,8 +17,10 @@ public class UVa725a {
 
         int c = a & b;
         System.out.println( "a and b  => " + c + ", " + Integer.toBinaryString ( c ));
-        System.out.println( "a or b   => " + (a | b) + ", " + Integer.toBinaryString ( a | b ));
-        System.out.println( "a xor b  => " + (a ^ b) + ", " + Integer.toBinaryString ( a ^ b ));
+        c = a | b;
+        System.out.println( "a or b   => " + c + ", " + Integer.toBinaryString ( c ));
+        c = a ^ b;
+        System.out.println( "a xor b  => " + c + ", " + Integer.toBinaryString ( c ));
 
         System.out.println( "\n***** bit shift:\n");
         System.out.println( a + " = " + Integer.toBinaryString( a ));
