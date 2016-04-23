@@ -3,27 +3,29 @@ package com.sywood.starbucks.siyan.ccc;
 /**
  * Created by siyan on 2016-04-23.
  */
-public class UVa725 {
+public class UVa725a {
 
     public static void bitOperation() {
         int a = 13;
         int b = 60;
+
 
         System.out.println( a + " => " + Integer.toBinaryString( a ));
         System.out.println( b + " => " + Integer.toBinaryString( b ));
 
         System.out.println( "\n***** bitwise logic:\n");
 
-        System.out.println( "a and b  => " + (a & b) + ", " + Integer.toBinaryString ( a & b ));
+        int c = a & b;
+        System.out.println( "a and b  => " + c + ", " + Integer.toBinaryString ( c ));
         System.out.println( "a or b   => " + (a | b) + ", " + Integer.toBinaryString ( a | b ));
         System.out.println( "a xor b  => " + (a ^ b) + ", " + Integer.toBinaryString ( a ^ b ));
 
         System.out.println( "\n***** bit shift:\n");
         System.out.println( a + " = " + Integer.toBinaryString( a ));
-        System.out.println( a + " left shift 1 => "  + ( a << 1) + ", " + Integer.toBinaryString( a << 1 ));
-        System.out.println( a + " left shift 2 => "  + ( a << 2) + ", " + Integer.toBinaryString( a << 2 ));
-        System.out.println( a + " right shift 1 => " + ( a >> 1) + ", " + Integer.toBinaryString( a >> 1 ));
-        System.out.println( a + " right shift 2 => " + ( a >> 2) + ", " + Integer.toBinaryString( a >> 2 ));
+        System.out.println( a + " left shift 1 => "  + ( a << 1 ) + ", " + Integer.toBinaryString( a << 1 ));
+        System.out.println( a + " left shift 2 => "  + ( a << 2 ) + ", " + Integer.toBinaryString( a << 2 ));
+        System.out.println( a + " right shift 1 => " + ( a >> 1 ) + ", " + Integer.toBinaryString( a >> 1 ));
+        System.out.println( a + " right shift 2 => " + ( a >> 2 ) + ", " + Integer.toBinaryString( a >> 2 ));
     }
 
     public static void solution() {
@@ -55,7 +57,7 @@ public class UVa725 {
     }
 
     public static void main(String[] args) {
-        //solution();
         bitOperation();
+        solution();
     }
 }
