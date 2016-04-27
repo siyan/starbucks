@@ -1,7 +1,6 @@
 package com.sywood.starbucks.siyan.ccc;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * Created by siyan on 2016-04-26.
@@ -26,7 +25,7 @@ public class UVa12455 {
     public static void main(String[] args ) {
 
         int N = (int)Math.pow(2, l.length);
-        System.out.println( N );
+
         for (int i = 1; i < N; i++) { // for each subset, O(2^n)
             int sum = 0;
             boolean[] mask = mask(i);
