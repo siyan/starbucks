@@ -31,7 +31,7 @@ public class UVa725a {
     }
 
     public static void used() {
-        int val = 183405;
+        int val = 13405;
         int tmp = val;
         int used = 0;
         while( tmp > 0) {
@@ -44,9 +44,8 @@ public class UVa725a {
     public static void solution() {
 
         int N = 3;
-        int abcde = 0;
         for (int fghij = 1234; fghij <= 98765 / N; fghij++) {
-            abcde = fghij * N; // this way, abcde and fghij are at most 5 digits
+            int abcde = fghij * N; // this way, abcde and fghij are at most 5 digits
             int tmp;
             int used = (fghij < 10000) ? 1 : 0; // if digit f=0, then we have to flag it
             tmp = abcde;
