@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class UVa12455 {
 
     static int[] l = {1, 3, 5, 8, 14};
-    static int X = 12;
+    static int X = 19;
 
     static void useBitOp() {
         for (int i = 0; i < (1 << l.length); i++) { // for each subset, O(2^n)
@@ -33,7 +33,7 @@ public class UVa12455 {
             boolean[] mask = new boolean[l.length];
             char[] c = Integer.toBinaryString( i ).toCharArray();
             for( int k = 0; k < c.length; k++ ) {
-                mask[k] = c[k] == '1';
+                mask[c.length-k-1] = c[k] == '1';
             }
 
             for (int j = 0; j < l.length; j++) { // check membership, O(n)
