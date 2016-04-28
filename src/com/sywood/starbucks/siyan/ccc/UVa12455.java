@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class UVa12455 {
 
     static int[] l = {1, 3, 5, 8, 14};
-    static int X = 19;
+    static int X = 22;
 
     static void useBitOp() {
         for (int i = 0; i < (1 << l.length); i++) { // for each subset, O(2^n)
