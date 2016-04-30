@@ -2,6 +2,8 @@ package com.sywood.starbucks.ben.UVA.CompleteSearch;
 import java.io.*;
 
 public class UVa12455 {
+
+
     public static void main(String[] args) throws IOException{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         int iters = Integer.parseInt(input.readLine());
@@ -9,7 +11,10 @@ public class UVa12455 {
             int n = Integer.parseInt(input.readLine());
             int p = Integer.parseInt(input.readLine());
             int[] lengths = new int[p];
-
+            int permutationSize = 1;
+            while (permutationSize <= n){
+                
+            }
         }
     }
 }

@@ -16,7 +16,6 @@ public class UVa12455 {
             for (int j = 0; j < l.length; j++) // check membership, O(n)
                 if ((i & (1 << j)) > 0) // test if bit ‘j’ is turned on in subset ‘i’?
                     sum += l[j]; // if yes, process ‘j’
-
             if (sum == X) {
                 System.out.println("Fund: " + Integer.toBinaryString(i) + ", " + Arrays.toString(l) + " = " + X);
                 break; // the answer is found: bitmask ‘i’
@@ -35,7 +34,7 @@ public class UVa12455 {
             for( int k = 0; k < c.length; k++ ) {
                 mask[c.length-k-1] = c[k] == '1';
             }
-
+            System.out.println(Arrays.toString(mask));
             for (int j = 0; j < l.length; j++) { // check membership, O(n)
                 if (mask[j]) // test if bit ‘j’ is turned on in subset ‘i’?
                     sum += l[j]; // if yes, process ‘j’
