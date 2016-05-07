@@ -10,7 +10,7 @@ public class ThirtyTwo {
                 count |= 1 << (num % 10);
                 num /= 10;
             }
-            return (count>>1 == (1<<9)-1);
+            return (count>>1 == (1<<9)-1 && Math.log(num) <= 9 && Math.log(num) > 8);
         }
     }
     private static long combine(int first, int second, int third){
