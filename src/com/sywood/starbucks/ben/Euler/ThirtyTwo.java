@@ -1,33 +1,41 @@
 package com.sywood.starbucks.ben.Euler;
 
 public class ThirtyTwo {
-    private static boolean isPandigital(int first, int second, int third){
-        if (third < 1000){
+    private static boolean isPandigital(long num){
+        if (num > 999999999 | num < 100000000){
             return false;
         }else{
-            int count = 0;
-            while (first > 0){
-                count |= 1 << (first % 10);
-                first /= 10;
-            }
-            while (second > 0){
-                count |= 1 << (second % 10);
-                second /= 10;
-            }
-            while (third > 0){
-                count |= 1 << (third % 10);
-                third /= 10;
+            long count = 0;
+            while (num > 0){
+                count |= 1 << (num % 10);
+                num /= 10;
             }
             return (count>>1 == (1<<9)-1);
         }
     }
+    private static long combine(int first, int second, int third){
+        long temp = first;
+        long ret;
+        while (temp > 0){
+            temp /= 10;
+            second *= 10;
+        }
+        ret = first+second;
+        temp = second;
+        while (temp > 0){
+            temp /= 10;
+            third *= 10;
+        }
+        ret += third;
+        return ret;
+    }
 
     public static void main(String[] args){
         int sum = 0;
-        for (int i = 1; i < 98; i++) {
-            for (int j = 100; j < 987; j++) {
+        for (int i = 1; i < 9876; i++) {
+            for (int j = 1; j < 9876; j++) {
                 int product = i*j;
-                if (isPandigital(i, j, product)){
+                if (isPandigital(combine(i, j, product))){
                     sum += product;
                 }
             }
