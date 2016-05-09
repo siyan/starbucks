@@ -1,8 +1,9 @@
 package com.sywood.starbucks.ben.Euler;
+import java.util.ArrayList;
 
 public class ThirtyTwo {
     private static boolean isPandigital(long num){
-        if (num > 999999999 | num < 100000000){
+        if (Long.toString(num).length() != 9){
             return false;
         }else{
             long count = 0;
@@ -10,10 +11,10 @@ public class ThirtyTwo {
                 count |= 1 << (num % 10);
                 num /= 10;
             }
-            return (count>>1 == (1<<9)-1 && Math.log(num) <= 9 && Math.log(num) > 8);
+            return (count>>1 == (1<<9)-1);
         }
     }
-    private static long combine(int first, int second, int third){
+    private static long combine(int first, long second, long third){
         long temp = first;
         long ret;
         while (temp > 0){
@@ -32,14 +33,20 @@ public class ThirtyTwo {
 
     public static void main(String[] args){
         int sum = 0;
-        for (int i = 1; i < 9876; i++) {
-            for (int j = 1; j < 9876; j++) {
-                int product = i*j;
-                if (isPandigital(combine(i, j, product))){
+        //System.out.println(isPandigital(391867254));
+        ArrayList<Long> pandigits = new ArrayList<>();
+        for (int i = 2; i < 100; i++) {
+            long start = i > 9 ? 123:1234;
+            long end = 10000/i+1;
+            for (long j = start; j < end; j++) {
+                long product = i*j;
+                if (isPandigital(combine(i, j, product)) && !pandigits.contains(combine(i, j, product))){
                     sum += product;
+                    pandigits.add(product);
                 }
             }
         }
+
         System.out.println(sum);
     }
 }
