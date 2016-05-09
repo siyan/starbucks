@@ -33,7 +33,6 @@ public class ThirtyTwo {
 
     public static void main(String[] args){
         int sum = 0;
-        //System.out.println(isPandigital(391867254));
         ArrayList<Long> pandigits = new ArrayList<>();
         for (int i = 2; i < 100; i++) {
             long start = i > 9 ? 123:1234;
