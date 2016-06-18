@@ -1,4 +1,4 @@
-package com.sywood.starbucks.ben.Euler;
+package com.sywood.starbucks.ben.Euler.Twenties;
 
 public class TwentySeven {
     static boolean isPrime(int num){

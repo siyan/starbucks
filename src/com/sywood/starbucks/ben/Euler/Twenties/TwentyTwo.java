@@ -1,4 +1,4 @@
-package com.sywood.starbucks.ben.Euler;
+package com.sywood.starbucks.ben.Euler.Twenties;
 import java.io.*;
 import java.math.BigInteger;
 import java.util.Arrays;
