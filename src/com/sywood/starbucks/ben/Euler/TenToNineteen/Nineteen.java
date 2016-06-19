@@ -1,4 +1,4 @@
-package com.sywood.starbucks.ben.Euler;
+package com.sywood.starbucks.ben.Euler.TenToNineteen;
 
 public class Nineteen {
     public static void main(String[] args){

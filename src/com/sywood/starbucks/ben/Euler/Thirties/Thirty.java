@@ -1,4 +1,4 @@
-package com.sywood.starbucks.ben.Euler;
+package com.sywood.starbucks.ben.Euler.Thirties;
 
 public class Thirty {
     private static boolean isPower(int number){

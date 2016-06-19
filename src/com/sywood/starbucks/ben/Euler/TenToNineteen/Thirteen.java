@@ -1,4 +1,4 @@
-package com.sywood.starbucks.ben.Euler;
+package com.sywood.starbucks.ben.Euler.TenToNineteen;
 import java.math.BigInteger;
 import java.io.*;
 
