@@ -188,7 +188,46 @@ public class ProjectEularContainer {
         System.out.println( sum );
     }
 
+    static int nextNumber( int mask, int current ) {
+        //for( int i = current; i < mask; i++ )
+        return 0;
+    }
 
+    static void p32() {
+        int mask = 0;
+        int maxMultiplicand = (int)Math.sqrt( Math.sqrt( 987654321 ) );
+        System.out.print( maxMultiplicand );
+
+    }
+
+    static void p48( int num) {
+        long tot = 0;
+        long base = 10000000000L;
+        for(int n = 1; n <= num; n++ ) {
+            long sum = 1;
+            for( int i = 0; i < n; i++ ) {
+                sum *= n;
+                if( sum > base) {
+                    long tmp = sum % base;
+                    if( tmp == 0 )
+                        break;
+                    else
+                        sum = tmp;
+                }
+
+            }
+            tot += sum;
+            if( tot > base) {
+                long tmp = tot % base;
+                if( tmp == 0 )
+                    break;
+                else
+                    tot = tmp;
+            }
+            System.out.println( n + ": " + sum + " - " + tot );
+        }
+
+    }
 
     public static void main(String[] args) {
 
@@ -196,8 +235,9 @@ public class ProjectEularContainer {
         //p017();
         //p018();
         //p019();
-        p28();
-        p28b();
-
+        //p28();
+        //p28b();
+        //p32();
+        p48(1000);
     }
 }
