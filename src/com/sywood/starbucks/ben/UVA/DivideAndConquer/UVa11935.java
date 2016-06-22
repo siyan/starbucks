@@ -12,6 +12,7 @@ public class UVa11935 {
             int dist = Integer.parseInt(line[0]);
             int moved = dist-curr;
             gas -= moved*cons;
+            gas -= leak*moved;
             if (gas < 0){
                 return false;
             }
@@ -29,7 +30,6 @@ public class UVa11935 {
                     leak = 0;
                     break;
             }
-            gas -= leak*moved;
             curr = dist;
         }
         return true;
