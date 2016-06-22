@@ -2,15 +2,22 @@ package com.sywood.starbucks.ben.Euler.Thirties;
 import java.util.ArrayList;
 
 public class ThirtyFive {
+    //UNFINISHED
+    //TODO COMPLETE THIS PROGRAM
     private static ArrayList<Integer> primes = new ArrayList<>();
     private static boolean isPrime(int num){
         if (primes.contains(num)){
             return true;
         }else {
-            for (int i = 2; num >= i * i; i++) {
-                if (num % i == 0) {
-                    return false;
+            if (primes.size() == 0){
+                for (int i = 2; i < num; i++) {
+                    if (num % i == 0){
+                        return false;
+                    }
                 }
+            }else{
+                int temp = 0;
+
             }
             return true;
         }
@@ -35,6 +42,7 @@ public class ThirtyFive {
     }
 
     public static void main(String[] args){
+        System.out.println(isPrime(37));
         generate();
         int count = 0;
         for (int prime : primes){
