@@ -3,6 +3,11 @@ import java.io.*;
 import java.util.HashMap;
 
 public class UVa00679 {
+    static class Tree{
+        static final int nodeVal = 0;
+        static int[] children = new int[2];
+
+    }
     static HashMap<Integer, int[]> drop = new HashMap<>();
     static HashMap<Integer, Boolean> simulate = new HashMap<>();
     private static void generate(int depth){
