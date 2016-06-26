@@ -23,8 +23,8 @@ public class UVa00679 {
     }
 
     private static int run(int I, int D ) {
-
         BTreeNode root = buildTree( I );
+        return D;
     }
 
     public static void main( String[] args ) throws IOException {
