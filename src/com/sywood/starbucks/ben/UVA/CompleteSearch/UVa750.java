@@ -34,7 +34,7 @@ public class UVa750 {
     public static void main(String[] args) throws IOException{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         String[] pos = input.readLine().split(" ");
-        System.out.print("SOLN     COLUMN\n" +
+        System.out.print("SOLN      COLUMN\n" +
                          " #     1 2 3 4 5 6 7 8\n\n");
         a = Integer.parseInt(pos[0])-1;
         b = Integer.parseInt(pos[1])-1;
