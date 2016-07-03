@@ -32,6 +32,7 @@ public class TrailerUVa1237 {
                 int value = Integer.parseInt(input.readLine());
                 System.out.println(check(data, value));
             }
+            System.out.println();
         }
     }
 }
