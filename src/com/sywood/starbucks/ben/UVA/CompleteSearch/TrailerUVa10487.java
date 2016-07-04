@@ -1,8 +1,6 @@
 package com.sywood.starbucks.ben.UVA.CompleteSearch;
 import java.io.*;
-/**
- *
- */
+
 public class TrailerUVa10487 {
     private static int closest(int[] ints, int target){
         int current = Integer.MAX_VALUE;
