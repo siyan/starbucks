@@ -6,6 +6,7 @@ public class UVa11242 {
     private static double find(double[] ratios){
         double max = 0;
         for (int i = 0; i < ratios.length-1; i++) {
+            //System.out.printf("%f/%f = %f\n", ratios[i+1], ratios[i], ratios[i+1]/ratios[i]);
             if (max < ratios[i+1]/ratios[i]&&ratios[i] != 0){
                 max = ratios[i+1]/ratios[i];
             }
@@ -35,11 +36,11 @@ public class UVa11242 {
             double[] ratios = new double[front.length*rear.length];
             for (int j = 0; j < front.length; j++) {
                 for (int k = 0; k < rear.length; k++) {
-                    ratios[j+k] = (double)rear[k]/(double)front[j];
+                    ratios[j*rear.length+k] = (double)rear[k]/(double)front[j];
                 }
             }
             Arrays.sort(ratios);
-            System.out.println(Math.round(find(ratios)*100)/100.0);
+            System.out.printf("%.2f\n", find(ratios));
             line = input.readLine();
         }
     }
