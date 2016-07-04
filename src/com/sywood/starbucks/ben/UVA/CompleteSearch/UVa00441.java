@@ -21,8 +21,10 @@ public class UVa00441 {
                     }
                 }
             }
-            System.out.println();
             lines = input.readLine();
+            if (!lines.equals("0")){
+                System.out.println();
+            }
         }
     }
 }
