@@ -1,32 +1,27 @@
 package com.sywood.starbucks.ben.UVA.CompleteSearch;
 import java.io.*;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Arrays;
-// FIXME: 2016-07-04 bugs with counting permutations and combos
 
 public class UVa735 {
-    private static ArrayList<int[]> stuff;
-    private static int combos;
-    private static int check(int a, int b, int c, int target){
+    private static int countCombos(HashSet<int[]> combos){
         int count = 0;
-        for (int i = 0; i <= 3; i++) {
-            for (int j = 0; j <= 3; j++) {
-                for (int k = 0; k <= 3; k++) {
-                    if (i*a + j*b + k*c == target){
-                        count++;
-                        int[] temp = new int[]{i*a, j*b, k*c};
-                        Arrays.sort(temp);
-                        boolean found = false;
-                        for (int[] set : stuff){
-                            if (Arrays.equals(temp, set)){
-                                found = true;
-                                break;
-                            }
-                        }
-                        if (!found) combos++;
-                    }
+        boolean similar = false;
+        int i = 0;
+        for(int[] combo : combos){
+            int j = 0;
+            for (int[] other : combos){
+                if (Arrays.equals(combo, other) && i != j && i < j){
+                    similar = true;
+                    break;
                 }
+                j++;
+                similar = false;
             }
+            if (!similar){
+                count++;
+            }
+            i++;
         }
         return count;
     }
@@ -34,24 +29,37 @@ public class UVa735 {
     public static void main(String[] args) throws IOException{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         int target = Integer.parseInt(input.readLine());
+        HashSet<Integer> numbers = new HashSet<>();
+        for (int i = 0; i <= 20; i++) {
+            numbers.add(i);
+            numbers.add(i*2);
+            numbers.add(i*3);
+        }
+        numbers.add(50); // add a bullseye to the set of possible scores
+        int[] temp;
         while(target > 0) {
-            int perms = 0;
-            stuff = new ArrayList<>();
-            combos = 0;
-            for (int i = 1; i <= 20; i++) {
-                for (int j = 1; j <= 20; j++) {
-                    for (int k = 1; k <= 20; k++) {
-                        perms += check(i, j, k, target);
+            HashSet<int[]> combos = new HashSet<>();
+            int permutations = 0;
+            for (int a : numbers){
+                for (int b : numbers){
+                    for (int c : numbers){
+                        if (a+b+c == target){
+                            permutations++;
+                            temp = new int[]{a, b, c};
+                            Arrays.sort(temp);
+                            combos.add(temp);
+                        }
                     }
                 }
             }
-            if (combos > 0){
-                System.out.printf("NUMBER OF COMBINATIONS THAT SCORES %d IS %d.", target, combos);
-                System.out.printf("\nNUMBER OF PERMUTATIONS THAT SCORES %d IS %d.\n", target, perms);
+            int numCombos = countCombos(combos);
+            if (numCombos > 0){
+                System.out.printf("NUMBER OF COMBINATIONS THAT SCORES %d IS %d.\n", target, numCombos);
+                System.out.printf("NUMBER OF PERMUTATIONS THAT SCORES %d IS %d.\n", target, permutations);
             }else{
                 System.out.printf("THE SCORE OF %d CANNOT BE MADE WITH THREE DARTS.\n", target);
             }
-            System.out.println("**********************************************************************");
+            System.out.print("**********************************************************************\n");
             target = Integer.parseInt(input.readLine());
         }
         System.out.print("END OF OUTPUT");
