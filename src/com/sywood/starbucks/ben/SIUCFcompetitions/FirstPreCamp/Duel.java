@@ -1,4 +1,4 @@
-package com.sywood.starbucks.ben.SIUCFcompetitions;
+package com.sywood.starbucks.ben.SIUCFcompetitions.FirstPreCamp;
 import java.io.*;
 
 public class Duel {
