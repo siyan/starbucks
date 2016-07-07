@@ -1,4 +1,4 @@
-//package com.sywood.starbucks.ben.SIUCFcompetitions.SecondPreCamp;
+package com.sywood.starbucks.ben.SIUCFcompetitions.SecondPreCamp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,28 +17,29 @@ public class eggdrop {
         }
         int max = 1; // max floor where it won't break
         int min = k; // min floor where it will break
-        for (int i = 0; i < k; i++) {
+        for (int i = 0; i < k-1; i++) {
             if (cond[i] != null) {
-                if (cond[i].equals("BROKEN") && max > 1) {
+                if (cond[i].equals("BROKEN")) {
                     max = i;
                     break;
                 }else{
                     max = i+1;
                 }
+            }else{
+                max = i+1;
             }
         }
-        for (int i = 0; i < k; i++){
-            if (cond[i] != null) {
-                if (cond[i].equals("SAFE")) {
-                    min = i + 2;
+        for (int i = k-1; i > 0; i--){
+            if (cond[i] != null){
+                if (cond[i].equals("BROKEN")){
+                    min = i+1;
+                }else if (i > 0){
+                    min = i+2;
+                    break;
                 }
+            }else{
+                min = i+1;
             }
-        }
-        if (min > k){
-            min = k;
-        }
-        if (max < 1){
-            max = 1;
         }
         System.out.printf("%d %d\n", min, max);
     }
