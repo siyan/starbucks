@@ -70,8 +70,8 @@ public class UVa725a {
     }
 
     public static void main(String[] args) {
-        //bitOperation();
-        //solution();
+        bitOperation();
+        solution();
         used();
     }
 }
