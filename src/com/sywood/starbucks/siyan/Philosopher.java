@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Created by siyan on 2016-07-06.
+ * 5 4
+ 1 5
+ 5 2
+ 3 2
+ 4 3
  */
 public class Philosopher {
 
@@ -42,7 +46,7 @@ public class Philosopher {
             String[] du = input.readLine().split( " " );
             int d = Integer.parseInt( du[0] );
             int u = Integer.parseInt( du[1] );
-            if( isConflict( d, u ) ) {
+            if( isConflict( d-1, u-1 ) ) {
                 System.out.println( '0' );
                 return;
             }
