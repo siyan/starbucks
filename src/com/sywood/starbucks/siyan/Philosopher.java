@@ -16,22 +16,39 @@ public class Philosopher {
     static boolean isConflict( int d, int u ) {
 
         // conflict
-        if( _essays[d] > _essays[u]) {
+        if( _essays[d] > _essays[u] && _essays[u] > 0 ) {
             return true;
         }
 
-        // first time used
-        if( _essays[d] == _essays[u] ){
-            _tail = _essays[d] + 1;
-            for( int i = 0; i < _essays.length; i++ ) {
-                if( i != d) _essays[i] = _tail;
+        //already in order
+        if( _essays[d] < _essays[u] && _essays[d] > 0 ) {
+            return false;
+        }
+
+        // first time define
+        if( _essays[d] == 0 ) {
+            _essays[d] = 1;
+            if( _essays[u] == 0 ) {
+                _essays[u] = 2;
             }
+
+            if( _essays[u] == 1 ) {
+                for( int i = 0; i < _essays.length; i++ ) {
+                    if( _essays[i] > 1 ) _essays[i] +=1;
+                }
+                _essays[u] = 2;
+            }
+
+        }
+
+        // first time used
+        if( _essays[u] == 0 ){
+            _essays[u] = _essays[d] + 1;
         }
 
         return false;
     }
 
-    static int _tail;
     static int[] _essays;
 
     public static void main( String[] args ) throws IOException {
@@ -51,8 +68,11 @@ public class Philosopher {
                 return;
             }
         }
-
-        System.out.println( _tail + 1 == _essays.length ? "1" : "2" );
+        int x = 0;
+        for( int e : _essays) {
+            if( x < e ) x = e;
+        }
+        System.out.println( x == _essays.length ? "1" : "2" );
 
     }
 }
