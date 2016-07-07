@@ -21,10 +21,10 @@ public class unhappy {
                         digitSum += (temp%10)*(temp%10);
                         temp /= 10;
                     }
-                    System.out.println(digitSum);
                     currentDigits += Integer.toString(digitSum);
                     String repeated = currentDigits.replaceAll("(.+?)\\1+", "$1");
                     String[] repeats = currentDigits.split(repeated);
+                    System.out.println(repeated);
                     if (!repeated.equals(digitSum) && repeats.length == 1 && repeats[0].length() < currentDigits.length()-(repeated.length()*2)){
                         count++;
                         break;
