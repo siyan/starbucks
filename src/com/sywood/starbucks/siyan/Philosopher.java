@@ -5,11 +5,21 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- 5 4
- 1 5
- 5 2
- 3 2
- 4 3
+5 4
+1 5
+5 2
+3 2
+4 3
+
+5 4
+3 1
+4 2
+1 5
+5 4
+
+2 2
+1 2
+2 1
  */
 public class Philosopher {
 

@@ -9,13 +9,31 @@ public class unhappy {
             String[] data = line.split(" ");
             int lo = Integer.parseInt(data[0]);
             int hi = Integer.parseInt(data[1]);
-            for (int i = lo; i < hi; i++) {
-                String currentDigits = "";
-                int temp = i;
-                while (temp != 1){
-
+            int count = 0;
+            for (int i = lo; i <= hi; i++) {
+                System.out.println(i);
+                String currentDigits = Integer.toString(i);
+                int curr = i;
+                while (curr != 1){
+                    int digitSum = 0;
+                    int temp  = curr;
+                    while (temp > 1){
+                        digitSum += (temp%10)*(temp%10);
+                        temp /= 10;
+                    }
+                    System.out.println(digitSum);
+                    currentDigits += Integer.toString(digitSum);
+                    String repeated = currentDigits.replaceAll("(.+?)\\1+", "$1");
+                    String[] repeats = currentDigits.split(repeated);
+                    if (!repeated.equals(digitSum) && repeats.length == 1 && repeats[0].length() < currentDigits.length()-(repeated.length()*2)){
+                        count++;
+                        break;
+                    }
+                    curr = digitSum;
                 }
             }
+            System.out.println(count);
+            line = input.readLine();
         }
     }
 }
