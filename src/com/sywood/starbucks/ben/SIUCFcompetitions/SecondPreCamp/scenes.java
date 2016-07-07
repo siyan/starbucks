@@ -1,6 +1,10 @@
 package com.sywood.starbucks.ben.SIUCFcompetitions.SecondPreCamp;
 import java.io.*;
 
+/**
+ * NAIPC 2016 Problem F
+ */
+
 public class scenes {
     private static long count = 0;
     private static void generate(int w, int h, int n, int currIdx, int[] grid){
