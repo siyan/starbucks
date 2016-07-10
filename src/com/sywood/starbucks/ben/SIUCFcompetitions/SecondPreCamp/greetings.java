@@ -15,7 +15,6 @@ public class greetings {
         if (currIdx == k){
             int maxL = 0;
             int maxW = 0;
-            System.out.println("letters size: " + tempLetters.size());
             for (int[] letter : tempLetters) {
                 maxL = Math.max(maxL, letter[0]);
                 maxW = Math.max(maxW, letter[1]);
@@ -23,15 +22,15 @@ public class greetings {
             if (maxL > 0 && maxW > 0) {
                 envelopes.add(new int[]{maxL, maxW});
             }
-            for (int[] envelop : envelopes){
-                System.out.println("[" + envelop[0] + ", " + envelop[1] + "]");
-            }
+            System.out.println(envelopes.size());
             findWaste(envelopes);
             System.out.println();
         }else{
-            System.out.println("letters size: " + tempLetters.size());
             for (int start = 0; start < tempLetters.size(); start++) {//starting letter
-                ArrayList<int[]> initial = tempLetters;
+                ArrayList<int[]> initial = new ArrayList<>();
+                for (int[] item : tempLetters){
+                    initial.add(item);
+                }
                 for (int permute = 0; permute < 1 << initial.size(); permute++) {//iterates through all possible permutations
                     int counter = 0;
                     int maxL = 0;
@@ -63,13 +62,16 @@ public class greetings {
         for (int[] letter : letters) {
             int temp = letter[0] * letter[1];
             int minWaste = Integer.MAX_VALUE;
+            System.out.println("letter: [" + letter[0] + ", " + letter[1] + "] area: " + temp);
             for (int[] envelope : envelopes) {
+                System.out.println("envelope: [" + envelope[0] + ", " + envelope[1] + "] area: " + (envelope[0]*envelope[1]));
                 if (letter[0] <= envelope[0] && letter[1] <= envelope[1]) {
                     minWaste = Math.min(minWaste, envelope[0]*envelope[1] - temp);
                 }
             }
             tempWaste += minWaste*letter[2];
         }
+        System.out.println(tempWaste);
         wastedSpace = Math.min(wastedSpace, tempWaste);
     }
 
@@ -105,6 +107,7 @@ public class greetings {
                 String[] data = input.readLine().split(" ");
                 letters.add(new int[]{Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2])});
             } // stores all data.
+            System.out.println(letters.size());
             permute(1, letters, envelopes);
             System.out.println(wastedSpace);
         }
