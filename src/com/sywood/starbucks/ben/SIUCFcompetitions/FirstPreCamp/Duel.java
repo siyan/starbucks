@@ -1,7 +1,7 @@
 package com.sywood.starbucks.ben.SIUCFcompetitions.FirstPreCamp;
 import java.io.*;
 //TODO finish this
-public class duel {
+public class Duel {
     private static void permute(int[] data, int currIdx){
         for (int i = 0; i < data.length; i++) {
 
