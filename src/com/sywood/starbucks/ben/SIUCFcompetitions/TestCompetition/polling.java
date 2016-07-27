@@ -1,4 +1,4 @@
-package com.sywood.starbucks.ben.SIUCFcompetitions.FirstCompetition;
+package com.sywood.starbucks.ben.SIUCFcompetitions.TestCompetition;
 
 import java.io.BufferedReader;
 import java.io.IOException;
