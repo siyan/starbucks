@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 
 /**
- * first Underlined bit operations
+ * first Underlined bit operations - unfinished, array is too small, max. store size is 2^15 using current logic, sums are wrong, etc.
  */
 public class UVa10264 {
     public static void main(String[] args)throws Exception{
@@ -15,7 +15,7 @@ public class UVa10264 {
         String line = input.readLine();
         while(line != null && !line.equals("")){
             int n = Integer.parseInt(line);
-            int size = (int) Math.pow(2, n);
+            int size = 2<<n;
             short[] values = new short[size];
 
             for (int i = 0; i < size; i++) {
@@ -26,7 +26,8 @@ public class UVa10264 {
 
             for (int i = 0; i < size; i++) {
                 for (int j = 0; j < n; j++) {
-                    int idx = (i+((int) Math.pow(2, j)))%size;
+                    int idx = i+(2<<j);
+                    idx %= size;
                     sums[i] += values[idx];
                 }
             }
