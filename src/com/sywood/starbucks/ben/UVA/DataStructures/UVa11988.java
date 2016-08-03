@@ -13,7 +13,7 @@ public class UVa11988 {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter printer = new PrintWriter(System.out);
         ArrayDeque<String> letters;
-        boolean begin;
+        boolean begin; // checks if to add front or end of array.
         String line = input.readLine();
         String temp;
         while(line != null && !line.equals("")){
