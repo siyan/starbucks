@@ -13,60 +13,39 @@ public class B {
 
         int n = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
+        long sum = 0;
+        long total = 0;
 
         int[] values = new int[n];
         st = new StringTokenizer(input.readLine());
         for (int i = 0; i < n; i++) {
             values[i] = Integer.parseInt(st.nextToken());
+            sum += values[i];
         }
 
         int[] capitals = new int[k];
         boolean[] isCapital = new boolean[n];
-        boolean[] used = new boolean[n];
         st = new StringTokenizer(input.readLine());
 
         for (int i = 0; i < k; i++) {
             capitals[i] = Integer.parseInt(st.nextToken())-1;
             isCapital[capitals[i]] = true;
+            total += values[capitals[i]]*(sum - values[capitals[i]]);
+            sum -= values[capitals[i]];
         }
-        long total = values[n-1]*values[0];
-        for (int i = 0; i < n - 1; i++) {
-            total += values[i]*values[i+1];
-            if (isCapital[i]){
-                used[i] = true;
-                for (int j = 0; j < i-1; j++) {
-                    if(!isCapital[j] || !used[j]) {
-                        total += values[i] * values[j];
-                        used[j] = true;
-                    }
-                }
-                if (i == 0) {
-                    for (int j = i + 2; j < n - 1; j++) {
-                        if (!isCapital[j] || !used[j]) {
-                            total += values[i] * values[j];
-                            used[j] = true;
-                        }
-                    }
-                }else{
-                    for(int j = i+2; j < n; j++){
-                        if (!isCapital[j] || !used[j]) {
-                            total += values[i] * values[j];
-                            used[j] = true;
-                        }
-                    }
-                }
+
+        for (int i = 0; i < n-1; i++) {
+            if (!isCapital[i] && !isCapital[i+1]){
+                total += values[i]*values[i+1];
             }
         }
 
-        if(isCapital[n-1]){
-            for(int j = 1; j < n-1; j++){
-                if(!isCapital[j] || !used[j]) {
-                    total += values[n - 1] * values[j];
-                }
-            }
+        if (!isCapital[0] && !isCapital[n-1]){
+            total += values[0]*values[n-1];
         }
 
         printer.println(total);
+
         printer.close();
     }
 }
