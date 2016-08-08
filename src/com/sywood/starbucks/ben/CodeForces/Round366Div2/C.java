@@ -12,46 +12,24 @@ public class C {
         PrintWriter printer = new PrintWriter(System.out);
         String line = input.readLine();
         StringTokenizer st = new StringTokenizer(line);
-        ArrayDeque<Integer> notifications = new ArrayDeque<>();
         int n = Integer.parseInt(st.nextToken());
-        int q = Integer.parseInt(st.nextToken());
-        int f, app, t;
-        int[] phone = new int[n];
-        int[] read = new int[n];
-        int[] tRead = new int[n];
-        int unread = 0;
+        int q = Integer.parseInt(st.nextToken()), type, temp, unread = 0;
+        ArrayDeque<Integer> notifications = new ArrayDeque<>();
+        ArrayDeque<Integer>[] apps = new ArrayDeque[n];
+        boolean[] mark = new boolean[q];
+
         for (int i = 0; i < q; i++) {
             st = new StringTokenizer(input.readLine());
-            f = Integer.parseInt(st.nextToken());
-            if(f == 1){
-                app = Integer.parseInt(st.nextToken())-1;
-                phone[app]++;
+            type = Integer.parseInt(st.nextToken());
+            if(type == 1){
+                temp = Integer.parseInt(st.nextToken());
                 unread++;
-                notifications.addLast(app);
-            }else if (f == 2){
-                app = Integer.parseInt(st.nextToken())-1;
-                t = read[app];
-                read[app-1] = phone[app];
-                unread -= Math.abs(t - read[app]);
-            }else{
-                app = Integer.parseInt(st.nextToken());
-                for(int not : notifications){
-                    tRead[not]++;
-                    app--;
-                }
-                for (int j = 0; j < n; j++) {
-                    if (tRead[j] > read[j]){
-                        unread -= (tRead[j] - read[j]);
-                    }
-                    read[j] = Math.max(read[j], tRead[j]);
-                }
-                tRead = new int[n];
+                notifications.addLast(temp);
+            }else if (type == 2){
+
             }
-            if (unread < 0){
-                unread = 0;
-            }
-            printer.println(unread);
         }
+
         printer.close();
     }
 }
