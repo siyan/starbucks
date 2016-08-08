@@ -1,5 +1,7 @@
 package com.sywood.starbucks.ben.UVA.CompleteSearch;
 
+import java.io.PrintWriter;
+
 /**
  * this question involves simplifying a+b+c+d = abcde;
  * The smallest unit is in 100ths of an euro.
@@ -55,64 +57,32 @@ package com.sywood.starbucks.ben.UVA.CompleteSearch;
 
 public class UVa11236 {
     public static void main(String[] args) {
-        int counter = 0;
-        int con = 1000000;
-        for (long a = 1; a <= 125; a++) {
-            if (a*a*a*a > 2000000000L)break;
-            for (long b = a; b < 2000; b++) {
-                if (b*a*a*a > 2000000000L)break;
-                for (long c = b; c < 2000; c++) {
-                    if (a*b*c*c > 2000000000L)break;
-                    long product = Math.abs(a * b * c-con);
-                    long sum = a + b + c;
-                    long half = sum * con;
-                    if (product != 0 && half%product == 0){
-                        long d = half/product;
-                        if (d < 0 || c > d){
-                            break;
-                        }
-                        if (sum+d <= 2000 && product*d <= 2000000000000L){
-                            double ra = a/100.0;
-                            double rb = b/100.0;
-                            double rc = c/100.0;
-                            double rd = d/100.0;
-                            if (ra+rb+rc+rd == ra*rb*rc*rd){
-                                System.out.printf("%.2f %.2f %.2f %.2f\n", ra, rb, rc, rd);
-                                counter++;
-                            }
-                        }
+        PrintWriter printer = new PrintWriter(System.out);
+        long product, sum, t1, t2, d;
+        for(long a = 1; a <= 2000; a++){
+            if (a*a*a*a > 2000000000L) break;
+            for(long b = a; b <= 2000-a; b++){
+                if (a*b*b*b > 2000000000L) break;
+                for(long c = b; c <= 2000-a-b; c++){
+                    if (a*b*c*c > 2000000000L) break;
+
+                    product = a*b*c;
+                    if (b== 1000000) continue;
+                    sum = a+b+c;
+
+                    t1 = sum*1000000;
+                    t2 = product - 1000000;
+                    if (t2 > 0) {
+                        if (t1 % t2 != 0) continue;
+                        d = t1 / t2;
+                        if (c > d) continue;
+                        if (sum + d > 2000) continue;
+                        if (product * d > 2000000000L) continue;
+                        printer.printf("%.02f %.02f %.02f %.02f\n", a / 100.0, b / 100.0, c / 100.0, d / 100.0);
                     }
                 }
             }
         }
-        System.out.println(counter);
-        /* bad code
-        for (int a = 1; a < 2000; a++) {
-            if (a*a*a*a > 2000000000L)break;
-            for (int b = 1; b < 2000; b++) {
-                if (b*a*a*a > 2000000000L)break;
-                for (int c = 1; c < 2000; c++) {
-                    if (a*b*c*c > 2000000000L)break;
-                    long product = a*b*c;
-                    long sum = a+b+c-1;
-                    if (sum > 0 && product % sum == 0){
-                        long d = product/sum;
-                        if (d < 0 || c > d){
-                            break;
-                        }
-                        if (sum+d <= 2000 && product*d <= 2000000000){
-                            double ra = a/100.0;
-                            double rb = b/100.0;
-                            double rc = c/100.0;
-                            double rd = d/100.0;
-                            if (ra+rb+rc+rd == ra*rb*rc*rd){
-                                System.out.printf("%.2f %.2f %.2f %.2f\n", ra, rb, rc, rd);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        */
+        printer.close();
     }
 }

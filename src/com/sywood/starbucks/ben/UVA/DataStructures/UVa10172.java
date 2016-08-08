@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.Stack;
 
 /**
- * First queue question.
+ * First queue question. ->>> last question in DS, switched to DP
  */
 public class UVa10172 {
     public static void main(String[] args)throws Exception{
