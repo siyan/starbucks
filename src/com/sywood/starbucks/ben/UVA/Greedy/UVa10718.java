@@ -14,14 +14,32 @@ public class UVa10718 {
         PrintWriter printer = new PrintWriter(System.out);
         StringTokenizer st;
         String line = input.readLine();
-        int N, L, U, optimal;//l is lower and U is upper
+        long N, L, U;//l is lower and U is upper
+        long M, best;
         while(line != null && !line.equals("")){
             st = new StringTokenizer(line);
-            N = Integer.parseInt(st.nextToken());
-            L = Integer.parseInt(st.nextToken());
-            U = Integer.parseInt(st.nextToken());
-            optimal = N^U;
-            printer.println(optimal);
+            N = Long.parseLong(st.nextToken());
+            L = Long.parseLong(st.nextToken());
+            U = Long.parseLong(st.nextToken());
+            M = 0;
+            best = Long.MAX_VALUE;
+            for (long p = 31; p >= 0; --p) {
+                long nowM = M | (1L << p);
+                if (nowM > U) continue;
+                if (nowM <= L) {
+                    M = nowM;
+                    if (M < best)
+                        best = M;
+                } else if (nowM <= U && nowM >= L) {
+                    if ((M | N) == (nowM | N)) {
+                        if (M < best) best = M;
+                    } else {
+                        M = nowM;
+                        best = M;
+                    }
+                }
+            }
+            printer.println(M);
             line = input.readLine();
         }
         printer.close();
