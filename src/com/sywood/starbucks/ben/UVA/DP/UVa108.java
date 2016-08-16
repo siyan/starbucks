@@ -1,7 +1,6 @@
 package com.sywood.starbucks.ben.UVA.DP;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
@@ -45,18 +44,26 @@ public class UVa108 {
         while(line != null && !line.equals("")) {
             int N = Integer.parseInt(line);
 
-            byte[][] values = new byte[N+1][N+1]; // cumulative sum array
-            int best = -127 * 100 * 100, temp;
+            int[][] colPrefixSum = new int[N+1][N+1]; // prefix sum for each column
+            long best = -127 * 100 * 100, subRect;
 
-            for (int i = 1; i < N; i++) {
-                for (int j = 0; j < N; j++) {
-                    values[i][j] = input.nextByte();
-                    values[i][j] += values[i-1][j];
-                }
+            for(int i = 0; i < N; i++) for (int j = 0; j< N; j++){
+                colPrefixSum[i][j] = input.nextByte();
+                if(i > 0) colPrefixSum[i][j] += colPrefixSum[i-1][j];
+                if (j > 0) colPrefixSum[i][j] += colPrefixSum[i][j-1];
+                if (i > 0 && j > 0) colPrefixSum[i][j] -= colPrefixSum[i-1][j-1];
             }
 
+            for(int i = 0; i < N; i++) for (int j = 0; j < N; j++)
+                for (int k = i; k < N; k++) for (int L = j; L < N; L++){
+                    subRect = colPrefixSum[k][L];
+                    if (i > 0) subRect -= colPrefixSum[i-1][L];
+                    if (j > 0) subRect -= colPrefixSum[k][j-1];
+                    if (i > 0 && j > 0) subRect += colPrefixSum[i-1][j-1];
+                    best = Math.max(subRect, best);
+                }
 
-
+            printer.println(best);
             line = input.readLine();
         }
         printer.close();
