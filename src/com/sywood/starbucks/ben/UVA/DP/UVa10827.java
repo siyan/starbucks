@@ -1,6 +1,7 @@
 package com.sywood.starbucks.ben.UVA.DP;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
@@ -35,10 +36,10 @@ public class UVa10827 {
         PrintWriter printer = new PrintWriter(System.out);
         int T = Integer.parseInt(input.readLine());
         for(int t = 0; t < T; t++){
-            int N = Integer.parseInt(input.readLine());
+            int N = Integer.parseInt(input.readLine().trim());
 
             int[][] colPrefixSum = new int[N][N*2]; // prefix sum for each column
-            long best = -127 * 100 * 100, subRect;
+            long best = -100*N*2*N, subRect;
 
             for(int i = 0; i < N; i++) for (int j = 0; j< N; j++){
                 colPrefixSum[i][j] = input.nextInt();
@@ -47,10 +48,12 @@ public class UVa10827 {
                 if (i > 0 && j > 0) colPrefixSum[i][j] -= colPrefixSum[i-1][j-1];
             }
 
-            for(int i = 0; i < N; i++) for(int j = N-1; j < N*2; j++){
-                colPrefixSum[i][j] = colPrefixSum[i][j-N+1];
+            for(int i = 0; i < N; i++) for(int j = N; j < N*2; j++){
+                colPrefixSum[i][j] = colPrefixSum[i][j-N];
             }
-
+            for(int[] row : colPrefixSum){
+                System.out.println(Arrays.toString(row));
+            }
             for(int i = 0; i < N; i++) for (int j = 0; j < N*2; j++)
                 for (int k = i; k < N; k++) for (int L = j; L < N*2; L++){
                     subRect = colPrefixSum[k][L];
