@@ -7,24 +7,23 @@ public class C {
     public static void main(String[] args)throws Exception{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         long a = Integer.parseInt(input.readLine());
-        if (a%2 == 1){
-            long b = (a*a-1)/2;
-            long c = b+1;
-            if (a+b > c && b+c > a && a+c > b && b <= Math.pow(10, 18) && c <= Math.pow(10, 18)){
-                System.out.printf("%d %d\n", b, c);
-            }else{
-                System.out.println(-1);
-            }
+        if (a == 1 || a == 2){
+            System.out.println(-1);
         }else{
-            long t = a/2;
-            long b = (t*t-1)/2;
-            long c = b+1;
-            b *= 2;
-            c *= 2;
-            if (a+b > c && b+c > a && a+c > b && b <= Math.pow(10, 18) && c <= Math.pow(10, 18)){
-                System.out.printf("%d %d\n", b, c);
+            if (a%2 == 1) {
+                long b = (a*a-1)/2;
+                long c = b+1;
+                if (a+b > c && b + c > a && a+c > b)
+                    System.out.println(b + " " + c);
+                else
+                    System.out.println(-1);
             }else{
-                System.out.println(-1);
+                long b = (a*a/4)-1;
+                long c = (a*a/4)+1;
+                if (a+b > c && b + c > a && a + c > b)
+                    System.out.println(b + " " + c);
+                else
+                    System.out.println(-1);
             }
         }
     }
