@@ -12,25 +12,25 @@ import java.util.StringTokenizer;
 /**
  *
  *
- 7 2 18
- 2 5 2
- 1 3 1
- 2 7 1
- 3 4
- 4 0
- 1 6 1
- 4 0
- 4 4
- 1 6 2
- 4 7
- 3 5
- 2 2 2
- 2 6 1
- 4 7
- 1 7 2
- 2 4 2
- 3 4
- 1 1 1
+7 2 18
+2 5 2
+1 3 1
+2 7 1
+3 4
+4 0
+1 6 1
+4 0
+4 4
+1 6 2
+4 7
+3 5
+2 2 2
+2 6 1
+4 7
+1 7 2
+2 4 2
+3 4
+1 1 1
  */
 public class BookShelf {
 
@@ -48,7 +48,7 @@ public class BookShelf {
 
 
     private void execute( int cmdNo ) {
-        String[] cmd = _commands.get( cmdNo ).split( " ");
+       String[] cmd = _commands.get( cmdNo ).split( " ");
         int i = Integer.parseInt( cmd[1] ) - 1;
         int j;
         switch( cmd[0].charAt(0) ) {
@@ -68,7 +68,7 @@ public class BookShelf {
                 break;
             case '4':
                 init();
-                executeTo( i );
+                executeTo( i - 1 );
                 break;
             default:
                 System.err.println( "Something Wrong" );
