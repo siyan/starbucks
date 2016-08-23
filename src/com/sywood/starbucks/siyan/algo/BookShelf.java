@@ -12,14 +12,20 @@ import java.util.StringTokenizer;
 /**
  *
  *
-4 1 6
-3 1
-1 3 1
-1 2 1
-1 3 1
-2 4 1
+7 17 11
+3 2
+2 5 7
+2 7 17
+1 5 10
+4 0
+3 7
+4 1
+1 1 6
 4 3
+3 6
+4 0
  */
+
 public class BookShelf {
 
     private static List<String > _commands = new LinkedList<String>();
