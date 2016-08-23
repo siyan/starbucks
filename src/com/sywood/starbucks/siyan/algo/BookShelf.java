@@ -56,17 +56,17 @@ public class BookShelf {
                 break;
             case '4':
                 init();
-                executeTo( i - 1 );
+                executeTo( i - 1, false );
                 break;
             default:
                 System.err.println( "Something Wrong" );
         }
     }
 
-    private void executeTo( int maxCmdNo ) {
+    private void executeTo( int maxCmdNo, boolean prt ) {
         for( int i = 0; i <= maxCmdNo; i++ ) {
             execute( i );
-            System.out.println( totBooks() );
+            if(prt) System.out.println( totBooks() );
         }
     }
 
@@ -99,7 +99,7 @@ public class BookShelf {
     public static void main(String[] args ) throws Exception {
 
         BookShelf bookShelf = new BookShelf();
-        bookShelf.executeTo( _commands.size() - 1 );
+        bookShelf.executeTo( _commands.size() - 1, true );
 
     }
 }
