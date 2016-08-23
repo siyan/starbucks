@@ -60,7 +60,7 @@ public class BookShelf {
     }
 
     private void executeTo( int maxCmdNo ) {
-        for( int i = 0; i < maxCmdNo; i++ ) {
+        for( int i = 0; i <= maxCmdNo; i++ ) {
             execute( i );
             System.out.println( totBooks() );
         }
@@ -96,7 +96,7 @@ public class BookShelf {
     public static void main(String[] args ) throws Exception {
 
         BookShelf bookShelf = new BookShelf();
-        bookShelf.executeTo( _commands.size() );
+        bookShelf.executeTo( _commands.size() - 1 );
 
     }
 }
