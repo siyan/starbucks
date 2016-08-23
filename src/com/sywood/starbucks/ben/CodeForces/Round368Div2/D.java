@@ -3,7 +3,6 @@ package com.sywood.starbucks.ben.CodeForces.Round368Div2;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.util.BitSet;
 
@@ -23,12 +22,11 @@ public class D {
         int i, j;
 
         int[] state = new int[q+1];
-        BitSet[] current = new BitSet[n];
-        for (int k = 0; k < n; k++) {
-            current[k] = new BitSet(m);
-        }
         BitSet[][] previous = new BitSet[q+1][];
-        previous[0] = Arrays.copyOf(current, n);
+        previous[0] = new BitSet[n];
+        for(i = 0; i < n; i++){
+            previous[0][i] = new BitSet(m);
+        }
         state[0] = 0;
 
         for (int t = 1; t <= q; t++) {
@@ -38,29 +36,34 @@ public class D {
             if (type == 4){
                 i = Integer.parseInt(st.nextToken());
                 printer.println(state[i]);
-                current = Arrays.copyOf(previous[i], n);
-                previous[t] = Arrays.copyOf(current, n);
+                previous[t] = new BitSet[n];
+                for (int k = 0; k < n; k++) { //sets current to previous
+                    previous[t][k] = (BitSet) previous[i][k].clone();
+                }
                 state[t] = state[i];
-            }else {
+            } else {
+                previous[t] = new BitSet[n];
+                for (int k = 0; k < n; k++) {
+                    previous[t][k] = (BitSet) previous[t-1][k].clone();
+                }
                 if (type == 1) {
                     i = Integer.parseInt(st.nextToken())-1;
                     j = Integer.parseInt(st.nextToken())-1;
-                    state[t] += current[i].get(j) ? 0 : 1;
-                    current[i].set(j, true);
+                    state[t] += previous[t][i].get(j) ? 0 : 1;
+                    previous[t][i].set(j, true);
                 } else if (type == 2) {
                     i = Integer.parseInt(st.nextToken())-1;
                     j = Integer.parseInt(st.nextToken())-1;
-                    state[t] -= current[i].get(j) ? 1 : 0;
-                    current[i].set(j, false);
+                    state[t] -= previous[t][i].get(j) ? 1 : 0;
+                    previous[t][i].set(j, false);
                 } else if (type == 3) {
                     i = Integer.parseInt(st.nextToken())-1;
-                    state[t] += (m - current[i].cardinality()) - current[i].cardinality();
+                    state[t] += (m - previous[t][i].cardinality()) - previous[t][i].cardinality();
                     for (int k = 0; k < m; k++) {
-                        current[i].flip(k);
+                        previous[t][i].flip(k);
                     }
                 }
                 printer.println(state[t]);
-                previous[t] = Arrays.copyOf(current, n);
             }
         }
         printer.close();

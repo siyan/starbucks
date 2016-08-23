@@ -10,7 +10,27 @@ import java.util.StringTokenizer;
 
 
 /**
- * Created by siyan on 2016-08-22.
+ *
+ *
+ 7 2 18
+ 2 5 2
+ 1 3 1
+ 2 7 1
+ 3 4
+ 4 0
+ 1 6 1
+ 4 0
+ 4 4
+ 1 6 2
+ 4 7
+ 3 5
+ 2 2 2
+ 2 6 1
+ 4 7
+ 1 7 2
+ 2 4 2
+ 3 4
+ 1 1 1
  */
 public class BookShelf {
 
