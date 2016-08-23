@@ -55,7 +55,7 @@ public class BookShelf {
                 //System.out.println( "Return: " + i);
                 break;
             default:
-                //System.out.println( "Something Wrong" );
+                System.err.println( "Something Wrong" );
         }
     }
 
@@ -91,8 +91,6 @@ public class BookShelf {
             _commands.add( input.readLine() );
         }
     }
-
-
 
 
     public static void main(String[] args ) throws Exception {
