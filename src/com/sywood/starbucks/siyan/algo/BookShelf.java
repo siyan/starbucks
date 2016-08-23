@@ -56,7 +56,7 @@ public class BookShelf {
                 break;
             case '4':
                 init();
-                executeTo( i - 1, false );
+                if( i > 0) executeTo( i,  false );
                 break;
             default:
                 System.err.println( "Something Wrong" );
