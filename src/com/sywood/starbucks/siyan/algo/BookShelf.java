@@ -27,7 +27,7 @@ public class BookShelf {
     }
 
 
-    private void execute(  int cmdNo) {
+    private void execute( int cmdNo ) {
         String[] cmd = _commands.get( cmdNo ).split( " ");
         int i = Integer.parseInt( cmd[1] ) - 1;
         int j;
@@ -35,24 +35,20 @@ public class BookShelf {
             case '1':
                 j = Integer.parseInt( cmd[2] ) - 1;
                 _shelf[i].set( j, true );
-                //System.out.println( "Place: " + i + ", " + j);
                 break;
             case '2':
                 j = Integer.parseInt( cmd[2] ) - 1;
                 _shelf[i].set( j, false );
-                //System.out.println( "Remove: " + i + ", " + j);
                 break;
             case '3':
                 for( j = 0; j < m; j++ ) {
                     boolean b = _shelf[i].get( j );
                     _shelf[i].set( j, !b );
                 }
-                //System.out.println( "Invert: " + i );
                 break;
             case '4':
                 init();
                 executeTo( i );
-                //System.out.println( "Return: " + i);
                 break;
             default:
                 System.err.println( "Something Wrong" );
@@ -79,7 +75,6 @@ public class BookShelf {
 
     public BookShelf() throws  Exception {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter printer = new PrintWriter(System.out);
         StringTokenizer st = new StringTokenizer(input.readLine());
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
