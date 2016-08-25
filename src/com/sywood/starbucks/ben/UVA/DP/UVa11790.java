@@ -3,12 +3,8 @@ package com.sywood.starbucks.ben.UVA.DP;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
-/**
- * Created by Ben on 2016-08-24.
- */
 public class UVa11790 {
     private static int[] both(int[] heights, int[] weights) {
         int[] weightFordm = new int[heights.length];

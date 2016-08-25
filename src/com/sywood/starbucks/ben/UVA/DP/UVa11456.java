@@ -15,13 +15,13 @@ public class UVa11456 {
         int[] lm = new int[input.length];
         Arrays.fill(dm, 1);
         Arrays.fill(lm, 1);
-        for (int x = input.length-2; x >= 0; x--) {
-            for (int y = input.length-1; y > x; y--) {
-                if (dm[x] <= dm[y] && input[x] > input[y]) {
-                    dm[x] = dm[y]+1;
+        for (int i = 1; i < input.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (dm[i] <= dm[j] && input[i] > input[j]) {
+                    dm[i] = dm[j]+1;
                 }
-                if (lm[x] <= lm[y] && input[x] < input[y]) {
-                    lm[x] = lm[y]+1;
+                if (lm[i] <= lm[j] && input[i] < input[j]) {
+                    lm[i] = lm[j]+1;
                 }
             }
         }
