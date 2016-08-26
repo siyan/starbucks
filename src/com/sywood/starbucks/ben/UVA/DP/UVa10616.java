@@ -18,7 +18,7 @@ public class UVa10616 {
             return 1;
         if (weight == M) //picked max number of items
             return 0;
-        if (index == N) //last item
+        if (index == N) //last item`
             return 0;
 
         if (memo[index][weight][sum] != -1)
