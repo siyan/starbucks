@@ -17,7 +17,7 @@ public class tree2 {
             int newX = currentX + xDirections[i], newY = currentY + yDirections[i];
 
         }
-        return 0;
+        return matrix;
     }
 
     public static int solve(int[][] matrix, int startX, int startY, int targetX, int targetY) {
@@ -31,7 +31,7 @@ public class tree2 {
             Arrays.fill(row, Integer.MAX_VALUE);
         }
         nTrees[startX][startY] = 0;
-
+        return 0;
     }
 
     public static void main(String[] args) throws IOException {
