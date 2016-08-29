@@ -1,2 +1,2 @@
 # starbucks
-Chong and Ben studing Java here
+Chong and Ben studying Java here
