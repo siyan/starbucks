@@ -17,7 +17,7 @@ public class tree2 {
             int newX = currentX + xDirections[i], newY = currentY + yDirections[i];
 
         }
-        return 0;
+        return new int[][] {{}};
     }
 
     public static int solve(int[][] matrix, int startX, int startY, int targetX, int targetY) {
