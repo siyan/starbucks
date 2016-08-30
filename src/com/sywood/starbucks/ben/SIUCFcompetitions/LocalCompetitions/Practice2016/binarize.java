@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 /**
  * Created by Ben on 2016-08-27.
  */
-public class A {
+public class binarize {
      public static void main(String[] args)throws Exception{
          BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
          int N = Integer.parseInt(input.readLine());
