@@ -13,20 +13,24 @@ public class UVa357 {
     private static int[] coins = new int[]{1, 5, 10, 25, 50};
 
     private static long coinChange(){
-        long[][] memo = new long[coins.length+1][target+1];
-        for (int i = 0; i < coins.length+1; i++)
-            memo[i][0] = 1; //if the value is 0, there's one way to make 0 cents
-        Arrays.fill(memo[0], 0);
+        long[][] memo = new long[target+1][coins.length];
 
-        for(int i = 1; i < coins.length+1; i++) {
-            for(int j = 1; j < target+1; j++){
-                if (coins[i-1] <= j)
-                    memo[i][j] = memo[i-1][j] + memo[i][j - coins[i-1]];
+        for(int i = 0; i <= target; i++){
+            for(int j = 0; j < coins.length; j++){
+                if (i == 0)
+                    memo[i][j] = 1;
+                else if (j == 0)
+                    if (i % coins[j] == 0)
+                        memo[i][j] = 1;
+                    else
+                        memo[i][j] = 0;
+                else if( coins[j] > i)
+                    memo[i][j] = memo[i][j-1];
                 else
-                    memo[i][j] = memo[i-1][j];
+                    memo[i][j] = memo[i - coins[j]][j] + memo[i][j-1];
             }
         }
-        return memo[coins.length][target];
+        return memo[target][coins.length-1];
     }
 
     public static void main(String[] args)throws Exception{
