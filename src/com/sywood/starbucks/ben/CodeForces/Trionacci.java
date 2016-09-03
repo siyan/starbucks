@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * Created by Ben on 2016-09-01.
+ * codeForces difficult partial sum problem
  */
 public class Trionacci {
     public static void main(String[] args)throws Exception{
