@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
- * Created by Ben on 2016-09-02.
+ * dfs example question
  */
 public class UVa11902 {
 
