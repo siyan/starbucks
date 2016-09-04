@@ -14,14 +14,16 @@ public class UVa11566 {
     private static double[][] memo;
     private static int N, x, T, K;
     private static double knapsack(int idx, int spent, int dishesTaken) {
-        if (Math.ceil((spent+T)*1.1) > x || dishesTaken > 2*(N+1))
+        if (Math.ceil((spent+T)*1.1) > x || dishesTaken > 2*(N+1) || spent > x )
             return -1000; //spent too much, or took too many dishes
-        if(idx == K*2)
+        if(idx == K*2 )
             return 0; //made it to the end
         if(memo[idx][spent] != -1)
             return memo[idx][spent];
 
-        return memo[idx][spent] = Math.max(knapsack(idx+1, spent, dishesTaken), knapsack(idx+1, spent + weights[idx], dishesTaken+1) + values[idx]);
+        double d1 = knapsack(idx+1, spent, dishesTaken);
+        double d2 = knapsack(idx, spent + weights[idx], dishesTaken+1);
+        return memo[idx][spent] = Math.max(d1 ,  d2 + values[idx]);
     }
 
 
@@ -35,7 +37,7 @@ public class UVa11566 {
            N = Integer.parseInt(st.nextToken());
            x = Integer.parseInt(st.nextToken())*(N+1);
            T = Integer.parseInt(st.nextToken())*(N+1);
-           x -= T;
+           //x -= T;
            K = Integer.parseInt(st.nextToken());
            weights = new int[2*K];
            values = new double[2*K];
@@ -53,7 +55,7 @@ public class UVa11566 {
                }
                values[K+i] = values[i];
            }
-           System.out.printf("%.02f\n", (knapsack(0, T, 0)/(N+1)));
+           System.out.printf("%.02f\n", (knapsack(0, 0, 0)/(N+1)));
            line = input.readLine();
        }
    }

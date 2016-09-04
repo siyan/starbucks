@@ -25,7 +25,7 @@ import java.util.*;
 public class BookShelf {
 
     private static List<String > _commands = new LinkedList<String>();
-    private static int n, m, q;
+    private static int n, m, q, tot;
 
 
     private BitSet[] _shelf;
