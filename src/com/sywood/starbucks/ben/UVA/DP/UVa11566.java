@@ -7,6 +7,16 @@ import java.util.StringTokenizer;
 
 /**
  * Final underlined knapsack question
+3 9 3 2
+4 7 5 6 9
+10 2 1 3 8
+
+17
+
+3 100 1 2
+1 10 10 10 10
+2 10 10 10 10
+40
  */
 public class UVa11566 {
     private static int[] weights;
