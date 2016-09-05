@@ -18,9 +18,9 @@ public class UVa11655 {
             int N = Integer.parseInt(st.nextToken());
             int x = Integer.parseInt(st.nextToken()) * (N + 1);
             int T = Integer.parseInt(st.nextToken()) * (N + 1);
-            int X = (int)((double) x / 1.1 - T);
+            double X = (int)((double) x / 1.1 - T);
             int K = Integer.parseInt(st.nextToken());
-            int[] v = new int[2 * K];
+            int[] v = new int[2*K];
             int[] w = new int[2*K];
             for (int i = 0; i < K; i++) {
                 line = input.readLine();
@@ -34,28 +34,25 @@ public class UVa11655 {
             }
 
 
-            int[][] memo = new int[K+K+1][X+1];
+            int[][] memo = new int[K+K+1][(int)X+1];
             for( int j = 0; j <= X; j++ ){
                 memo[0][j] = 0;
             }
 
-            for(int i = 1; i < K + K; i++ ) {
+            for(int i = 1; i <= K + K; i++ ) {
                 for( int j = 0; j <= X; j++ ){
-                    if( memo[i-1][j] + v[i-1] > x)
+                    if( v[i-1] > j)
                         memo[i][j] = memo[i-1][j];
-                    else if( j < v[i-1] ) {
-                        memo[i][j] = Math.max( v[i-1], memo[i-1][i-1]);
-                    }
-                    else  {
-                            int d1 = memo[i - 1][j];
-                            int d2 = memo[i - 1][j-v[i-1]] + w[i-1];
-                            memo[i][j] = Math.max(d1, d2);
+                    else {
+                        int d1 = memo[i - 1][j];
+                        int d2 = memo[i - 1][j-v[i-1]] + w[i-1];
+                        memo[i][j] = Math.max(d1, d2);
                     }
 
                     //System.out.println( i + ":" + j + " = " + (memo[i][j] ));
                 }
             }
-            System.out.println(  memo[K + K - 1][ X] / ( N + 1) );
+            System.out.printf("%.02f\n",  memo[K + K][ (int)X] / (float)( N + 1 ) );
             line = input.readLine();
         }
 
