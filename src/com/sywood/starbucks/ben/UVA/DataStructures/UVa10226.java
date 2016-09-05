@@ -20,20 +20,24 @@ public class UVa10226 {
 
             line = input.readLine();
 
-            int counter = 0;
+            double counter = 0;
 
             while(!line.equals("")){
 
                 if (trees.containsKey(line))
                     trees.put(line, trees.get(line)+1);
                 else
-                    trees.put(line, 0);
+                    trees.put(line, 1);
 
                 counter++;
                 line = input.readLine();
             }
 
-
+            for(String key : trees.keySet()){
+                System.out.printf("%s %.04f\n", key, trees.get(key)/counter*100);
+            }
+            if (t < T-1)
+                System.out.println();
         }
 
     }
