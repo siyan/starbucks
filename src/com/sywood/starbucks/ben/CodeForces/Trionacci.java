@@ -6,6 +6,8 @@ import java.util.StringTokenizer;
 
 /**
  * codeForces difficult partial sum problem
+ *
+ * UNFINISHED
  */
 public class Trionacci {
     public static void main(String[] args)throws Exception{
