@@ -8,6 +8,8 @@ import java.util.StringTokenizer;
 
 /**
  * First queue question. ->>> last question in DS, switched to DP
+ *
+ * TLED, help
  */
 public class UVa10172 {
     public static void main(String[] args)throws Exception{
