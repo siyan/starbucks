@@ -28,7 +28,7 @@ import java.util.StringTokenizer;
 3 2 3 7 10 3 4 9 3 7 9
 0 0 0 0
 
- 112.60
+
  */
 public class UVa11655 {
 
