@@ -57,7 +57,7 @@ public class DisjointSetTest {
     private static ArrayList<Integer> ids = new ArrayList<>();
     private static DisjointSet kruskal(PriorityQueue<Edge> edges, int n){
         DisjointSet process = new DisjointSet(n);
-        while (!edges.isEmpty()) {
+        while (!edges.isEmpty() ) {
             Edge edge = edges.poll();
             if (process.find(edge._a) != process.find(edge._b)) {
                 process.union(edge._a, edge._b);
