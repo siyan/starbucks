@@ -4,9 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-/**
- * Created by Ben on 2016-09-06.
- */
 public class Candies {
     public static void main(String[] args) throws Exception{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -18,7 +15,7 @@ public class Candies {
         long min = 0;
         int[] given = new int[N];
         Arrays.fill(given, 1);
-        for(int i = 1; i < N-1; i++){
+        for(int i = 1; i < N; i++){
             if(values[i-1] < values[i])
                 given[i] = given[i-1]+1;
         }
