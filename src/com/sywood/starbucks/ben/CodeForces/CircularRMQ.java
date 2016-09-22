@@ -15,6 +15,8 @@ public class CircularRMQ {
         int N = (int) 1e5;
         int n;
         int t[] = new int[2 * N];
+        int h = Integer.highestOneBit(n);
+        int delta[] = new int[N];
 
 
         void build() {
@@ -27,7 +29,7 @@ public class CircularRMQ {
                 t[p >> 1] = t[p] + t[p ^ 1];
         }
 
-        void modify(int l, int r, int value){
+        void modify(int l, int r, int value){ //inclusive, exclusive
             for(l += n, r += n; l < r; l >>=1, r>>=1){
                 if ((l&1) > 0) t[l++] += value;
                 if ((r&1) > 0) t[r--] += value;
@@ -47,5 +49,10 @@ public class CircularRMQ {
                 t[i] = 0;
             }
         }
+
+        void apply(int p, int value){
+
+        }
+
     }
 }
