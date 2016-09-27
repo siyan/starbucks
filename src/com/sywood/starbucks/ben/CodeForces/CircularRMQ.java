@@ -1,11 +1,5 @@
 package com.sywood.starbucks.ben.CodeForces;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
-
 /**
  * need to actually create a new segement tree class to solve this problem.
  * http://codeforces.com/blog/entry/18051
