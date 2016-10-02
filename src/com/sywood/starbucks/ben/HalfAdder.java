@@ -6,12 +6,12 @@ package com.sywood.starbucks.ben;
 public class HalfAdder {
     private static int a;
     private static int b;
-    private static String add(int steps, int a1, int b1, int carry){
-        if (steps > Integer.bitCount(a)) {
+    private static String add(int currentBit, int a1, int b1, int carry){
+        if (currentBit > Integer.bitCount(a)) {
             return String.valueOf(carry);
         }else{
-            steps++;
-            return add(steps, (a>>steps)&1,(b>>steps)&1, ((a1&b1)|((a1^b1)&carry))) + String.valueOf((a1^b1)^carry);
+            currentBit++;
+            return add(currentBit, (a>>currentBit)&1,(b>>currentBit)&1, ((a1&b1)|((a1^b1)&carry))) + String.valueOf((a1^b1)^carry);
         }
     }
 
