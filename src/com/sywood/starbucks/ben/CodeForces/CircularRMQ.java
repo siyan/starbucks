@@ -38,10 +38,10 @@ public class CircularRMQ {
             if (p < n) d[p] += value;
         }
 
-        void build(int p){ //for max value
+        void build(int p){ //for min value
             while(p > 1) {
                 p >>= 1;
-                t[p] = Math.max(t[p<<1], t[p<<1|1]) + d[p];
+                t[p] = Math.min(t[p<<1], t[p<<1|1]) + d[p];
             }
         }
 
@@ -64,8 +64,8 @@ public class CircularRMQ {
             int res = Integer.MAX_VALUE;
 
             for(; l < r; l>>=1, r>>=1){
-                if((l&1) >= 0) res = Math.min(res, t[l++]);
-                if((r&1) >= 0) res = Math.min(t[--r], res);
+                if((l&1) > 0) res = Math.min(res, t[l++]);
+                if((r&1) > 0) res = Math.min(t[--r], res);
             }
             return res;
         }
