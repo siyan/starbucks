@@ -30,6 +30,7 @@ public class CAPCITY {
     public static void main(String[] args)throws Exception{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         String[] data = input.readLine().split(" ");
+
         int N = Integer.parseInt(data[0]);
         int M = Integer.parseInt(data[1]);
         int a, b;
