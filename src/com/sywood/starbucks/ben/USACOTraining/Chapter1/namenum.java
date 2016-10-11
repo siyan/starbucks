@@ -26,11 +26,19 @@ public class namenum {
     public static void main(String[] args)throws Exception{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter printer = new PrintWriter(System.out);
-
+        generate();
         String digits = input.readLine();
         int N = digits.length();
 
         char[][] values = new char[][]{{'A', 'B', 'C'}, {'D', 'E', 'F'}, {'G', 'H', 'I'}, {'J', 'K', 'L'}, {'M', 'N','O'}, {'P', 'R', 'S'}, {'T', 'U', 'V'}, {'W', 'X', 'Y'}};
+
+        String build = "";
+        ArrayList<String> created = new ArrayList<String>();
+        for(int i = 0; i < N; i++){
+            int digit = digits.charAt(i) - '2';
+
+
+        }
 
         input.close();
         printer.close();
