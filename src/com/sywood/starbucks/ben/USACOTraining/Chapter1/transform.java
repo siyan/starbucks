@@ -52,7 +52,7 @@ public class transform {
 
         N = Integer.parseInt(input.readLine());
         init = new String[N];
-
+        int value = 7;
         for (int i = 0; i < N; i++) {
             init[i] = input.readLine();
         }
@@ -64,37 +64,27 @@ public class transform {
 
         boolean same = true;
         for (int i = 0; i < N; i++) {
-
-
             same &= out[i].equals(init[i]);
-
         }
 
         if(same){
-            printer.println(6);
-        }else{
-            String[] proccess = init;
-            boolean found = false;
-            for (int i = 1; i <= 3; i++) {
-                proccess = rotate(proccess);
-
-                if(check(proccess)){
-                    printer.println(i);
-                    found = true;
-                    break;
-                }else if (check(reflect(proccess))){
-                    printer.println(5);
-                    found = true;
-                    break;
-                }
-            }
-            proccess = rotate(proccess);
-            if(!found && check(reflect(proccess))) {
-                printer.println(4);
-            }else if(!found && !check(reflect(proccess)))
-                printer.println(7);
+           value = Math.min(value, 6);
         }
-
+        String[] proccess = init;
+        for (int i = 1; i <= 3; i++) {
+            proccess = rotate(proccess);
+            if(check(proccess)){
+                value = Math.min(value, i);
+            }else if (check(reflect(proccess))){
+                value = Math.min(value, 5);
+            }
+        }
+        proccess = rotate(proccess);
+        if(check(reflect(proccess))) {
+            value = Math.min(4, value);
+        }else
+            value = Math.min(value, 7);
+        printer.println(value);
         printer.close();
         input.close();
     }
