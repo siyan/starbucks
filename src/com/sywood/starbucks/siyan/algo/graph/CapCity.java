@@ -15,7 +15,7 @@ public class CapCity {
 
     static List<Integer>[] G;
     static boolean[] marked;
-    static int count;
+    static int count, numCap;
     static boolean[] CAP;
     static int N;
 
@@ -29,6 +29,7 @@ public class CapCity {
         for( int v : G[n] ) {
             if( CAP[v]) {
                 CAP[n] = true;
+                numCap++;
                 return;
             }
             if( !marked[v] ) dfs( v );
@@ -62,11 +63,19 @@ public class CapCity {
         for( int i = 0; i < N; i++ ) {
             marked = new boolean[G.length];
             dfs( i );
-            if( count == N ) CAP[i] = true;
+            if( count == N ) {
+                numCap++;
+                CAP[i] = true;
+            }
             count = 0;
         }
 
-        System.out.println(Arrays.toString( CAP ));
+        //System.out.println(Arrays.toString( CAP ));
+        System.out.println( numCap );
+        for( int i = 0; i < CAP.length; i++ ) {
+            if( CAP[i] ) System.out.print( (i + 1) + " ");
+        }
+        System.out.println("");
 
     }
 }
