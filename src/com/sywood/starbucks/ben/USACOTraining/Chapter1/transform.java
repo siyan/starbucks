@@ -1,14 +1,12 @@
-package com.sywood.starbucks.ben.USACOTraining.Chapter1;
+//package com.sywood.starbucks.ben.USACOTraining.Chapter1;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Arrays;
 
 /**
  ID: benbli
  LANG: JAVA
- TASK: ride
+ TASK: transform
  */
 public class transform {
     private static int N;
@@ -34,9 +32,10 @@ public class transform {
         Arrays.fill(proccess, "");
         for(int row = 0; row <N; row++){
             for (int i = 0; i < N; i++) {
-
+                proccess[row] += inp[row].charAt(N-i-1);
             }
         }
+        return proccess;
     }
 
     private static boolean check(String[] proccess){
@@ -48,8 +47,8 @@ public class transform {
     }
 
     public static void main(String[] args)throws Exception{
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter printer = new PrintWriter(System.out);
+        BufferedReader input = new BufferedReader(new InputStreamReader(new FileInputStream("transform.in")));
+        PrintWriter printer = new PrintWriter(new BufferedWriter(new FileWriter("transform.out")));
 
         N = Integer.parseInt(input.readLine());
         init = new String[N];
@@ -72,15 +71,25 @@ public class transform {
             printer.println(6);
         }else{
             String[] proccess = init;
-
+            boolean found = false;
             for (int i = 1; i <= 3; i++) {
                 proccess = rotate(proccess);
 
                 if(check(proccess)){
                     printer.println(i);
+                    found = true;
+                    break;
+                }else if (check(reflect(proccess))){
+                    printer.println(5);
+                    found = true;
                     break;
                 }
             }
+            proccess = rotate(proccess);
+            if(check(reflect(proccess)))
+                printer.println(4);
+            else if(!found && !check(reflect(proccess)))
+                printer.println(7);
         }
 
         printer.close();
