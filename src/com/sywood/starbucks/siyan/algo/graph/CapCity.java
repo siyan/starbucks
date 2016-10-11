@@ -72,10 +72,11 @@ public class CapCity {
 
         //System.out.println(Arrays.toString( CAP ));
         System.out.println( numCap );
+        String ret = "";
         for( int i = 0; i < CAP.length; i++ ) {
-            if( CAP[i] ) System.out.print( (i + 1) + " ");
+            if( CAP[i] ) ret += (i+1) + " ";
         }
-        System.out.println("");
+        System.out.println(ret.trim());
 
     }
 }

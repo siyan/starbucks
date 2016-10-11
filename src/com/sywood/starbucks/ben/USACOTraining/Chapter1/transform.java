@@ -41,7 +41,7 @@ public class transform {
     private static boolean check(String[] proccess){
         boolean same = true;
         for (int i = 0; i < N; i++) {
-            same = out[i].equals(proccess[i]);
+            same &= out[i].equals(proccess[i]);
         }
         return same;
     }
@@ -64,7 +64,10 @@ public class transform {
 
         boolean same = true;
         for (int i = 0; i < N; i++) {
-            same = out[i].equals(init[i]);
+
+
+            same &= out[i].equals(init[i]);
+
         }
 
         if(same){
@@ -86,9 +89,9 @@ public class transform {
                 }
             }
             proccess = rotate(proccess);
-            if(check(reflect(proccess)))
+            if(!found && check(reflect(proccess))) {
                 printer.println(4);
-            else if(!found && !check(reflect(proccess)))
+            }else if(!found && !check(reflect(proccess)))
                 printer.println(7);
         }
 
