@@ -41,41 +41,55 @@ public class UVa11655 {
             int N = Integer.parseInt(st.nextToken());
             int x = Integer.parseInt(st.nextToken()) * (N + 1);
             int T = Integer.parseInt(st.nextToken()) * (N + 1);
-            double X = (int)((double) x / 1.1 - T);
+            double W = (int)((double) x / 1.1 - T);
             int K = Integer.parseInt(st.nextToken());
-            int[] v = new int[2*K];
             int[] w = new int[2*K];
+            int[] v = new int[2*K];
+            int dishesOrdered = 0;
             for (int i = 0; i < K; i++) {
                 line = input.readLine();
                 st = new StringTokenizer(line);
-                v[i] = Integer.parseInt(st.nextToken());
-                v[K+i] = v[i];
-                for (int j = 0; j <= N; j++) {
-                    w[i] += Integer.parseInt(st.nextToken());
-                }
+                w[i] = Integer.parseInt(st.nextToken());
                 w[K+i] = w[i];
-            }
-
-
-            int[][] memo = new int[K+K+1][(int)X+1];
-            for( int j = 0; j <= X; j++ ){
-                memo[0][j] = 0;
-            }
-
-            for(int i = 1; i <= K + K; i++ ) {
-                for( int j = 0; j <= X; j++ ){
-                    if( v[i-1] > j)
-                        memo[i][j] = memo[i-1][j];
-                    else {
-                        int d1 = memo[i - 1][j];
-                        int d2 = memo[i - 1][j-v[i-1]] + w[i-1];
-                        memo[i][j] = Math.max(d1, d2);
-                    }
-
-                    //System.out.println( i + ":" + j + " = " + (memo[i][j] ));
+                for (int j = 0; j <= N; j++) {
+                    v[i] += Integer.parseInt(st.nextToken());
                 }
+                v[K+i] = v[i];
             }
-            System.out.printf("%.02f\n",  memo[K + K][ (int)X] / (float)( N + 1 ) );
+
+
+            int[][] vals = new int[K+K+1][(int)W+1];
+            int[][] weits = new int[K+K+1][(int)W+1];
+            for( int j = 0; j <= W; j++ ){
+                vals[0][j] = 0;
+            }
+
+            int ordered = 0;
+            for(int i = 1; i <= K + K; i++ ) {
+                for( int j = 0; j <= W; j++ ){
+                    if( w[i-1] > j || dishesOrdered >= 2 * ( N + 1 )) {
+                        vals[i][j] = vals[i - 1][j];
+                        ordered = 0;
+                    }
+                    else {
+                        int d1 = vals[i - 1][j];
+                        int d2 = vals[i - 1][j-w[i-1]] + v[i-1];
+                        vals[i][j] = d1 > d2 ? d1 : d2;
+                        if( d1 > d2 ) {
+                            vals[i][j] = d1;
+                            ordered = -1;
+                        }
+                        else {
+                            weits[i][j] = d2;
+                            ordered = 1;
+                        }
+                    }
+                    //System.out.println( i + ":" + " = " + weits[i][j]  + " -- " + (vals[i][j] / (N +1)));
+                }
+                dishesOrdered += ordered;
+                System.out.println( i + ":" + dishesOrdered + " = " + vals[i][(int)W]  + " -- " + (vals[i][(int)W] / (N +1)));
+            }
+            System.out.printf("%.02f\n",  vals[K + K][ (int)W] / (float)( N + 1 ) );
             line = input.readLine();
         }
 
