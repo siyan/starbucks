@@ -1,16 +1,20 @@
-package com.sywood.starbucks.ben.USACOTraining.Chapter1;
+//package com.sywood.starbucks.ben.USACOTraining.Chapter1;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Created by Ben on 2016-10-10.
+ ID: benbli
+ LANG: JAVA
+ TASK: namenum
  */
 public class namenum {
     private static ArrayList<String> valid = new ArrayList<String>();
+
+    private static char[][] values = new char[][]{{'A', 'B', 'C'}, {'D', 'E', 'F'}, {'G', 'H', 'I'}, {'J', 'K', 'L'}, {'M', 'N','O'}, {'P', 'R', 'S'}, {'T', 'U', 'V'}, {'W', 'X', 'Y'}};
+    private static ArrayList<String> combos = new ArrayList<String>();
+    private static long counter = 0;
+
 
     private static void generate()throws Exception{
         BufferedReader stream = new BufferedReader(new InputStreamReader(new FileInputStream("dict.txt")));
@@ -23,16 +27,21 @@ public class namenum {
         }
     }
 
+
     public static void main(String[] args)throws Exception{
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter printer = new PrintWriter(System.out);
+        BufferedReader input = new BufferedReader(new InputStreamReader(new FileInputStream("namenum.in")));
+        PrintWriter printer = new PrintWriter(new BufferedWriter(new FileWriter("namenum.out")));
 
         String digits = input.readLine();
-        int N = digits.length();
+        generate();
 
-        char[][] values = new char[][]{{'A', 'B', 'C'}, {'D', 'E', 'F'}, {'G', 'H', 'I'}, {'J', 'K', 'L'}, {'M', 'N','O'}, {'P', 'R', 'S'}, {'T', 'U', 'V'}, {'W', 'X', 'Y'}};
+        if(counter == 0){
+
+            printer.println("NONE");
+            printer.close();
+        }
+
 
         input.close();
-        printer.close();
     }
 }
