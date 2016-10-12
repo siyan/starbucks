@@ -18,8 +18,8 @@ public class dualpal {
     }
 
     public static void main(String[] args)throws Exception{
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));//new FileInputStream("dualpal.in")));
-        PrintWriter printer = new PrintWriter(System.out);//new BufferedWriter(new FileWriter("dualpal.out")));
+        BufferedReader input = new BufferedReader(new InputStreamReader(new FileInputStream("dualpal.in")));
+        PrintWriter printer = new PrintWriter(new BufferedWriter(new FileWriter("dualpal.out")));
 
         String[] data = input.readLine().split(" ");
         int N = Integer.parseInt(data[0]);
@@ -30,7 +30,7 @@ public class dualpal {
         while(counter < N){
             int isPalCnt = 0;
             for (int i = 2; i <= 10; i++) {
-                if(isPal(Integer.toString(N, i))) isPalCnt++;
+                if(isPal(Integer.toString(S, i))) isPalCnt++;
             }
 
             if(isPalCnt >= 2){
