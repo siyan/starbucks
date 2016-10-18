@@ -27,7 +27,6 @@ public class holstein {
         int numScoops = Integer.parseInt(input.readLine());
 
 
-
         printer.close();
     }
 }
