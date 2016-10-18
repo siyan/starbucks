@@ -1,8 +1,6 @@
 package com.sywood.starbucks.ben.USACOTraining.Chapter2;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Arrays;
 
 /**
@@ -12,8 +10,8 @@ import java.util.Arrays;
  */
 public class sort3 {
     public static void main(String[] args)throws Exception{
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter printer = new PrintWriter(System.out);
+        BufferedReader input = new BufferedReader(new InputStreamReader(new FileInputStream("sort3.in")));
+        PrintWriter printer = new PrintWriter(new BufferedWriter(new FileWriter("sort3.out")));
 
         int N = Integer.parseInt(input.readLine());
 
@@ -23,8 +21,32 @@ public class sort3 {
             records[i] = Integer.parseInt(input.readLine());
             counter[records[i]-1]++;
         }
-        printer.println(Arrays.toString(counter));
+        int[] sorted = new int[N];
+        boolean[] outOfPlace = new boolean[N];
+        for (int i = 0; i < counter[0]; i++) {
+            sorted[i] = 1;
+        }
+        for(int i = counter[0]; i-counter[0] < counter[1]; i++) {
+            sorted[i] = 2;
+        }for(int i = counter[1]+ counter[0]; i < N; i++) {
+            sorted[i] = 3;
+        }
 
+        int moves = 0;
+        for(int i = 0; i < N; i ++){ //checks each idx
+            if(sorted[i] != records[i]){
+                for(int j = N-1; j > i; j--){
+                    if(records[j] == sorted[i]){
+                        records[j] = records[i];
+                        records[i] = sorted[i];
+                        moves++;
+                        break;
+                    }
+                }
+            }
+        }
+
+        printer.println(moves);
         printer.close();
     }
 }
