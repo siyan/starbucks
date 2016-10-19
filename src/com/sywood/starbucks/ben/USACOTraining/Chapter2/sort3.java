@@ -1,7 +1,6 @@
 package com.sywood.starbucks.ben.USACOTraining.Chapter2;
 
 import java.io.*;
-import java.util.Arrays;
 
 /**
  ID: benbli
