@@ -23,45 +23,44 @@ public class ANARC05B {
         return h;
     }
 
-    private static boolean theEnd( int idx1, int idx2, int[] h1, int[] h2 ) {
-        if( idx1 < h1.length || idx2 < h2.length) {
+    private static boolean theEnd( int idx1, int idx2, int[] helix1, int[] helix2 ) {
+        if( idx1 < helix1.length || idx2 < helix2.length) {
             return true;
         }
         else {
-            if( h1[h1.length-1] != h2[h2.length-1]) {
-                tot += max( subtot1, subtot2 );
+            if( helix1[helix1.length-1] != helix2[helix2.length-1]) {
+                total += max( subtot1, subtot2 );
             }
             return false;
         }
     }
 
-    static int tot;
+    static int total;
     static int subtot1;
     static int subtot2;
-    private static int walk( int[] h1, int[] h2) {
-        tot = subtot1 = subtot2 = 0;
-        int idx1 = 0;
-        int idx2 = 0;
-        for( ; theEnd( idx1, idx2, h1, h2); ) {
-            if( idx2 < h2.length && ( idx1 == h1.length || h1[idx1] > h2[idx2]  ) ) {
-                subtot2 += h2[idx2++];
+
+    private static int walk( int[] helix1, int[] helix2 ) {
+        total = subtot1 = subtot2 = 0;
+
+        for( int idx1 = 0, idx2 = 0; theEnd( idx1, idx2, helix1, helix2 ); ) {
+            if( idx2 < helix2.length && ( idx1 == helix1.length || helix1[idx1] > helix2[idx2]  ) ) {
+                subtot2 += helix2[idx2++];
             }
-            else if ( idx1 < h1.length && ( idx2 == h2.length || h1[idx1] < h2[idx2] ) ) {
-                subtot1 += h1[idx1++];
+            else if ( idx1 < helix1.length && ( idx2 == helix2.length || helix1[idx1] < helix2[idx2] ) ) {
+                subtot1 += helix1[idx1++];
             }
-            else if ( h1[idx1] == h2[idx2] )  {
-                tot += max( subtot1, subtot2 );
-                subtot1 = 0;
-                subtot2 = 0;
+            else if ( helix1[idx1] == helix2[idx2] )  {
+                total += max( subtot1, subtot2 );
+                subtot1 = subtot2 = 0;
                 idx1++;
-                tot += h2[idx2++];
+                total += helix2[idx2++];
             }
             else {
                 System.out.println( "should never be here, something wrong" );
             }
         }
 
-        return tot;
+        return total;
     }
 
     public static void main(String[] args ) throws IOException {
