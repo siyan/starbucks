@@ -3,6 +3,7 @@ package com.sywood.starbucks.siyan.algo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 /**
  * Created by siyan on 2016-10-26.
@@ -14,11 +15,17 @@ public class ANARC05B {
         return n1 > n2 ? n1 : n2;
     }
 
+    private static int readNextInt( String s, int offset ) {
+        int nextSpace = s.indexOf( " ", offset );
+        return Integer.parseInt( s.substring( offset, nextSpace));
+    }
+
     private static int[] parseString( String s ) {
-        String[] ss = s.split( " ");
-        int[] h = new int[ ss.length - 1 ];
+        StringTokenizer st = new StringTokenizer( s );
+        int d = Integer.parseInt( st.nextToken() );
+        int[] h = new int[ d ];
         for( int i = 0; i < h.length; i++ ) {
-            h[i] = Integer.parseInt( ss[i+1]);
+            h[i] = Integer.parseInt( st.nextToken() );
         }
         return h;
     }
