@@ -15,11 +15,6 @@ public class ANARC05B {
         return n1 > n2 ? n1 : n2;
     }
 
-    private static int readNextInt( String s, int offset ) {
-        int nextSpace = s.indexOf( " ", offset );
-        return Integer.parseInt( s.substring( offset, nextSpace));
-    }
-
     private static int[] parseString( String s ) {
         StringTokenizer st = new StringTokenizer( s );
         int d = Integer.parseInt( st.nextToken() );
