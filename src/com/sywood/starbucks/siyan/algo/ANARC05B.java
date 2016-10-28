@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
  */
 public class ANARC05B {
 
+
     private static int max( int n1, int n2 ) {
         return n1 > n2 ? n1 : n2;
     }
@@ -17,14 +18,13 @@ public class ANARC05B {
         String[] ss = s.split( " ");
         int[] h = new int[ ss.length - 1 ];
         for( int i = 0; i < h.length; i++ ) {
-            h[i] = Integer.parseInt( ss[i + 1]);
+            h[i] = Integer.parseInt( ss[i+1]);
         }
-        System.out.println( s );
         return h;
     }
 
     private static boolean theEnd( int idx1, int idx2, int[] h1, int[] h2 ) {
-        if( idx1 < h1.length && idx2 < h2.length) {
+        if( idx1 < h1.length || idx2 < h2.length) {
             return true;
         }
         else {
@@ -43,20 +43,22 @@ public class ANARC05B {
         int idx1 = 0;
         int idx2 = 0;
         for( ; theEnd( idx1, idx2, h1, h2); ) {
-            if( h1[idx1] > h2[idx2] ) {
+            if( idx2 < h2.length && ( idx1 == h1.length || h1[idx1] > h2[idx2]  ) ) {
                 subtot2 += h2[idx2++];
             }
-            else if ( h1[idx1] < h2[idx2] ) {
+            else if ( idx1 < h1.length && ( idx2 == h2.length || h1[idx1] < h2[idx2] ) ) {
                 subtot1 += h1[idx1++];
             }
-            else {
+            else if ( h1[idx1] == h2[idx2] )  {
                 tot += max( subtot1, subtot2 );
-
-                subtot1 = h1[idx1++];
-                subtot2 = h2[idx2++];
-                tot += subtot1;
+                subtot1 = 0;
+                subtot2 = 0;
+                idx1++;
+                tot += h2[idx2++];
             }
-            System.out.println( tot + " " + idx1 );
+            else {
+                System.out.println( "should never be here, something wrong" );
+            }
         }
 
         return tot;
@@ -68,7 +70,7 @@ public class ANARC05B {
         for (String line = input.readLine(); line.charAt(0) != '0'; line = input.readLine()) {
             int[] h1 = parseString( line );
             int[] h2 = parseString( input.readLine() );
-            System.out.println( "total = " + walk( h1, h2));
+            System.out.println( walk( h1, h2));
         }
     }
 }
