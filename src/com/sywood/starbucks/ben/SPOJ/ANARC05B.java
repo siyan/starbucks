@@ -6,9 +6,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-/**
- TODO learn binary search better and finish this problem
- */
 public class ANARC05B {
     private static int firstLen, secLen;
     private static int[] first = new int[10001], sec = new int[10001];

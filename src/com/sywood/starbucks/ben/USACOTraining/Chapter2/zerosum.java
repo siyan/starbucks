@@ -1,4 +1,4 @@
-package com.sywood.starbucks.ben.USACOTraining.Chapter2;
+//package com.sywood.starbucks.ben.USACOTraining.Chapter2;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
  */
 public class zerosum {
     private static int N;
-    private static int[] digits = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    private static int[] digits = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
     private static ArrayList<String> total = new ArrayList<String>();
     private static void recurse(int idx, int sum, int num, int sign, String curr){
        if(idx == N){
