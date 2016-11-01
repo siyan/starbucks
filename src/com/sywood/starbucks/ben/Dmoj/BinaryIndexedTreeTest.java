@@ -1,20 +1,20 @@
 package com.sywood.starbucks.ben.Dmoj;
 
-/**
- * Created by Ben on 2016-10-31.
- */
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
 public class BinaryIndexedTreeTest {
     private static class FenwickTree {
         long[] tree;
-
-        public FenwickTree(long[] init, int size){
+        int size;
+        FenwickTree(long[] init, int size){
             tree = new long[size+1];
+            this.size = size;
             for (int i = 0; i < size; i++) {
-                long add = init[i];
-                int k = i;
-                for(; k <= size; k &= -k){
-                    tree[k] += add;
-                }
+                update(i+1, init[i]);
             }
         }
 
@@ -25,18 +25,62 @@ public class BinaryIndexedTreeTest {
             }
             return sum;
         }
+
         long rsq(int a, int b){
-            return rsq(b) - (a == 1 ? 0: rsq(a-1));
+            return rsq(b) - rsq(a-1);
         }
-        void update(int k, int v){
-            for(; k < tree.length; k+= (k&(-k))){
-                tree[k] += v;
+
+        void update(int k, long v){
+            long orig = rsq(k, k);
+            for(; k <= size; k += (k&(-k))){
+                tree[k] += v-orig;
             }
         }
 
-        public static void main(String[] args){
-            FenwickTree tree = new FenwickTree(new long[9], 9);
-
+        int allLessThan(int v){
+            int count = 0;
+            for(int i = 1; i <= size; i++){
+                if(rsq(i, i) <= v) count++;
+            }
+            return count;
         }
+
+        public String toString(){
+            String ret = "";
+            for (int i = 1; i < size; i++) {
+                ret += rsq(i, i) + ", ";
+            }
+            return ret;
+        }
+
+    }
+    public static void main(String[] args)throws Exception{
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter printer = new PrintWriter(System.out);
+        StringTokenizer st = new StringTokenizer(input.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+        long[] init = new long[N];
+        st = new StringTokenizer(input.readLine());
+        for (int i = 0; i < N; i++) {
+            init[i] = Long.parseLong(st.nextToken());
+        }
+        FenwickTree tree = new FenwickTree(init, N);
+        String command;
+        for (int i = 0; i < M; i++) {
+            st = new StringTokenizer(input.readLine());
+            command = st.nextToken();
+            switch (command){
+                case "C":
+                    tree.update(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
+                    break;
+                case "S":
+                    printer.println(tree.rsq(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken())));
+                    break;
+                case "Q":
+                    printer.println(tree.allLessThan(Integer.parseInt(st.nextToken())));
+            }
+        }
+        printer.close();
     }
 }
