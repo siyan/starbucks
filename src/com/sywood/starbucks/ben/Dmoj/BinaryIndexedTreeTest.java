@@ -9,9 +9,11 @@ import java.util.StringTokenizer;
 public class BinaryIndexedTreeTest {
     private static class FenwickTree {
         long[] tree;
+        long[] freq;
         int size;
-        FenwickTree(long[] init, int size){
+        FenwickTree(int[] init, int size){
             tree = new long[size+1];
+            freq = new long[100001];
             this.size = size;
             for (int i = 0; i < size; i++) {
                 update(i+1, init[i]);
@@ -30,29 +32,33 @@ public class BinaryIndexedTreeTest {
             return rsq(b) - rsq(a-1);
         }
 
-        void update(int k, long v){
-            long orig = rsq(k, k);
-            for(; k <= size; k += (k&(-k))){
-                tree[k] += v-orig;
+        void update(int k, int v){
+            int orig = (int) rsq(k, k);
+            int k1 = k;
+            for(; k1 <= size; k1 += (k1&(-k1))){
+                tree[k1] += v-orig;
+            }
+            k1 = orig;
+            if(k1 > 0) {
+                for (; k1 <= 100000; k1 += (k1 & (-k1)))
+                    freq[k1]--;
+            }
+            k1 = v;
+            if(k1 > 0) {
+                for (; k1 <= 100000; k1 += (k1 & (-k1))) {
+                    freq[k1]++;
+                }
             }
         }
 
-        int allLessThan(int v){
-            int count = 0;
-            for(int i = 1; i <= size; i++){
-                if(rsq(i, i) <= v) count++;
+        long allLessThan(int v){
+            long count = 0;
+            for(; v > 0; v -= v&-v) {
+                //System.out.println(v + ", " + freq[v]);
+                count += freq[v];
             }
             return count;
         }
-
-        public String toString(){
-            String ret = "";
-            for (int i = 1; i < size; i++) {
-                ret += rsq(i, i) + ", ";
-            }
-            return ret;
-        }
-
     }
     public static void main(String[] args)throws Exception{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -60,13 +66,14 @@ public class BinaryIndexedTreeTest {
         StringTokenizer st = new StringTokenizer(input.readLine());
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
-        long[] init = new long[N];
+        int[] init = new int[N];
         st = new StringTokenizer(input.readLine());
         for (int i = 0; i < N; i++) {
-            init[i] = Long.parseLong(st.nextToken());
+            init[i] = Integer.parseInt(st.nextToken());
         }
         FenwickTree tree = new FenwickTree(init, N);
         String command;
+        //System.out.println(Arrays.toString(tree.freq));
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(input.readLine());
             command = st.nextToken();
