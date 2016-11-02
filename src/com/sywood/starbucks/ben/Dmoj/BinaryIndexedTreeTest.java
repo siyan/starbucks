@@ -54,7 +54,6 @@ public class BinaryIndexedTreeTest {
         long allLessThan(int v){
             long count = 0;
             for(; v > 0; v -= v&-v) {
-                //System.out.println(v + ", " + freq[v]);
                 count += freq[v];
             }
             return count;
@@ -73,20 +72,15 @@ public class BinaryIndexedTreeTest {
         }
         FenwickTree tree = new FenwickTree(init, N);
         String command;
-        //System.out.println(Arrays.toString(tree.freq));
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(input.readLine());
             command = st.nextToken();
-            switch (command){
-                case "C":
-                    tree.update(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
-                    break;
-                case "S":
-                    printer.println(tree.rsq(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken())));
-                    break;
-                case "Q":
-                    printer.println(tree.allLessThan(Integer.parseInt(st.nextToken())));
-            }
+            if (command.equals("C"))
+                tree.update(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
+            else if (command.equals("S"))
+                printer.println(tree.rsq(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken())));
+            else
+                printer.println(tree.allLessThan(Integer.parseInt(st.nextToken())));
         }
         printer.close();
     }
