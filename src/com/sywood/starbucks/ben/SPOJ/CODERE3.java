@@ -33,21 +33,17 @@ public class CODERE3 {
 
     private static int LDS(int[] A) {
         int[] m = new int[A.length];
-        int[] mH = new int[A.length];
         //Arrays.fill(m, 1);//not important here
         for (int x = A.length - 2; x >= 0; x--) {
             for (int y = A.length - 1; y > x; y--) {
                 if (m[x] <= m[y] && A[x] > A[y]) {
                     m[x]=m[y]+1;//or use m[x]++
                 }
-                if (mH[x] <= mH[y] && A[x] < A[y]) {
-                    mH[x]=mH[y]+1;//or use m[x]++
-                }
             }
         }
-        int max = m[0] + mH[0];
+        int max = m[0];
         for (int i = 0; i < m.length; i++) {
-            max = max > m[i]+mH[i] ? max : m[i] + mH[i];
+                max = max > m[i] ? max : m[i];
         }
 
         return max;
