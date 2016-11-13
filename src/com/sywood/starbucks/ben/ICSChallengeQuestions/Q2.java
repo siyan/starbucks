@@ -16,4 +16,10 @@ public class Q2 {
         }
         return -1;
     }
+
+
+    public static void main(String[] args){
+        System.out.println(method(50, 1));
+    }
 }
+

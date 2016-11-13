@@ -4,7 +4,7 @@ package com.sywood.starbucks.ben.ICSChallengeQuestions;
  * Created by Ben on 2016-11-10.
  */
 public class Q8 {
-    private static boolean used[] = new boolean[26];
+    private static boolean used[];
     private static int maxLen;
     public static void genPermutations(String curr){
         if(curr.length() == maxLen)
@@ -22,6 +22,7 @@ public class Q8 {
     }
     public static void main(String[] args){
         maxLen = 3;
+        used = new boolean[maxLen];
         genPermutations("");
     }
 }
