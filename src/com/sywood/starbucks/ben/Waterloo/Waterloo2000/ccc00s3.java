@@ -5,16 +5,17 @@ import java.io.PrintWriter;
 import java.util.*;
 
 public class ccc00s3 {
-    static boolean[][] matrix = new boolean[2500][2500];
+    static boolean[][] matrix = new boolean[2000][2000];
     static int max;
     private static boolean bfs(int start, int end){
         ArrayDeque<Integer> q = new ArrayDeque<>();
-        boolean[] visited = new boolean[2500];
+        boolean[] visited = new boolean[2000];
         visited[start] = true;
         for (int i = 0; i < max; i++) {
             if(matrix[start][i]) q.addLast(i);
         }
-        for(; !q.isEmpty();){
+        if(start == end) return true;
+        for(;!q.isEmpty();){
             int curr = q.poll();
             for(int i = 0; i < max; i++){
                 if(matrix[curr][i] && !visited[i])q.addLast(i);
