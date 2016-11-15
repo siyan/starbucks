@@ -8,7 +8,7 @@ import java.util.*;
 public class ccc00s4 {
     private static int N, target;
     private static int[] coins;
-    private static int[][] memo = new int[6000][6000];
+    private static int[][] memo;
 
     private static int min(int a, int b){
         return a > b ? b : a;
@@ -32,6 +32,7 @@ public class ccc00s4 {
         target = input.nextInt();
         N = input.nextInt();
         coins = new int[N];
+        memo = new int[target][600];
         for(int[] row : memo)
             Arrays.fill(row, -1);
         for(int i = 0; i < N; i++)
