@@ -21,34 +21,24 @@ public class ccc0204 {
     }
 
     public static int recurse(int currSize, int groupT, int totalT, int idx){
-        System.out.println(idx + ", size: " + currSize + ", group time: " + groupT + ", tot time: " + totalT);
+        //System.out.println(idx + ", size: " + currSize + ", group time: " + groupT + ", tot time: " + totalT);
         if(idx == Q){
-            if(currSize == 1)
-                return totalT + times[idx-1];
-
             sizes[Q-currSize] = currSize;
             return totalT+groupT;
         }
 
-        if(memo[idx] != -1)
-            return memo[idx];
-
         if(currSize == M) {
-            System.out.println("YES");
-            sizes[idx] = M;
-            return memo[idx] = recurse(1, times[idx], totalT + groupT, idx + 1); //have to send the group
+            sizes[idx-M] = M;
+            return recurse(1, times[idx], totalT + groupT, idx + 1);//have to send the group
         }
-        if(currSize == 0)
-            return memo[idx] = recurse(1, times[idx], totalT, idx+1); //must take the next person
 
         int sent = recurse(1, times[idx], totalT+groupT, idx+1);
         int not = recurse(currSize+1, max(groupT, times[idx]), totalT, idx+1);
 
-        if(sent < not){
-            sizes[idx] = currSize;
-        }
+        if(sent < not)
+            sizes[idx-currSize] = currSize;
 
-        return memo[idx] = min(sent, not);
+        return min(sent, not);
     }
 
     public static void main(String[] args)throws Exception{
@@ -68,7 +58,7 @@ public class ccc0204 {
         //two options: take new person, or send group and start once more.
         System.out.println("Total Time: " + recurse(1, times[0], 0, 1));
 
-        System.out.println(Arrays.toString(sizes));
+        //System.out.println(Arrays.toString(sizes));
         for (int i = 0; i < Q; i+= sizes[i]) {
             String prnt = "";
             for (int j = 0; j < sizes[i] && j+i < Q; j++) {
