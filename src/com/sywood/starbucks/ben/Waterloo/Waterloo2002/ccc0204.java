@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 /**
- * Created by Ben on 2016-11-16.
+ change into dp for practice
  */
 public class ccc0204 {
     private static int M;

@@ -3,22 +3,29 @@ package com.sywood.starbucks.ben.Waterloo.Waterloo2007;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 
 /**
- * Created by Ben on 2016-11-20.
+ doing much, much later
  */
 public class ccc07j5 {
     private static ArrayList<Integer> motels = new ArrayList<>();
+    private static int min, max;
+    private static int ways = 0;
+    private static int[] memo = new int[7000];
 
-    private static int recurse(int idx, int dist){
-        if(dist >= 7000) return 1;
+    private static void recurse(int dist){
+        if(7000 <= dist) {
+            ways++;
+        }else {
 
-        return 1;
+            for(int motel : motels){
+                if(motel - dist >= min && motel-dist <= max)
+                    recurse(motel);
+            }
+        }
     }
-
 
     public static void main(String[] args)throws Exception{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -26,14 +33,15 @@ public class ccc07j5 {
         for (int i = 0; i < init.length; i++) {
             motels.add(Integer.parseInt(init[i]));
         }
-        System.out.println(motels);
-        int min = Integer.parseInt(input.readLine());
-        int max = Integer.parseInt(input.readLine());
+        min = Integer.parseInt(input.readLine());
+        max = Integer.parseInt(input.readLine());
         int N = Integer.parseInt(input.readLine());
         for (int i = 0; i < N; i++) {
             motels.add(Integer.parseInt(input.readLine()));
         }
         Collections.sort(motels);
+        recurse(0);
+        System.out.println(ways);
 
     }
 }
