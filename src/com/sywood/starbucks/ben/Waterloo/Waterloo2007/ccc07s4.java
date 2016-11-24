@@ -12,7 +12,7 @@ public class ccc07s4 {
     static ArrayList<Integer>[] matrix;
     static int dfs(boolean visited[], int curr){
         visited[curr] = true;
-        if(matrix[curr].isEmpty()) return 1;
+        if(matrix[curr].isEmpty()) memo[curr] = 1;
         boolean allVisited = true;
         int count = 0;
         if(memo[curr] != -1) return memo[curr];
