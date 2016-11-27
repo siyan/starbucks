@@ -3,8 +3,6 @@ package com.sywood.starbucks.siyan.ccc.CCCSenior;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
 
 /**
  * Created by siyan on 2016-11-26.
@@ -15,6 +13,7 @@ public class ccc2007s5 {
 
     private static int[] DOWN_PIN_SUM;
     private static int[] MAX_PINS;
+    private static int[] MAX_SUM;
 
     private static int downPinSum( int[] pins, int startPos,   int ballWidth) {
         if(DOWN_PIN_SUM[startPos] > 0 ) return  DOWN_PIN_SUM[startPos];
@@ -25,7 +24,7 @@ public class ccc2007s5 {
             num += pins[pos];
         }
         DOWN_PIN_SUM[startPos] = num;
-        return DOWN_PIN_SUM[startPos];
+        return num;
     }
 
     private static int maxPins( int[] pins, int startPos, int ballWidth ) {
@@ -38,19 +37,21 @@ public class ccc2007s5 {
             maxNum = max( maxNum, dPins );
         }
         MAX_PINS[startPos] = maxNum;
-        return MAX_PINS[startPos];
+        return maxNum;
     }
 
     private static int recuPins( int[] pins, int startPos, int ballWidth, int numBalls ) {
+        if( MAX_SUM[startPos] > 0 ) return MAX_SUM[startPos];
         if( numBalls == 1 ) {
             return maxPins( pins, startPos, ballWidth );
         }
         else {
             int maxSum = 0;
-            for( int i = 0; i < ballWidth - 1; i++ ) {
+            for( int i = pins.length - numBalls * ballWidth - 1; i >= 0 ; i--  ) {
                 int currSum = downPinSum( pins, i,   ballWidth);
                 maxSum = max( maxSum, currSum + recuPins( pins, i, ballWidth, numBalls - 1 ));
             }
+            MAX_SUM[startPos] = maxSum;
             return maxSum;
         }
     }
@@ -66,11 +67,12 @@ public class ccc2007s5 {
             int[] pins = new int[numPins];
             DOWN_PIN_SUM = new int[numPins];
             MAX_PINS = new int[numPins];
+            MAX_SUM = new int[numPins];
             for( int p = 0; p < numPins; p++ ) {
                 pins[p] = Integer.parseInt( input.readLine() );
             }
 
-            System.out.println( recuPins(pins, 0, ballWidth, numBalls));
+            System.out.println( recuPins(pins, 0, ballWidth, numBalls) );
         }
 
     }
