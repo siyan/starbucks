@@ -15,11 +15,28 @@ public class ccc02s4 {
     static int[]    _best;
     static int      M;
 
+    static int max( int a, int b ) {
+        return a > b ? a : b;
+    }
+
+    static int min( int a, int b ) {
+        return a > b ? b : a;
+    }
+
     static int groupSpeed( int start, int end ) {
         int slowest = 0;
+        int group = 0;
         for( int i = start - 1; i < end; i++ ) {
-            slowest = Math.max( slowest, _speeds[i]);
+            slowest = max( slowest, _speeds[i]);
+            if( slowest == _speeds[i] ) {
+                group = i;
+            }
         }
+        for( int i = start - 1; i <= group; i++ ) {
+            System.out.print( _names[i]);
+        }
+
+        System.out.println("");
         return slowest;
     }
 
@@ -29,9 +46,9 @@ public class ccc02s4 {
         _best[1] = _speeds[0];
         for( int i = 2; i <= _names.length; i++ ) {
             int speed = 9999999;
-            for( int j = Math.max( 0, i - M + 1) ; j <= i ; j++) {
+            for( int j = max( 0, i - M + 1) ; j <= i ; j++) {
                 int gs = groupSpeed( j, i ) + _best[j-1];
-                speed = Math.min( gs, speed);
+                speed = min( gs, speed);
                 //System.out.println(j + "-" + i + " ==> " + gs + ", " + speed );
             }
             _best[i] = speed;
