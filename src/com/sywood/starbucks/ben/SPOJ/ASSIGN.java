@@ -20,8 +20,6 @@ public class ASSIGN {
                     else matrix[i][j] = false;
                 }
             }
-
-
         }
     }
 }
