@@ -1,9 +1,7 @@
 package com.sywood.starbucks.ben.WCIPEG;
 
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeMap;
 
@@ -12,12 +10,6 @@ import java.util.TreeMap;
  * ignore the overlapped squares from points Q, only find the outer distances from EACH zombie
  * reduced into how do we find the perimeter of the polygon?
  * take the area of Q - area of Q-1 to find the perimeter (each cell counts as one
- *
- max(r-Q, 0)
- min(r+Q, N)
- max(C-Q, 0)
- min(C+Q, M)
- restructure to use window
  */
 public class ccc16s2p5 {
     private static int min(int a, int b){
@@ -26,41 +18,45 @@ public class ccc16s2p5 {
     private static int max(int a, int b){
         return a > b ? a : b;
     }
-    private static int K, N, M, diff[][];
-    private static Zombie[] zombies;
+
+    private static int K, N, M, diff[][], zombiesr[], zombiesc[], xs[], ys[];
+    private static TreeMap<Integer, Integer> compx, compy;
 
     private static long area(int Q){
-        TreeMap<Integer, Integer> compx = new TreeMap<>();
-        TreeMap<Integer, Integer> compy = new TreeMap<>();
-        for (int i = 0; i < N + 1; i++) {
+        compx = new TreeMap<>();
+        compy = new TreeMap<>();
+        for (int i = 0; i < 4002; i++) {
             Arrays.fill(diff[i], 0);
         }
 
         for (int i = 0; i < K; i++) {
-            compx.put(max(zombies[i].r-Q-1, 0), 0);
-            compx.put(min(zombies[i].r+Q, N), 0);
-            compy.put(max(zombies[i].c-Q-1, 0), 0);
-            compy.put(min(zombies[i].c+Q, M), 0);
+            compx.put(max(zombiesr[i]-Q-1, 0), 0);
+            compx.put(min(zombiesr[i]+Q, N), 0);
+            compy.put(max(zombiesc[i]-Q-1, 0), 0);
+            compy.put(min(zombiesc[i]+Q, M), 0);
         }
 
-        ArrayList<Integer> xs = new ArrayList<>();
-        ArrayList<Integer> ys = new ArrayList<>();
+        //xs = new ArrayList<>(); ys = new ArrayList<>();
+
         int cntx = 1, cnty = 1;
 
         for(int key : compx.keySet()){
+            xs[cntx-1] = key;
             compx.put(key, cntx++);
-            xs.add(key);
+            //xs.add(key);
+
         }
         for(int key : compy.keySet()){
+            ys[cnty-1] = key;
             compy.put(key, cnty++);
-            ys.add(key);
+            //ys.add(key);
         }
-        //int diff[][] = new int[4002][4002];
+
         for (int i = 0; i < K; i++) {
-            int r1 = compx.get(max(zombies[i].r - Q-1, 0));
-            int r2 = compx.get(min(zombies[i].r + Q, N)); //subtract one to include a point
-            int c1 = compy.get(max((zombies[i].c) - Q-1, 0));
-            int c2 = compy.get(min((zombies[i].c) + Q, M)); //same thing here
+            int r1 = compx.get(max(zombiesr[i] - Q-1, 0));
+            int r2 = compx.get(min(zombiesr[i] + Q, N)); //subtract one to include a point
+            int c1 = compy.get(max(zombiesc[i] - Q-1, 0));
+            int c2 = compy.get(min(zombiesc[i] + Q, M)); //same thing here
             diff[r1][c1]++;
             diff[r1][c2]--;
             diff[r2][c1]--;
@@ -68,22 +64,17 @@ public class ccc16s2p5 {
         }
 
         long ans = 0;
-        for (int i = 1; i < xs.size(); i++) {
-            for (int j = 1; j < ys.size(); j++) {
+        for (int i = 1; i < cntx; i++) {
+            for (int j = 1; j < cnty; j++) {
                 diff[i][j] += diff[i - 1][j] + diff[i][j - 1] - diff[i - 1][j - 1];
                 if (diff[i][j] > 0){
-                    ans += ((long) xs.get(i) - xs.get(i - 1)) * ((long) ys.get(j) - ys.get(j - 1));
+                    //ans += ((long) xs.get(i) - xs.get(i - 1)) * ((long) ys.get(j) - ys.get(j - 1));
+                    ans += (long) (xs[i] - xs[i - 1]) * (ys[j] - ys[j - 1]);
                 }
             }
         }
+
         return ans;
-    }
-    static class Zombie{
-        int r, c;
-        Zombie(int r, int c){
-            this.r = r;
-            this.c = c;
-        }
     }
 
     public static void main(String[] args)throws Exception{
@@ -93,15 +84,18 @@ public class ccc16s2p5 {
         M = Integer.parseInt(data[1]);
         K = Integer.parseInt(input.readLine());
 
-        zombies = new Zombie[K];
-
+        zombiesc = new int[2000];
+        zombiesr = new int[2000];
         for (int i = 0; i < K; i++) {
             data = input.readLine().trim().split(" ");
-            zombies[i] = new Zombie(Integer.parseInt(data[0]), Integer.parseInt(data[1]));
+            zombiesr[i] = Integer.parseInt(data[0]);
+            zombiesc[i] = Integer.parseInt(data[1]);
         }
 
         int Q = Integer.parseInt(input.readLine());
         diff = new int[4002][4002];
+        xs = new int[4002];
+        ys = new int[4002];
         if(Q == 0) System.out.println(K);
         else {
             System.out.println(area(Q) - area(Q-1));
