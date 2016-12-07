@@ -1,5 +1,6 @@
 package com.sywood.starbucks.ben.WCIPEG;
 
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -25,15 +26,41 @@ public class ccc16s2p5 {
     private static int max(int a, int b){
         return a > b ? a : b;
     }
-    private static int K, N, M;
+    private static int K, N, M, diff[][];
     private static Zombie[] zombies;
-    private static long area(TreeMap<Integer, Integer> compx, TreeMap<Integer, Integer> compy,
-                   ArrayList<Integer> xs, ArrayList<Integer> ys, int Q){
-        int diff[][] = new int[4002][4002];
+
+    private static long area(int Q){
+        TreeMap<Integer, Integer> compx = new TreeMap<>();
+        TreeMap<Integer, Integer> compy = new TreeMap<>();
+        for (int i = 0; i < N + 1; i++) {
+            Arrays.fill(diff[i], 0);
+        }
 
         for (int i = 0; i < K; i++) {
-            int r1 = max(compx.get(zombies[i].r) - Q-1, 0), r2 = min(compx.get(zombies[i].r) + Q, N); //subtract one to include a point
-            int c1 = max(compy.get(zombies[i].c) - Q-1, 0), c2 = min(compy.get(zombies[i].c) + Q, M); //same thing here
+            compx.put(max(zombies[i].r-Q-1, 0), 0);
+            compx.put(min(zombies[i].r+Q, N), 0);
+            compy.put(max(zombies[i].c-Q-1, 0), 0);
+            compy.put(min(zombies[i].c+Q, M), 0);
+        }
+
+        ArrayList<Integer> xs = new ArrayList<>();
+        ArrayList<Integer> ys = new ArrayList<>();
+        int cntx = 1, cnty = 1;
+
+        for(int key : compx.keySet()){
+            compx.put(key, cntx++);
+            xs.add(key);
+        }
+        for(int key : compy.keySet()){
+            compy.put(key, cnty++);
+            ys.add(key);
+        }
+        //int diff[][] = new int[4002][4002];
+        for (int i = 0; i < K; i++) {
+            int r1 = compx.get(max(zombies[i].r - Q-1, 0));
+            int r2 = compx.get(min(zombies[i].r + Q, N)); //subtract one to include a point
+            int c1 = compy.get(max((zombies[i].c) - Q-1, 0));
+            int c2 = compy.get(min((zombies[i].c) + Q, M)); //same thing here
             diff[r1][c1]++;
             diff[r1][c2]--;
             diff[r2][c1]--;
@@ -41,8 +68,8 @@ public class ccc16s2p5 {
         }
 
         long ans = 0;
-        for (int i = 1; i <= xs.size(); i++) {
-            for (int j = 1; j <= ys.size(); j++) {
+        for (int i = 1; i < xs.size(); i++) {
+            for (int j = 1; j < ys.size(); j++) {
                 diff[i][j] += diff[i - 1][j] + diff[i][j - 1] - diff[i - 1][j - 1];
                 if (diff[i][j] > 0){
                     ans += ((long) xs.get(i) - xs.get(i - 1)) * ((long) ys.get(j) - ys.get(j - 1));
@@ -67,34 +94,17 @@ public class ccc16s2p5 {
         K = Integer.parseInt(input.readLine());
 
         zombies = new Zombie[K];
-        TreeMap<Integer, Integer> compx = new TreeMap<>();
-        TreeMap<Integer, Integer> compy = new TreeMap<>();
 
         for (int i = 0; i < K; i++) {
-            data = input.readLine().split(" ");
-            compx.put(Integer.parseInt(data[0]), 0);
-            compy.put(Integer.parseInt(data[1]), 0);
+            data = input.readLine().trim().split(" ");
             zombies[i] = new Zombie(Integer.parseInt(data[0]), Integer.parseInt(data[1]));
-            //find some way to input the coordinates and not the actual points in the data.
         }
 
-        int cntx = 1, cnty = 1;
-        ArrayList<Integer> xs = new ArrayList<>();
-        ArrayList<Integer> ys = new ArrayList<>();
-
-        for(int key : compx.keySet()){
-            compx.put(key, cntx++);
-            xs.add(key);
-        }
-        for(int key : compy.keySet()){
-            compy.put(key, cnty++);
-            ys.add(key);
-        }
-        //compressed the zombies to a point. Need to scan for each point now?
         int Q = Integer.parseInt(input.readLine());
+        diff = new int[4002][4002];
         if(Q == 0) System.out.println(K);
         else {
-            System.out.println(area(compx, compy, xs, ys, Q) + ", " + area(compx, compy, xs, ys, Q-1));
+            System.out.println(area(Q) - area(Q-1));
         }
     }
 }
