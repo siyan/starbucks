@@ -19,27 +19,30 @@ public class ccc16s2p5 {
         return a > b ? a : b;
     }
 
-    private static int K, N, M, r1, r2, c1, c2, diff[][], zombiesr[], zombiesc[], xs[], ys[];
-    private static TreeMap<Integer, Integer> compx, compy;
+    private static int K, N, M, zombiesr[], zombiesc[], xs[], ys[];
+    private static short diff[][] = new short[4002][4002];
+    static final short zero = 0;
+    private static short r1, r2, c1, c2;
+    private static TreeMap<Integer, Short> compx, compy;
 
     private static long area(int Q){
         compx = new TreeMap<>();
         compy = new TreeMap<>();
         for (int i = 0; i < 4002; i++) {
-            Arrays.fill(diff[i], 0);
+            Arrays.fill(diff[i], zero);
 
         }
 
         for (int i = 0; i < K; i++) {
-            compx.put(max(zombiesr[i]-Q-1, 0), 0);
-            compx.put(min(zombiesr[i]+Q, N), 0);
-            compy.put(max(zombiesc[i]-Q-1, 0), 0);
-            compy.put(min(zombiesc[i]+Q, M), 0);
+            compx.put(max(zombiesr[i]-Q-1, 0), (short)0);
+            compx.put(min(zombiesr[i]+Q, N), (short) 0);
+            compy.put(max(zombiesc[i]-Q-1, 0), (short) 0);
+            compy.put(min(zombiesc[i]+Q, M), (short) 0);
         }
 
         //xs = new ArrayList<>(); ys = new ArrayList<>();
 
-        int cntx = 1, cnty = 1;
+        short cntx = 1, cnty = 1;
 
         for(int key : compx.keySet()){
             xs[cntx-1] = key;
@@ -54,10 +57,10 @@ public class ccc16s2p5 {
         }
 
         for (int i = 0; i < K; i++) {
-            int r1 = compx.get(max(zombiesr[i] - Q-1, 0));
-            int r2 = compx.get(min(zombiesr[i] + Q, N)); //subtract one to include a point
-            int c1 = compy.get(max(zombiesc[i] - Q-1, 0));
-            int c2 = compy.get(min(zombiesc[i] + Q, M)); //same thing here
+            r1 = compx.get(max(zombiesr[i] - Q-1, 0));
+            r2 = compx.get(min(zombiesr[i] + Q, N)); //subtract one to include a point
+            c1 = compy.get(max(zombiesc[i] - Q-1, 0));
+            c2 = compy.get(min(zombiesc[i] + Q, M)); //same thing here
             diff[r1][c1]++;
             diff[r1][c2]--;
             diff[r2][c1]--;
@@ -94,7 +97,7 @@ public class ccc16s2p5 {
         }
 
         int Q = Integer.parseInt(input.readLine());
-        diff = new int[4002][4002];
+        diff = new short[4002][4002];
         xs = new int[4002];
         ys = new int[4002];
         if(Q == 0) System.out.println(K);
