@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * Created by Ben on 2016-10-09.
+ incomplete, must solve later.
  */
 public class ccc16s5 {
     public static void main(String[] args)throws Exception{

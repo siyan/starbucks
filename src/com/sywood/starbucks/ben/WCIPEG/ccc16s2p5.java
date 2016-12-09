@@ -19,7 +19,7 @@ public class ccc16s2p5 {
         return a > b ? a : b;
     }
 
-    private static int K, N, M, diff[][], zombiesr[], zombiesc[], xs[], ys[];
+    private static int K, N, M, r1, r2, c1, c2, diff[][], zombiesr[], zombiesc[], xs[], ys[];
     private static TreeMap<Integer, Integer> compx, compy;
 
     private static long area(int Q){
@@ -27,6 +27,7 @@ public class ccc16s2p5 {
         compy = new TreeMap<>();
         for (int i = 0; i < 4002; i++) {
             Arrays.fill(diff[i], 0);
+
         }
 
         for (int i = 0; i < K; i++) {
