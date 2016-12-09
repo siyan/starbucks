@@ -69,6 +69,7 @@ public class ioi9821 {
 
         return ans;
     }
+
     public static void main(String[] args)throws Exception{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(input.readLine());
