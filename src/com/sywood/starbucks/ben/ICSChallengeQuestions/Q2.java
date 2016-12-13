@@ -5,21 +5,22 @@ package com.sywood.starbucks.ben.ICSChallengeQuestions;
  */
 public class Q2 {
     public static int method(int angle, int bounce){
-        if(bounce == 0){
-            return 360-angle;
-        }else if (bounce == 1){
-             return 270+angle;
-        }else if (bounce == 2){
-            return 90+angle;
-        }else if (bounce == 3){
-            return 180+angle;
-        }
+        int ref = angle%90;
+        if(bounce == 0)
+            return 90-ref;
+        else if (bounce == 1)
+            return 270-ref;
+        else if(bounce == 2)
+            return 180+ref;
+        else if(bounce == 3)
+            return 90+ref;
+
         return -1;
     }
 
 
     public static void main(String[] args){
-        System.out.println(method(50, 1));
+        System.out.println(method(320, 1));
     }
 }
 
