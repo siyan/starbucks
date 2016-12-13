@@ -13,7 +13,7 @@ public class Q2 {
         else if(bounce == 2)
             return 180+ref;
         else if(bounce == 3)
-            return 90+ref;
+            return 270+ref;
 
         return -1;
     }
