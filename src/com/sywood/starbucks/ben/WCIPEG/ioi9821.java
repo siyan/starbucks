@@ -22,12 +22,12 @@ public class ioi9821 {
 
     private static TreeMap<Integer, Integer> compx, compy;
     private static int n;
-    private static int[][] diff = new int[5001][5001];
+    private static short[][] diff = new short[5001][5001];
     private static int[] xs = new int[5000], ys = new int[5000];
     private static Rect[] rects = new Rect[5000];
 
     private static int area(int change){
-        diff = new int[5001][5001];
+        diff = new short[5001][5001];
         compx = new TreeMap<>();
         compy = new TreeMap<>();
         for (int i = 0; i < n; i++) {
