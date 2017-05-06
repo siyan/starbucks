@@ -15,14 +15,12 @@ public class Q9{
             for(int j = 0; j < sz; j++){
                 if(j == i) continue;
                 for(int k = 1; k < sz; k++) {
-                    //System.out.println(k);
                     nxt[k-1][cnt] = matrix[k][j];
                 }
                 cnt++;
             }
             sum += matrix[0][i]*add*calc(nxt);
 
-            //System.out.println(matrix[0][i] + ", " + add + ", " + calc(nxt));
             add *= -1;
         }
         return sum;
